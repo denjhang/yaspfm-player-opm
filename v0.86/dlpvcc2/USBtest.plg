@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: USBtest - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/USBtest.res" /d "NDEBUG" "C:\PROJECTS\USBtestDLL-bynameV22\USBtest.rc"" 
+Creating temporary file "C:\DOCUME~1\DONPOW~1\LOCALS~1\Temp\RSP75.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Release/" /Fp"Release/USBtest.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\PROJECTS\USBtestDLL-bynameV22\USBtest.cpp"
+"C:\PROJECTS\USBtestDLL-bynameV22\USBtestDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DONPOW~1\LOCALS~1\Temp\RSP75.tmp" 
+Creating temporary file "C:\DOCUME~1\DONPOW~1\LOCALS~1\Temp\RSP76.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Release/" /Fp"Release/USBtest.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\PROJECTS\USBtestDLL-bynameV22\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\DONPOW~1\LOCALS~1\Temp\RSP76.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:no /pdb:"Release/USBtest.pdb" /machine:I386 /out:"Release/USBtest.exe"  ".\Release\StdAfx.obj" ".\Release\USBtest.obj" ".\Release\USBtestDlg.obj" ".\Release\USBtest.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+USBtest.cpp
+USBtestDlg.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4089: all references to "SHELL32.dll" discarded by /OPT:REF
+Creating command line "bscmake.exe /nologo /o"Release/USBtest.bsc"  ".\Release\StdAfx.sbr" ".\Release\USBtest.sbr" ".\Release\USBtestDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+USBtest.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

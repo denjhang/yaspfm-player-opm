@@ -1,0 +1,1 @@
+yasp_test "03 Fighting in the Street.vgm"
