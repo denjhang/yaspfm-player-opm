@@ -1,0 +1,49 @@
+make: Entering directory '/d/working/vscode-projects/yasp/console_player'
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c main.c -o main.o
+In file included from main.c:14:
+ini.h: In function 'ini_parse_string':
+ini.h:281:26: warning: variable 'ctx' set but not used [-Wunused-but-set-variable]
+  281 |     ini_parse_string_ctx ctx;
+      |                          ^~~
+In function 'strncpy0',
+    inlined from 'ini_parse_file' at ini.h:245:17:
+ini.h:162:5: warning: 'strncpy' output may be truncated copying 49 bytes from a string of length 199 [-Wstringop-truncation]
+  162 |     strncpy(dest, src, size - 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c: In function 'scan_music_directory':
+main.c:74:76: warning: '%s' directive output may be truncated writing up to 259 bytes into a region of size 250 [-Wformat-truncation=]
+   74 |                 snprintf(playlist[playlist_size], MAX_FILENAME_LEN, "music/%s", dir->d_name);
+      |                                                                            ^~
+main.c:74:17: note: 'snprintf' output between 7 and 266 bytes into a destination of size 256
+   74 |                 snprintf(playlist[playlist_size], MAX_FILENAME_LEN, "music/%s", dir->d_name);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c spfm.c -o spfm.o
+spfm.c: In function 'spfm_chip_reset':
+spfm.c:228:12: warning: unused variable 'j' [-Wunused-variable]
+  228 |     int i, j;
+      |            ^
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c error.c -o error.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c util.c -o util.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c play.c -o play.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c vgm.c -o vgm.o
+In file included from spfm.h:6,
+                 from vgm.c:4:
+D:/msys64/ucrt64/include/winsock2.h:15:2: warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+   15 | #warning Please include winsock2.h before windows.h
+      |  ^~~~~~~
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c s98.c -o s98.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c adpcm.c -o adpcm.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym2151.c -o ym2151.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym2612.c -o ym2612.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym2203.c -o ym2203.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym2413.c -o ym2413.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c chiptype.c -o chiptype.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c sn76489.c -o sn76489.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ay8910.c -o ay8910.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c y8950.c -o y8950.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym3526.c -o ym3526.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym3812.c -o ym3812.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ymf262.c -o ymf262.o
+gcc -m64 -Wall -Wextra -O2 -I"../ftdi_driver" -c ym2608.c -o ym2608.o
+gcc -m64 -s -L"../ftdi_driver/amd64" -o yasp_test.exe main.o spfm.o error.o util.o play.o vgm.o s98.o adpcm.o ym2151.o ym2612.o ym2203.o ym2413.o chiptype.o sn76489.o ay8910.o y8950.o ym3526.o ym3812.o ymf262.o ym2608.o -lftd2xx -lwinmm
+make: Leaving directory '/d/working/vscode-projects/yasp/console_player'

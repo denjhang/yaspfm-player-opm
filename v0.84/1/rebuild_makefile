@@ -1,0 +1,40 @@
+# Target executable
+TARGET = build/rebuild.exe
+
+# Compiler
+CC = gcc
+
+# Paths
+FTDI_INC_PATH = ./ftdi_driver
+FTDI_LIB_PATH = ./
+
+# Compiler flags
+CFLAGS = -m64 -Wall -Wextra -g -I"$(FTDI_INC_PATH)" -include winsock2.h
+
+# Linker flags
+LDFLAGS = -m64 -s -L"$(FTDI_LIB_PATH)"
+
+# Source files
+SRCS = rebuild.c spfm.c play.c s98.c vgm.c util.c error.c
+
+# Object files
+OBJS = $(SRCS:.c=.o)
+
+# Libraries to link
+LIBS = -lftd2xx -luser32 -lgdi32 -lws2_32 -lcomdlg32 -ladvapi32 -lsetupapi
+
+# Default target
+all: $(TARGET)
+
+# Link the executable
+$(TARGET): $(OBJS)
+	@mkdir -p build
+	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+
+# Compile C source files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up
+clean:
+	rm -f $(TARGET) $(OBJS)

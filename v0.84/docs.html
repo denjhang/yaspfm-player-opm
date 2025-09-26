@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASP - Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: .3em;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: rgba(27,31,35,.05);
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1em;
+        }
+        th, td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+        th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+        .lang-toggle {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>YASP - Yet Another Sound Player</h1>
+
+    <div class="lang-toggle">
+        <p><strong>摘要 (Abstract)</strong></p>
+        <p>YASP (Yet Another Sound Player) 是一款专为 SPFM (Sound-Processing FM-synthesis) 系列硬件设计的命令行音乐播放器。它专注于高效、精确地播放经典的 VGM 和 S98 格式音乐文件，并通过多种可配置的刷新模式和计时器选项，为用户提供极致的复古音频体验。</p>
+        <p><i>YASP (Yet Another Sound Player) is a command-line music player designed for the SPFM (Sound-Processing FM-synthesis) family of hardware. It focuses on efficiently and accurately playing classic VGM and S98 format music files, providing users with the ultimate retro audio experience through various configurable refresh modes and timer options.</i></p>
+    </div>
+
+    <hr>
+
+    <h2>目录 (Table of Contents)</h2>
+    <ul>
+        <li><a href="#project-background">项目背景 (Project Background)</a></li>
+        <li><a href="#features">功能特色 (Features)</a></li>
+        <li><a href="#controls">操作方法 (Controls)</a></li>
+        <li><a href="#build-instructions">编译方法 (Build Instructions)</a></li>
+        <li><a href="#source-code-references">参考源码 (Source Code References)</a></li>
+    </ul>
+
+    <hr>
+
+    <h2 id="project-background">项目背景 (Project Background)</h2>
+    <p>本项目旨在为 SPFM 硬件爱好者打造一款功能强大且高度可定制的命令行音乐播放器。项目的开发由以下成员合作完成：</p>
+    <ul>
+        <li><strong>Denjhang (项目所有者/主要开发者):</strong> 负责提出项目需求、核心架构设计、提供关键技术实现（如 MMCSS + IAudioClient3 示例代码），并进行最终测试与验证。</li>
+        <li><strong>Cline (AI 软件工程师):</strong> 负责根据需求进行具体的代码实现、功能集成、错误修复、UI 调整以及文档撰写。</li>
+    </ul>
+    <p><i>This project aims to create a powerful and highly customizable command-line music player for SPFM hardware enthusiasts. The development was a collaborative effort between the following members:</i></p>
+    <ul>
+        <li><i><strong>Denjhang (Project Owner/Lead Developer):</strong> Responsible for defining project requirements, core architecture design, providing key technical implementations (such as the MMCSS + IAudioClient3 example code), and conducting final testing and validation.</i></li>
+        <li><i><strong>Cline (AI Software Engineer):</strong> Responsible for implementing specific code based on requirements, feature integration, bug fixing, UI adjustments, and documentation writing.</i></li>
+    </ul>
+
+    <h2 id="features">功能特色 (Features)</h2>
+    <ul>
+        <li><strong>广泛的芯片支持 (Broad Chip Support):</strong> 支持多种经典的 FM 合成芯片，包括 YM2608, YM2151, YM2612, YM2203, YM2413 等。</li>
+        <li><strong>多格式播放 (Multi-Format Playback):</strong> 支持 <code>.vgm</code>, <code>.vgz</code>, 和 <code>.s98</code> 音乐文件格式。</li>
+        <li><strong>高级刷新模式 (Advanced Refresh Modes):</strong>
+            <ul>
+                <li><strong>Flush Mode:</strong> 提供两种数据刷新模式：<code>Register-Level</code>（逐寄存器写入）和 <code>Command-Level</code>（命令级写入），可通过按键 <code>1</code> 和 <code>2</code> 切换。</li>
+                <li><strong>Timer Mode:</strong> 提供多种高精度计时器模式以适应不同系统和性能需求，包括 <code>Default Sleep</code>, <code>Hybrid Sleep</code>, <code>Multimedia Timer</code> 等，可通过按键 <code>3</code> 至 <code>9</code> 切换。</li>
+            </ul>
+        </li>
+        <li><strong>自动配置保存 (Automatic Configuration Saving):</strong>
+            <ul>
+                <li>芯片选择、播放速度和刷新模式等设置会自动保存到 <code>config.ini</code> 文件中，并在下次启动时自动加载。</li>
+            </ul>
+        </li>
+        <li><strong>实时播放控制 (Real-time Playback Control):</strong> 支持在播放过程中进行下一首、上一首、暂停/继续、随机播放和播放速度微调。</li>
+        <li><strong>跨平台设计 (Cross-Platform Design):</strong> 主要为 Windows 设计，但代码结构也兼容类 POSIX 系统（如 Linux）。</li>
+    </ul>
+
+    <h2 id="controls">操作方法 (Controls)</h2>
+    <p>在播放器运行时，您可以使用以下键盘快捷键：</p>
+    <table>
+        <thead>
+            <tr>
+                <th>按键 (Key)</th>
+                <th>功能 (Function)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>q</code></td><td>退出播放器 (Quit the player)</td></tr>
+            <tr><td><code>p</code></td><td>暂停/继续播放 (Pause/Resume playback)</td></tr>
+            <tr><td><code>n</code></td><td>下一首 (Next track)</td></tr>
+            <tr><td><code>b</code></td><td>上一首 (Previous track)</td></tr>
+            <tr><td><code>r</code></td><td>开启/关闭随机播放 (Toggle random mode)</td></tr>
+            <tr><td><code>+</code></td><td>加快播放速度 (Increase playback speed)</td></tr>
+            <tr><td><code>-</code></td><td>减慢播放速度 (Decrease playback speed)</td></tr>
+            <tr><td><code>1</code></td><td>切换到 <code>Register-Level</code> 刷新模式 (Switch to <code>Register-Level</code> flush mode)</td></tr>
+            <tr><td><code>2</code></td><td>切换到 <code>Command-Level` 刷新模式 (Switch to <code>Command-Level</code> flush mode)</td></tr>
+            <tr><td><code>3</code></td><td>切换到 <code>Default Sleep</code> 计时器模式 (Switch to <code>Default Sleep</code> timer mode)</td></tr>
+            <tr><td><code>4</code></td><td>切换到 <code>Hybrid Sleep</code> 计时器模式 (Switch to <code>Hybrid Sleep</code> timer mode)</td></tr>
+            <tr><td><code>5</code></td><td>切换到 <code>Multimedia Timer</code> 计时器模式 (Switch to <code>Multimedia Timer</code> timer mode)</td></tr>
+            <tr><td><code>6</code>-<code>9</code></td><td>切换到其他改良/实验性计时器模式 (Switch to other improved/experimental timer modes)</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="build-instructions">编译方法 (Build Instructions)</h2>
+    <h3>Windows (使用 MinGW/MSYS2)</h3>
+    <ol>
+        <li>确保您已安装 MinGW-w64 或 MSYS2，并已将其 <code>bin</code> 目录添加到系统 PATH。</li>
+        <li>将 FTDI D2XX 驱动文件 (<code>ftd2xx.h</code>, <code>ftd2xx.lib</code> 或 <code>libftd2xx.a</code>) 放置在项目根目录下的 <code>ftdi_driver</code> 文件夹中。</li>
+        <li>打开命令行，导航到 <code>console_player</code> 目录。</li>
+        <li>运行 <code>make</code> 命令进行编译：<pre><code>make -C console_player</code></pre></li>
+        <li>编译成功后，将在 <code>console_player</code> 目录下生成 <code>yasp_test.exe</code>。</li>
+    </ol>
+    <h3>Linux / macOS</h3>
+    <p>编译方法与 Windows 类似，但需要确保已安装 <code>libftdi</code> 开发库。<code>makefile</code> 会自动处理平台特定的链接选项。</p>
+
+    <h2 id="source-code-references">参考源码 (Source Code References)</h2>
+    <p>本 C 语言版本的播放器在开发过程中，深度参考了由 Denjhang 开发的 <strong><code>node-spfm</code></strong> (位于 <code>D:\working\vscode-projects\yasp11\node-spfm-denjhang-main</code>) 项目。<code>node-spfm</code> 是一个功能完备的 Node.js 实现，为本项目的 C 语言移植提供了核心逻辑和算法基础。</p>
+    <p><i>This C language version of the player heavily referenced the <strong><code>node-spfm</code></strong> project (located at <code>D:\working\vscode-projects\yasp11\node-spfm-denjhang-main</code>), developed by Denjhang. <code>node-spfm</code> is a full-featured Node.js implementation that provided the core logic and algorithmic foundation for this C port.</i></p>
+    
+    <h4>主要参考部分 (Key Referenced Areas):</h4>
+    <ul>
+        <li>
+            <strong>SPFM 通信协议 (SPFM Communication Protocol):</strong>
+            <p><code>node-spfm/src/spfm.ts</code> 中定义的与 SPFM 硬件握手、发送命令和数据的逻辑，是本 C 项目中 <code>console_player/spfm.c</code> 实现的基础。包括设备初始化、芯片复位和寄存器写入等关键操作。
+            <br><i>The logic for handshaking, sending commands, and data to the SPFM hardware, as defined in <code>node-spfm/src/spfm.ts</code>, served as the foundation for the implementation in <code>console_player/spfm.c</code>. This includes key operations like device initialization, chip reset, and register writing.</i></p>
+        </li>
+        <li>
+            <strong>VGM 文件解析 (VGM File Parsing):</strong>
+            <p><code>node-spfm/src/vgm.ts</code> 中的 VGM 文件头解析、数据块处理和命令解析逻辑，被直接借鉴并用 C 语言在 <code>console_player/vgm.c</code> 中重新实现。这确保了对 VGM 格式的精确支持。
+            <br><i>The logic for parsing VGM file headers, processing data blocks, and interpreting commands from <code>node-spfm/src/vgm.ts</code> was directly adapted and re-implemented in C in <code>console_player/vgm.c</code>. This ensured accurate support for the VGM format.</i></p>
+        </li>
+        <li>
+            <strong>芯片控制逻辑 (Chip Control Logic):</strong>
+            <p><code>node-spfm/src/chips/</code> 目录下针对不同 FM 芯片（如 YM2151, YM2608）的控制类，为本项目的 <code>console_player/ym2151.c</code>, <code>console_player/ym2608.c</code> 等文件提供了寄存器地址和控制指令的准确参考。
+            <br><i>The control classes for different FM chips (e.g., YM2151, YM2608) in the <code>node-spfm/src/chips/</code> directory provided accurate references for register addresses and control commands in our project's files like <code>console_player/ym2151.c</code> and <code>console_player/ym2608.c</code>.</i></p>
+        </li>
+    </ul>
+    <p>除了 <code>node-spfm</code>，本项目还涉及以下文件的修改与实现：</p>
+    <ul>
+        <li><code>console_player/main.c</code>: 主程序入口，负责初始化、配置加载、播放循环和键盘输入处理。</li>
+        <li><code>console_player/play.c</code>: 播放器 UI 显示和文件播放逻辑的核心。</li>
+        <li><code>console_player/util.c</code> & <code>console_player/util.h</code>: 实现了各种计时器模式和辅助工具函数。</li>
+        <li><code>console_player/makefile</code>: 项目的构建脚本，负责编译和链接所有源文件。</li>
+    </ul>
+
+</body>
+</html>

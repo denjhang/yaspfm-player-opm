@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASP - English Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: .3em;
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            background-color: rgba(27,31,35,.05);
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            font-size: 85%;
+            line-height: 1.45;
+            overflow: auto;
+            padding: 16px;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1em;
+        }
+        th, td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+        th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>YASP - Yet Another Sound Player</h1>
+
+    <h2>Abstract</h2>
+    <p>YASP (Yet Another Sound Player) is a command-line music player designed for the SPFM (Sound-Processing FM-synthesis) family of hardware. It focuses on efficiently and accurately playing classic VGM and S98 format music files, providing users with the ultimate retro audio experience through various configurable refresh modes and timer options.</p>
+
+    <hr>
+
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#project-background">Project Background</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#controls">Controls</a></li>
+        <li><a href="#build-instructions">Build Instructions</a></li>
+        <li><a href="#source-code-references">Source Code References</a></li>
+    </ul>
+
+    <hr>
+
+    <h2 id="project-background">Project Background</h2>
+    <p>This project aims to create a powerful and highly customizable command-line music player for SPFM hardware enthusiasts. The development was a collaborative effort between the following members:</p>
+    <ul>
+        <li><strong>Denjhang (Project Owner/Lead Developer):</strong> Responsible for defining project requirements, core architecture design, providing key technical implementations (such as the MMCSS + IAudioClient3 example code), and conducting final testing and validation.</li>
+        <li><strong>Cline (AI Software Engineer):</strong> Responsible for implementing specific code based on requirements, feature integration, bug fixing, UI adjustments, and documentation writing.</li>
+    </ul>
+
+    <h2 id="features">Features</h2>
+    <ul>
+        <li><strong>Broad Chip Support:</strong> Supports a wide range of classic FM synthesis chips, including YM2608, YM2151, YM2612, YM2203, YM2413, and more.</li>
+        <li><strong>Multi-Format Playback:</strong> Supports <code>.vgm</code>, <code>.vgz</code>, and <code>.s98</code> music file formats.</li>
+        <li><strong>Advanced Refresh Modes:</strong>
+            <ul>
+                <li><strong>Flush Mode:</strong> Provides two data flush modes: <code>Register-Level</code> and <code>Command-Level</code>, switchable via keys <code>1</code> and <code>2</code>.</li>
+                <li><strong>Timer Mode:</strong> Offers multiple high-precision timer modes to suit different systems and performance needs, including <code>Default Sleep</code>, <code>Hybrid Sleep</code>, <code>Multimedia Timer</code>, etc., switchable via keys <code>3</code> through <code>9</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Automatic Configuration Saving:</strong>
+            <ul>
+                <li>Settings such as chip selection, playback speed, and refresh modes are automatically saved to <code>config.ini</code> and loaded on the next launch.</li>
+            </ul>
+        </li>
+        <li><strong>Real-time Playback Control:</strong> Supports next/previous track, pause/resume, random mode, and fine-tuning of playback speed during playback.</li>
+        <li><strong>Cross-Platform Design:</strong> Primarily designed for Windows, but the code structure is also compatible with POSIX-like systems (e.g., Linux).</li>
+    </ul>
+
+    <h2 id="controls">Controls</h2>
+    <p>While the player is running, you can use the following keyboard shortcuts:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Function</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><code>q</code></td><td>Quit the player</td></tr>
+            <tr><td><code>p</code></td><td>Pause/Resume playback</td></tr>
+            <tr><td><code>n</code></td><td>Next track</td></tr>
+            <tr><td><code>b</code></td><td>Previous track</td></tr>
+            <tr><td><code>r</code></td><td>Toggle random mode</td></tr>
+            <tr><td><code>+</code></td><td>Increase playback speed</td></tr>
+            <tr><td><code>-</code></td><td>Decrease playback speed</td></tr>
+            <tr><td><code>1</code></td><td>Switch to <code>Register-Level</code> flush mode</td></tr>
+            <tr><td><code>2</code></td><td>Switch to <code>Command-Level</code> flush mode</td></tr>
+            <tr><td><code>3</code></td><td>Switch to <code>Default Sleep</code> timer mode</td></tr>
+            <tr><td><code>4</code></td><td>Switch to <code>Hybrid Sleep</code> timer mode</td></tr>
+            <tr><td><code>5</code></td><td>Switch to <code>Multimedia Timer</code> timer mode</td></tr>
+            <tr><td><code>6</code>-<code>9</code></td><td>Switch to other improved/experimental timer modes</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="build-instructions">Build Instructions</h2>
+    <h3>Windows (using MinGW/MSYS2)</h3>
+    <ol>
+        <li>Ensure you have MinGW-w64 or MSYS2 installed and its <code>bin</code> directory added to your system PATH.</li>
+        <li>Place the FTDI D2XX driver files (<code>ftd2xx.h</code>, <code>ftd2xx.lib</code> or <code>libftd2xx.a</code>) in the <code>ftdi_driver</code> folder in the project root.</li>
+        <li>Open a command line, navigate to the <code>console_player</code> directory.</li>
+        <li>Run the <code>make</code> command to compile:<pre><code>make -C console_player</code></pre></li>
+        <li>Upon successful compilation, <code>yasp_test.exe</code> will be generated in the <code>console_player</code> directory.</li>
+    </ol>
+    <h3>Linux / macOS</h3>
+    <p>The build process is similar to Windows, but you need to ensure the <code>libftdi</code> development library is installed. The <code>makefile</code> will automatically handle platform-specific linking options.</p>
+
+    <h2 id="source-code-references">Source Code References</h2>
+    <p>This C language version of the player heavily referenced the <strong><code>node-spfm</code></strong> project (located at <code>D:\working\vscode-projects\yasp11\node-spfm-denjhang-main`), developed by Denjhang. <code>node-spfm</code> is a full-featured Node.js implementation that provided the core logic and algorithmic foundation for this C port.</p>
+    
+    <h4>Key Referenced Areas:</h4>
+    <ul>
+        <li>
+            <strong>SPFM Communication Protocol:</strong>
+            <p>The logic for handshaking, sending commands, and data to the SPFM hardware, as defined in <code>node-spfm/src/spfm.ts</code>, served as the foundation for the implementation in <code>console_player/spfm.c</code>. This includes key operations like device initialization, chip reset, and register writing.</p>
+        </li>
+        <li>
+            <strong>VGM File Parsing:</strong>
+            <p>The logic for parsing VGM file headers, processing data blocks, and interpreting commands from <code>node-spfm/src/vgm.ts</code> was directly adapted and re-implemented in C in <code>console_player/vgm.c</code>. This ensured accurate support for the VGM format.</p>
+        </li>
+        <li>
+            <strong>Chip Control Logic:</strong>
+            <p>The control classes for different FM chips (e.g., YM2151, YM2608) in the <code>node-spfm/src/chips/</code> directory provided accurate references for register addresses and control commands in our project's files like <code>console_player/ym2151.c</code> and <code>console_player/ym2608.c</code>.</p>
+        </li>
+    </ul>
+    <p>In addition to <code>node-spfm</code>, the project involved modifications and implementations in the following files:</p>
+    <ul>
+        <li><code>console_player/main.c</code>: The main program entry point, responsible for initialization, configuration loading, the playback loop, and keyboard input handling.</li>
+        <li><code>console_player/play.c</code>: Core of the player's UI display and file playback logic.</li>
+        <li><code>console_player/util.c</code> & <code>console_player/util.h</code>: Implementation of various timer modes and utility functions.</li>
+        <li><code>console_player/makefile</code>: The project's build script, responsible for compiling and linking all source files.</li>
+    </ul>
+
+</body>
+</html>
