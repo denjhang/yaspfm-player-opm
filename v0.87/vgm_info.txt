@@ -1,0 +1,11 @@
+--- VGM Header Info ---
+Ident: Vgm 
+Version: 0x00000170
+Data Offset: 0x000000F0
+Total Samples: 4419054
+Loop Offset: 0x00000000
+Loop Samples: 0
+
+--- Chip Clocks ---
+YM2608: 7987200 Hz
+-----------------------

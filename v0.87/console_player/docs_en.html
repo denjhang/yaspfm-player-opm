@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASP - Yet Another Sound Player (Technical Documentation)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-bottom: 50px; /* Add padding to prevent content from being hidden by the progress bar */
+        }
+        #progress-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: #f0f0f0;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #0366d6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
+        h3 { font-size: 1.25em; }
+        h4 { font-size: 1em; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            background-color: rgba(27,31,35,.05);
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+        pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f6f8fa;
+            border-radius: 3px;
+        }
+        pre code {
+            display: inline;
+            padding: 0;
+            margin: 0;
+            overflow: visible;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        th, td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+        th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+        ul, ol { padding-left: 2em; }
+        li { margin-top: .25em; }
+
+        /* Hierarchical TOC styles */
+        .toc-level-1 { font-weight: 500; }
+        .toc-level-2 { margin-left: 1.5em; }
+        .toc-level-3 { margin-left: 3em; }
+        .toc-level-4 { margin-left: 4.5em; }
+        .toc-level-1 > a { font-size: 1.1em; }
+        .toc-level-2 > a { font-size: 1.0em; }
+        .toc-level-3 > a { font-size: 0.95em; }
+        .toc-level-4 > a { font-size: 0.9em; color: #333; }
+
+        blockquote {
+            margin-left: 0;
+            padding-left: 1em;
+            color: #6a737d;
+            border-left: .25em solid #dfe2e5;
+        }
+    </style>
+</head>
+<body>
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+<h1 id="yasp-yet-another-sound-player-technical-documentation">YASP - Yet Another Sound Player (Technical Documentation)</h1>
+<h2 id="abstract">Abstract</h2>
+<p>YASP (Yet Another Sound Player) is a powerful command-line music player designed for the SPFM (Sound-Processing FM-synthesis) family of hardware. It focuses on efficiently and accurately playing classic VGM and S98 format music files. This document aims to provide a deep dive into its core technical implementations, including the advanced timing system, SPFM communication protocol, and the innovative chip conversion and caching mechanism.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li> <a href="#1-source-code-references-and-acknowledgments">Source Code References and Acknowledgments</a></li>
+<li> <a href="#2-project-background-and-architecture">Project Background and Architecture</a></li>
+<li> <a href="#3-core-features">Core Features</a></li>
+<li> <a href="#4-analysis-of-key-technologies">Analysis of Key Technologies</a></li>
+</ol>
+<ul>
+<li class="toc-level-2">  <a href="#41-vgm-file-processing-workflow">4.1. VGM File Processing Workflow</a></li>
+<li class="toc-level-2">  <a href="#42-intelligent-chip-conversion">4.2. Intelligent Chip Conversion</a></li>
+<li class="toc-level-2">  <a href="#43-advanced-timing-and-flush-system">4.3. Advanced Timing and Flush System</a></li>
+<li class="toc-level-2">  <a href="#44-spfm-communication-protocol">4.4. SPFM Communication Protocol</a></li>
+</ul>
+<ol>
+<li> <a href="#5-user-guide">User Guide</a></li>
+<li> <a href="#6-compilation-and-build">Compilation and Build</a></li>
+</ol>
+<hr>
+<h2 id="1">1. Source Code References and Acknowledgments</h2>
+<p>The development of YASP was heavily influenced by the following outstanding projects. We express our sincere respect and gratitude to their authors. Their work provided a solid foundation and critical inspiration for YASP's implementation.</p>
+<ul>
+<li>  <strong><code>yasp (Yet Another SPFM Light Player)</code></strong></li>
+<li>  <strong>Author</strong>: uobikiemukot</li>
+<li>  <strong>Contribution</strong>: <strong>The starting point and initial inspiration for this project.</strong> The name YASP is inherited from this project, and its early code structure provided a valuable initial framework and direction for development.</li>
+</ul>
+<ul>
+<li>  <strong><code>node-spfm</code></strong></li>
+<li>  <strong>Authors</strong>: Mitsutaka Okazaki (digital-sound-antiques), Denjhang</li>
+<li>  <strong>Contribution</strong>: Provided the core logic and algorithmic foundation for this project, especially in the areas of SPFM communication protocol (<code>spfm.c</code>), chip control, and the OPN to OPM conversion algorithm (<code>opn_to_opm.c</code>).</li>
+</ul>
+<ul>
+<li>  <strong>VGMPlay</strong></li>
+<li>  <strong>Author</strong>: Valley Bell</li>
+<li>  <strong>Contribution</strong>: The advanced timing system in this project (the <code>yasp_usleep</code> function in <code>util.c</code>) is entirely based on VGMPlay's core timing model, which fundamentally solved playback stability issues. Mode 6 (VGMPlay Mode) and Mode 7 (Optimized VGMPlay Mode) are directly derived from its ideas.</li>
+</ul>
+<ul>
+<li>  <strong><code>vgm-conv</code></strong></li>
+<li>  <strong>Author</strong>: Mitsutaka Okazaki (digital-sound-antiques)</li>
+<li>  <strong>Contribution</strong>: The precise mathematical models for chip frequency conversion were derived from this project.</li>
+</ul>
+<ul>
+<li>  <strong><code>vgm-parser-js</code></strong></li>
+<li>  <strong>Author</strong>: Mitsutaka Okazaki (digital-sound-antiques)</li>
+<li>  <strong>Contribution</strong>: When solving the GD3 tag caching issue, this project borrowed the robust "load entire file into memory" processing strategy from its <code>vgm-parser-main</code> module (<code>vgm.c</code>), which was key to the final successful implementation.</li>
+</ul>
+<h2 id="2">2. Project Background and Architecture</h2>
+<p>YASP aims to provide SPFM hardware enthusiasts with a powerful and highly customizable command-line music player. The project is a collaboration between <strong>Denjhang</strong> (Project Owner/Lead Developer) and <strong>Cline</strong> (AI Software Engineer). Denjhang was responsible for requirements, architecture, and key technology validation, while Cline handled implementation, integration, and documentation.</p>
+<p><strong>Core Architecture:</strong></p>
+<ul>
+<li>  <code>main.c</code>: The main program entry point, responsible for initialization, configuration loading, the main playback loop, and keyboard input handling.</li>
+<li>  <code>play.c</code>: The core of the player's UI rendering and state management.</li>
+<li>  <code>vgm.c</code> / <code>s98.c</code>: Responsible for parsing, command processing, and playback logic for VGM and S98 files, respectively.</li>
+<li>  <code>opn_to_opm.c</code>, <code>ay_to_opm.c</code>, <code>sn_to_ay.c</code>: Modules that implement chip instruction conversion.</li>
+<li>  <code>util.c</code>: Contains utility functions such as high-precision timers, the <code>yasp_usleep</code> implementation, and <code>ini</code> file I/O.</li>
+<li>  <code>spfm.c</code>: Encapsulates the low-level logic for communicating with SPFM hardware via the FTDI D2XX driver.</li>
+</ul>
+<h2 id="3">3. Core Features</h2>
+<ul>
+<li>  <strong>Extensive Chip Support:</strong> YASP supports a wide variety of classic sound chips, either directly or through automatic conversion, covering a vast range of retro game music. The supported chips are:</li>
+<li>  YM2608, YM2151, YM2612, YM2203, YM2413, YM3526, YM3812, Y8950, AY8910, SN76489, YMF262, SEGAPCM, RF5C68, YM2610</li>
+<li>  <strong>Multi-Format Playback:</strong> Supports <code>.vgm</code>, <code>.vgz</code>, and <code>.s98</code> music files.</li>
+<li>  <strong>GD3 Tag Fidelity:</strong> Employs an advanced memory-based processing technique to ensure that GD3 music tags within VGM files are fully preserved during conversion and caching.</li>
+<li>  <strong>Advanced Timing System:</strong> Provides multiple timing strategies based on the high-precision performance counter to ensure accurate, jitter-free audio playback under various system loads.</li>
+<li>  <strong>Built-in File Browser:</strong> Allows users to easily navigate the file system and select music.</li>
+</ul>
+<h2 id="4">4. Analysis of Key Technologies</h2>
+<h3 id="4-1">4.1. VGM File Processing Workflow</h3>
+<p>To resolve data consistency issues encountered during file conversion and caching (especially the loss of GD3 tags), YASP adopts a robust, memory-based processing workflow. The core of this mechanism is: when a cache needs to be created, the <strong>entire original VGM file is first read into memory in a single operation</strong>, and the file handle is then closed. Subsequent conversion, GD3 tag extraction, and writing of the new cache file are all performed on this in-memory copy. This "load completely, then process in isolation" strategy ensures the data source is unique and immutable, which is the cornerstone of smooth playback, error-free conversion, and the preservation of GD3 tags.</p>
+<p>The following are key code snippets from <code>vgm.c</code>'s <code>vgm_play</code> function that implement this workflow:</p>
+<p><strong>1. Read the Entire Original VGM File into Memory</strong></p>
+<pre><code class="language-c">// 1. Read entire original file into memory
+fseek(input_fp, 0, SEEK_END);
+long original_file_size = ftell(input_fp);
+fseek(input_fp, 0, SEEK_SET);
+uint8_t* original_file_data = malloc(original_file_size);
+if (!original_file_data || fread(original_file_data, 1, original_file_size, input_fp) != original_file_size) {
+    logging(LOG_ERROR, &quot;Failed to read original VGM file into memory.&quot;);
+    if (original_file_data) free(original_file_data);
+    return;
+}
+fclose(input_fp); // Close original file, we have it in memory now
+</code></pre>
+<p><strong>Explanation</strong>: This is a direct implementation of the "load completely" strategy. The code gets the file size, allocates an equivalent amount of memory, and reads the entire file into the <code>original_file_data</code> buffer in one go. After this, the original file handle is closed, and all subsequent operations are independent of the on-disk file, fundamentally preventing file pointer confusion.</p>
+<p><strong>2. Extract GD3 Tags from Memory and Write to Cache</strong></p>
+<pre><code class="language-c">// 4. Write GD3 block from memory to cache
+long gd3_start_in_cache = 0;
+uint32_t gd3_offset_in_header = read_le32(original_file_data + 0x14);
+if (gd3_offset_in_header &gt; 0) {
+    uint32_t gd3_abs_offset = 0x14 + gd3_offset_in_header;
+    uint32_t gd3_length = read_le32(original_file_data + gd3_abs_offset + 8);
+    uint32_t total_gd3_size = 12 + gd3_length;
+    
+    gd3_start_in_cache = ftell(g_cache_fp);
+    fwrite(original_file_data + gd3_abs_offset, 1, total_gd3_size, g_cache_fp);
+}
+</code></pre>
+<p><strong>Explanation</strong>: This is a critical step in the "process in isolation" strategy. The code reads the offset and length of the GD3 tag directly from the <code>original_file_data</code> memory buffer, then writes the complete GD3 data block (including its header and content) verbatim into the new cache file. This ensures a lossless transfer of GD3 information.</p>
+<p><strong>3. Perform Data Conversion from Memory</strong></p>
+<pre><code class="language-c">// In vgm_play:
+const uint8_t* vgm_data_ptr = original_file_data + g_vgm_header.vgm_data_offset;
+size_t vgm_data_size = (g_vgm_header.eof_offset + 4) - g_vgm_header.vgm_data_offset;
+vgm_convert_and_cache_opn_to_opm_from_mem(vgm_data_ptr, vgm_data_size, &amp;g_vgm_header);
+
+// The conversion function itself:
+static bool vgm_convert_and_cache_opn_to_opm_from_mem(const uint8_t* vgm_data, size_t vgm_data_size, const vgm_header_t* original_header) {
+    // ... loop through vgm_data (memory buffer) and convert ...
+}
+</code></pre>
+<p><strong>Explanation</strong>: The input to the conversion function <code>vgm_convert_and_cache_opn_to_opm_from_mem</code> is no longer a file pointer, but a pointer <code>vgm_data</code> to the VGM data section in memory. This completely avoids data inconsistency issues that could arise from read/write operations on a file stream, ensuring the conversion process is pure and reliable.</p>
+<h3 id="4-2">4.2. Intelligent Chip Conversion</h3>
+<p>When YASP detects that a chip required by a VGM file is missing on the user's hardware but a viable alternative exists, it automatically performs a conversion.</p>
+<h4 id="4-2-1">4.2.1. Conversion Path Overview</h4>
+<table>
+<thead>
+<tr>
+<th>Source Chip</th>
+<th>Target Chip</th>
+<th>Conversion Module(s)</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YM2612/2203/2608 (OPN)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>opn_to_opm.c</code></td>
+<td>Core FM-synthesis conversion, supporting mapping of frequency, envelope, etc.</td>
+</tr>
+<tr>
+<td><strong>AY8910 (PSG)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>ay_to_opm.c</code></td>
+<td>Simulates PSG's square waves and noise using OPM's FM synthesis.</td>
+</tr>
+<tr>
+<td><strong>SN76489 (DCSG)</strong></td>
+<td>AY8910 (PSG)</td>
+<td><code>sn_to_ay.c</code></td>
+<td>Intermediate step, converts SN76489 instructions to AY8910 instructions.</td>
+</tr>
+<tr>
+<td><strong>SN76489 (DCSG)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>sn_to_ay.c</code> -> <code>ay_to_opm.c</code></td>
+<td><strong>Conversion Chain</strong>: SN76489 -> AY8910 -> YM2151.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-2-2">4.2.2. Core Conversion Source Code Explained</h4>
+<p><strong>1. OPN (YM2612/2203/2608) -> OPM (YM2151)</strong></p>
+<p>This is the core FM-synthesis conversion, primarily implemented in <code>opn_to_opm.c</code>. The OPN series uses <code>F-Number</code> and <code>Block</code> to define frequency, while OPM uses <code>Key Code</code> and <code>Key Fraction</code>. The conversion must be done through the following mathematical formulas:</p>
+<pre><code class="language-c">// 1. Convert OPN parameters to actual frequency (Hz)
+double freq = (_source_clock * fnum) / ((72.0 * _clock_div) * (1 &lt;&lt; (20 - blk)));
+
+// 2. Convert frequency to OPM&apos;s pitch value (Key)
+const double BASE_FREQ_OPM = 277.2; // OPM base frequency
+double key = 60.0 + log2((freq * _clock_ratio) / BASE_FREQ_OPM) * 12.0;
+
+// 3. Split Key value into Key Code (KC) and Key Fraction (KF)
+*kc = (oct &lt;&lt; 4) | note;
+*kf = (uint8_t)floor(frac * 64.0);
+</code></pre>
+<p>This code accurately maps the frequency system of one sound source to a completely different one.</p>
+<p><strong>2. AY8910 (PSG) -> OPM (YM2151)</strong></p>
+<p>This conversion, implemented in <code>ay_to_opm.c</code>, aims to <strong>simulate</strong> the PSG's square waves and noise using the OPM's FM synthesis. Since OPM does not have native square wave channels, the code uses a special FM patch (<code>CON=4</code>) to simulate them.</p>
+<pre><code class="language-c">// In ay_to_opm_init, set up a square-wave-like patch for OPM channels 4, 5, 6
+_y(0x20 + opmCh, 0xfc); // RL=ON FB=7 CON=4
+_y(0x60 + opmCh, 0x1b); // M1: TL=27 (set a base volume)
+_y(0x80 + opmCh, 0x1f); // M1: AR=31 (fast attack)
+</code></pre>
+<p>Additionally, the PSG's logarithmic volume is converted to the OPM's linear <code>Total Level</code> (TL) via the <code>VOL_TO_TL</code> lookup table.</p>
+<pre><code class="language-c">// The VOL_TO_TL array
+static const int VOL_TO_TL[] = {127, 62, 56, 52, 46, 42, 36, 32, 28, 24, 20, 16, 12, 8, 4, 0};
+
+// Applied in the _updateTone function
+const int tVol = (v &amp; 0x10) ? 0 : (v &amp; 0xf); // Get volume value
+_y(0x70 + opmCh, fmin(127, VOL_TO_TL[tVol &amp; 0xf])); // Look up and write to OPM&apos;s TL register
+</code></pre>
+<p><strong>3. SN76489 (DCSG) -> AY8910 (PSG)</strong></p>
+<p>This is an intermediate conversion step implemented in <code>sn_to_ay.c</code>. Its core task is to handle the mixing logic of the SN76489's channel 3 and noise, which behaves differently from the AY8910.</p>
+<pre><code class="language-c">// Mixing logic is handled in the _updateSharedChannel function
+static void _updateSharedChannel() {
+    int noiseChannel = _mixChannel; // Usually channel 2
+    bool enableTone = _atts[noiseChannel] != 0xf;
+    bool enableNoise = _atts[3] != 0xf;
+
+    // Mix resolution: if both are enabled, noise wins
+    if (enableTone &amp;&amp; enableNoise) {
+        enableTone = false;
+    }
+    
+    // Set the AY8910&apos;s channel and noise enable register (R7) accordingly
+    const uint8_t toneMask = enableTone ? 0 : (1 &lt;&lt; noiseChannel);
+    const uint8_t noiseMask = enableNoise ? (7 &amp; ~(1 &lt;&lt; noiseChannel)) : 7;
+    _y(7, (noiseMask &lt;&lt; 3) | toneMask); // _y() calls ay_to_opm_write_reg()
+}
+</code></pre>
+<p>This piece of code is central to making the entire conversion chain sound correct.</p>
+<h3 id="4-3">4.3. Advanced Timing and Flush System</h3>
+<p>YASP's playback precision and stability are determined by the combination of "Flush Mode" and "Timer Mode".</p>
+<h4 id="4-3-1">4.3.1. Flush Mode</h4>
+<p>Flush mode determines the <strong>granularity</strong> at which the player sends register data to the SPFM hardware.</p>
+<table>
+<thead>
+<tr>
+<th>Mode (Key)</th>
+<th>Name</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Register-Level</td>
+<td><code>spfm_flush()</code> is called immediately after <strong>every single</strong> register write. This ensures the highest real-time responsiveness but creates huge USB communication overhead.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Command-Level</strong></td>
+<td><code>spfm_flush()</code> is only called after a complete VGM command is processed (e.g., a wait command like <code>0x61 nn nn</code>, or a chip write command). This is the <strong>best balance between performance and real-time feel</strong> and is the default setting.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-3-2">4.3.2. Timer Mode</h4>
+<p>Timer mode determines how the player <strong>waits</strong> precisely for the next event after processing a VGM command. All modes use the high-precision performance counter (<code>QueryPerformanceCounter</code>) for error compensation.</p>
+<table>
+<thead>
+<tr>
+<th>Mode (Key)</th>
+<th>Source Code Name</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3</strong></td>
+<td>High-Precision Sleep</td>
+<td>Calls <code>Sleep(1)</code> to wait and compensates for its significant inaccuracy using the performance counter. Suitable for low-load environments.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Hybrid Sleep</td>
+<td>Uses <code>CreateWaitableTimer</code> to wait for 1ms and compensates for errors. More precise than <code>Sleep(1)</code>.</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Multimedia Timer</td>
+<td>Uses <code>timeSetEvent</code> to set up a 1ms high-precision multimedia timer. The playback thread waits for the event triggered by this timer. High precision, but events can be delayed under high load.</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>VGMPlay Mode</strong></td>
+<td>A "busy-wait" variant that constantly calls <code>Sleep(0)</code> to yield its time slice. Extremely responsive, but causes very high CPU usage.</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>Optimized VGMPlay Mode</strong></td>
+<td>An optimized version of Mode 5 with an "anti-runaway" mechanism to prevent audio lag and crashes. <strong>This is the default and best choice.</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-3-3">4.3.3. Timer Core Source Code Explained</h4>
+<p>The following are the core implementations for each mode in the <code>yasp_usleep</code> function from <code>util.c</code>:</p>
+<p><strong>Mode 3: High-Precision Sleep</strong></p>
+<pre><code class="language-c">case 0: // High-Precision Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        Sleep(1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: This is the simplest implementation. It loops, calling <code>Sleep(1)</code> to yield at least 1ms of CPU time until the performance counter reaches the target time. The precision of <code>Sleep</code> is poor, but it has low CPU usage.</p>
+<p><strong>Mode 4: Hybrid Sleep</strong></p>
+<pre><code class="language-c">case 1: // Hybrid Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        WaitForSingleObject(g_waitable_timer, 1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: Uses Windows' waitable timer <code>WaitForSingleObject</code> to wait for 1ms. It is more precise than <code>Sleep(1)</code> and offers a compromise between precision and CPU usage.</p>
+<p><strong>Mode 5: Multimedia Timer</strong></p>
+<pre><code class="language-c">case 2: // Multimedia Timer
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        WaitForSingleObject(g_timer_event, 1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: Relies on a <code>g_timer_event</code> that is triggered every 1ms in the background by <code>timeSetEvent</code>. The thread waits for this event, providing high precision.</p>
+<p><strong>Mode 6: VGMPlay Mode</strong></p>
+<pre><code class="language-c">case 3: // VGMPlay Mode
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        Sleep(0);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: This is a form of "busy-waiting". <code>Sleep(0)</code> immediately yields the remainder of the current thread's time slice, allowing other threads to run. This allows the loop to check the time very frequently, making it extremely responsive but at the cost of high CPU usage.</p>
+<p><strong>Mode 7: Optimized VGMPlay Mode</strong></p>
+<p>The optimization for this mode is not in <code>yasp_usleep</code> but in the <code>vgm_play</code> function in <code>play.c</code>. It uses the same waiting mechanism as Mode 5 but adds an "anti-runaway" logic:</p>
+<pre><code class="language-c">// In play.c&apos;s vgm_play
+if (g_timer_mode == 7) {
+    vgm_slice_to_do = min(vgm_slice_to_do, g_vgm_slice_limiter);
+}
+</code></pre>
+<p><strong>Explanation</strong>: If the system is busy and timer events are severely delayed, causing a large backlog of samples to be played (<code>vgm_slice_to_do</code>), this code limits the backlog to a maximum value (<code>g_vgm_slice_limiter</code>). This prevents long audio lags and allows the playback to quickly catch up to real-time, at the cost of dropping a few backlogged samples.</p>
+<h3 id="4-4">4.4. SPFM Communication Protocol</h3>
+<p>YASP communicates with SPFM hardware via the FTDI D2XX driver. Its core is a <strong>write buffering mechanism</strong> and a <strong>hybrid wait strategy</strong>. For extremely short waits (<10 samples), it sends a hardware wait command <code>0x80</code>; for longer waits, it calls the high-precision software wait function <code>yasp_usleep</code>, which is determined by the selected timer mode.</p>
+<h2 id="5">5. User Guide</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>q</code></td>
+<td>Quit</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Pause/Resume</td>
+</tr>
+<tr>
+<td><code>n</code> / <code>b</code></td>
+<td>Next / Previous Track</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>Toggle Random/Sequential Mode</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>Open/Close File Browser</td>
+</tr>
+<tr>
+<td><code>+</code> / <code>-</code></td>
+<td>Speed Up / Slow Down</td>
+</tr>
+<tr>
+<td><code>1</code> / <code>2</code></td>
+<td>Switch Flush Mode</td>
+</tr>
+<tr>
+<td><code>3</code>-<code>7</code></td>
+<td>Switch Timer Mode</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. Compilation and Build</h2>
+<p>Run <code>make</code> in the <code>console_player</code> directory.</p>
+
+<script>
+    window.onscroll = function() {
+        updateProgressBar();
+    };
+
+    document.getElementById("progress-container").onclick = function(event) {
+        var rect = this.getBoundingClientRect();
+        var clickX = event.clientX - rect.left;
+        var percentage = clickX / this.offsetWidth;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        window.scrollTo(0, height * percentage);
+    };
+
+    function updateProgressBar() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    }
+</script>
+</body>
+</html>
