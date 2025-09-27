@@ -1,235 +1,383 @@
-# YASP - Yet Another Sound Player
+# YASP - Yet Another Sound Player (技术文档)
 
 ## 摘要
 
-YASP (Yet Another Sound Player) 是一款专为 SPFM (Sound-Processing FM-synthesis) 系列硬件设计的命令行音乐播放器。它专注于高效、精确地播放经典的 VGM 和 S98 格式音乐文件，并通过多种可配置的刷新模式和计时器选项，为用户提供极致的复古音频体验。
+YASP (Yet Another Sound Player) 作为一款纯 C 语言编写的、专为 SPFM (Sound-Processing FM-synthesis) 系列硬件设计的、功能强大的命令行音乐播放器，它专注于高效、精确地播放经典的 VGM 和 S98 格式音乐文件。本文档旨在深入剖析其核心技术实现，包括高级计时系统、SPFM 通信协议、以及创新的芯片转换与缓存机制。
 
 ---
 
 ## 目录
 
-1.  [项目背景](#项目背景)
-2.  [功能特色](#功能特色)
-3.  [操作方法](#操作方法)
-4.  [编译方法](#编译方法)
-5.  [参考源码](#参考源码)
+1.  [源码参考与致谢](#1-源码参考与致谢)
+2.  [项目背景与架构](#2-项目背景与架构)
+3.  [C 语言核心实践与代码风格](#3-c-语言核心实践与代码风格)
+4.  [核心功能与特色](#4-核心功能与特色)
+5.  [关键技术剖析](#5-关键技术剖析)
+    *   [5.1. VGM 文件处理流程](#51-vgm-文件处理流程)
+    *   [5.2. 智能芯片转换](#52-智能芯片转换)
+    *   [5.3. 高级计时与刷新系统](#53-高级计时与刷新系统)
+    *   [5.4. SPFM 通信协议](#54-spfm-通信协议)
+6.  [操作指南](#6-操作指南)
+7.  [编译与构建](#7-编译与构建)
 
 ---
 
-## 正文
+## 1. 源码参考与致谢
 
-### 项目背景
+YASP 的开发深度参考了以下优秀项目，在此对这些项目的作者表示由衷的敬意和感谢。他们的工作为 YASP 的实现提供了坚实的基础和关键的灵感。
 
-本项目旨在为 SPFM 硬件爱好者打造一款功能强大且高度可定制的命令行音乐播放器。项目的开发由以下成员合作完成：
+*   **`yasp (Yet Another SPFM Light Player)`**
+    *   **作者**: uobikiemukot
+    *   **贡献**: **本项目的起点和最初的灵感来源。** YASP 的名称继承自此项目，其早期的代码结构为本项目的开发提供了宝贵的初始框架和方向。
 
-*   **Denjhang (项目所有者/主要开发者):** 负责提出项目需求、核心架构设计、提供关键技术实现（如高精度定时器示例代码），并进行最终测试与验证。
-*   **Cline (AI 软件工程师):** 负责根据需求进行具体的代码实现、功能集成、错误修复、UI 调整以及文档撰写。
+*   **`node-spfm`**
+    *   **作者**: Mitsutaka Okazaki (digital-sound-antiques), Denjhang
+    *   **贡献**: 提供了本项目的核心逻辑和算法基础，特别是在 SPFM 通信协议 (`spfm.c`)、芯片控制以及 OPN 到 OPM 的转换算法 (`opn_to_opm.c`) 方面。
 
-### 功能特色
+*   **VGMPlay**
+    *   **作者**: Valley Bell
+    *   **贡献**: 本项目的高级计时系统 (`util.c` 中的 `yasp_usleep`) 完全基于 VGMPlay 的核心计时模型，从根本上解决了播放稳定性的问题。模式 6 (VGMPlay Mode) 和模式 7 (Optimized VGMPlay Mode) 直接来源于其思想。
 
-*   **广泛的芯片支持:** 支持多种经典的 FM 合成芯片，包括 YM2608, YM2151, YM2612, YM2203, YM2413 等。
-*   **多格式播放:** 支持 `.vgm`, `.vgz`, 和 `.s98` 音乐文件格式。
-*   **高级刷新模式:**
-    *   **刷新模式 (Flush Mode):** 提供两种数据刷新模式，用于控制命令发送到 SPFM 硬件的频率。
-    *   **定时器模式 (Timer Mode):** 为 VGM 播放提供多种高精度计时策略，以在不同系统负载下实现最精确的播放。
-*   **内置文件浏览器:**
-    *   按 `F` 键可打开文件浏览器，方便地在不同目录间切换和选择音乐文件。
-*   **直观的播放界面:**
-    *   清晰地展示当前播放的歌曲、总时长、芯片配置和各种模式状态。
-    ```
-    YASP - Yet Another Sound Player
-    --------------------------------------------------
-    Now Playing  : IF09_.vgm
-    Total Time   : 01:28
-    Slot 0: YM2608 | Slot 1: YM2151
-    Flush Mode (1,2): Register-Level
-    Timer Mode (3-0): VGMPlay-Optimized 1
-    --------------------------------------------------
-    [N] Next | [B] Prev | [P] Pause | [R] Random | [F] Browser | [+] Speed Up | [-] Speed Down | [Q] Quit
-    --------------------------------------------------
-    Status: Playing... | Random: Off | Speed: 1.00x
-    ```
-*   **易于使用的文件浏览器:**
-    *   提供分页和清晰的导航，让您轻松浏览音乐库。
-    ```
-    File Browser
-    --------------------------------------------------
-    Current Dir: ./console_player/music/if-vgm
-    Now Playing: ./console_player/music/if-vgm/IF14_.vgm
-    --------------------------------------------------
-    -> ../
-       IF01_.vgm
-       IF02_.vgm
-       IF03_.vgm
-       IF04_.vgm
-       IF05_.vgm
-       IF06_.vgm
-       IF07_.vgm
-       IF08_.vgm
-       IF09_.vgm
-    --------------------------------------------------
-    Page 1/2 | [Up/Down] Navigate | [Left/Right] Page | [Enter] Select | [F] Exit
-    ```
-*   **自动配置保存:**
-    *   芯片选择、播放速度、刷新模式以及上次播放的文件路径等设置会自动保存到 `config.ini` 文件中，并在下次启动时自动加载。
-*   **实时播放控制:** 支持在播放过程中进行下一首、上一首、暂停/继续、随机播放和播放速度微调。
-*   **跨平台设计:** 主要为 Windows 设计，但代码结构也兼容类 POSIX 系统（如 Linux）。
+*   **`vgm-conv`**
+    *   **作者**: Mitsutaka Okazaki (digital-sound-antiques)
+    *   **贡献**: 芯片频率转换的精确数学模型来源于此项目。
 
-### 刷新模式详解
+*   **`vgm-parser-js`**
+    *   **作者**: Mitsutaka Okazaki (digital-sound-antiques)
+    *   **贡献**: 在解决 GD3 标签缓存问题时，本项目借鉴了其 `vgm-parser-main` 模块中健壮的“完整文件载入内存”处理策略 (`vgm.c`)，为最终的成功实现提供了关键思路。
 
-刷新模式决定了 YASP 将命令发送到 SPFM 硬件的频率。
+## 2. 项目背景与架构
 
-| 按键 | 模式 | 工作原理 | 优缺点 |
-| :--: | :-- | :-- | :-- |
-| `1` | **寄存器级 (Register-Level)** | 命令被持续写入一个内部缓冲区 (`spfm_write_buf`)。只有当缓冲区满，或者遇到一个需要精确计时的等待命令时，`spfm_flush` 函数才会被调用，将整个缓冲区的数据一次性通过 USB 发送给硬件。 | **优点:** 吞吐量最大化。通过将多个命令合并为单次 USB 传输，极大地减少了驱动和硬件的开销，性能最高。<br>**缺点:** 命令的发送不是实时的，可能会引入微小的延迟。 |
-| `2` | **命令级 (Command-Level)** | **(默认)** 在处理完 VGM 文件中的**每一个**命令（如一次寄存器写入或一个短等待）后，都会立即调用 `spfm_flush` 函数。 | **优点:** 提供了最即时的响应，确保每个命令都以最小的延迟发送到硬件。<br>**缺点:** USB 传输非常频繁，驱动开销较大，理论性能低于寄存器级模式。 |
+YASP 旨在为 SPFM 硬件爱好者提供一个功能强大且高度可定制的命令行音乐播放器。项目由 **Denjhang** (项目所有者/主要开发者) 和 **Cline** (AI 软件工程师) 合作完成，前者负责需求、架构和关键技术验证，后者负责具体实现、集成和文档撰写。
 
-### 定时器模式详解 (VGM 播放)
+**核心架构:**
+*   `main.c`: 主程序入口，负责初始化、配置加载、主播放循环和键盘输入处理。
+*   `play.c`: 播放器 UI 渲染和状态管理的核心。
+*   `vgm.c` / `s98.c`: 分别负责 VGM 和 S98 文件的解析、命令处理和播放逻辑。
+*   `opn_to_opm.c`, `ay_to_opm.c`, `sn_to_ay.c`: 实现芯片指令转换的模块。
+*   `util.c`: 包含高精度定时器、`yasp_usleep` 实现和 `ini` 文件读写等辅助工具。
+*   `spfm.c`: 封装了与 SPFM 硬件通过 FTDI D2XX 驱动进行通信的底层逻辑。
 
-YASP 为 VGM 播放提供了多种先进的定时器模式。这些模式的核心思想是**不再信任**操作系统提供的 `sleep` 函数，而是利用高精度性能计数器 (`QueryPerformanceCounter`) 来**补偿**或**驱动**播放循环。
+## 3. C 语言核心实践与代码风格
 
-*注意：这些模式仅影响 `.vgm` 和 `.vgz` 文件的播放。`.s98` 文件使用其自身的、基于硬件的同步机制 (`0xFF` 命令)，不受这些模式影响。*
+本项目完全采用**纯 C 语言**编写，充分利用了 C 语言在系统级编程中的性能优势和对内存的精确控制能力。代码风格体现了 C 语言的典型范式，特别是在**结构体 (struct)**、**指针 (pointer)** 和 **函数指针 (function pointer)** 的大量使用上。
 
-#### A. 补偿 Sleep 模式 (Compensated Sleep)
-这类模式的共同点是：在一个主循环中，首先根据真实流逝时间计算出“时间债务”（需要处理的样本数），然后处理样本来“偿还”债务，最后调用一个 `sleep` 函数来让出 CPU。即使 `sleep` 不精确，下一次循环也能自动补偿误差。
+### 3.1. 使用结构体封装复杂数据
 
-| 按键 | 模式 | `g_timer_mode` | `sleep` 实现 | 推荐场景 |
-| :--: | :-- | :---: | :-- | :-- |
-| `3` | **高精度补偿 (默认)** | 0 | 使用 `CreateWaitableTimer` (高精度内核定时器) 来实现 `sleep`。 | **通用推荐**。CPU 占用低，精度高，是稳定性和性能的最佳平衡点。 |
-| `4` | **混合补偿** | 1 | 使用 `Sleep()` 结合忙等待 (spin-wait) 的混合方式来实现 `sleep`。 | 作为备用选项。在某些系统上可能比模式 3 响应更快，但 CPU 占用稍高。 |
-| `5` | **多媒体补偿** | 2 | 使用 `timeSetEvent` (多媒体定时器) 来实现 `sleep`。 | 作为备用选项。理论上精度很高，但定时器回调会带来一些额外开销。 |
+结构体是本项目组织数据的核心。例如，`vgm.h` 中定义的 `vgm_header_t` 结构体，将一个 VGM 文件的所有元数据（如版本、时钟频率、循环点、GD3 标签等）封装成一个逻辑清晰的单元。
 
-#### B. 事件驱动模式 (Event-Driven)
-这类模式不依赖于 `sleep`，而是由一个外部定时器来“唤醒”播放循环。
+```c
+// in vgm.h
+typedef struct {
+    uint8_t ident[4];
+    uint32_t eof_offset;
+    uint32_t version;
+    uint32_t sn76489_clock;
+    uint32_t ym2413_clock;
+    uint32_t gd3_offset;
+    uint32_t total_samples;
+    uint32_t loop_offset;
+    uint32_t loop_samples;
+    // ... more fields
+    wchar_t track_name_en[256];
+    wchar_t track_name_jp[256];
+    // ... more GD3 tag fields
+} vgm_header_t;
+```
+**解说**: 这种做法使得复杂的数据可以作为一个整体在函数间传递，极大地提高了代码的可读性和可维护性。通过一个指向 `vgm_header_t` 的指针，函数可以访问和修改文件的所有元数据，而无需传递几十个独立的参数。
 
-| 按键 | 模式 | `g_timer_mode` | 工作原理 | 推荐场景 |
-| :--: | :-- | :---: | :-- | :-- |
-| `6` | **经典 VGMPlay** | 3 | **(高度推荐)** 由一个 1ms 的高精度多媒体定时器 (`timeSetEvent`) 唤醒主循环。每次唤醒后，根据真实流逝时间处理相应数量的样本。由于其步调由外部定时器控制，理论上比补偿模式更精确。 | 在大多数情况下非常稳定，是精确播放的黄金标准。 |
-| `7` | **优化 VGMPlay** | 7 | **(最稳定)** 这是模式 6 的**“防失控”**版本。它在经典 VGMPlay 模式的基础上，增加了一个“最大帧样本数”的限制（相当于 1/60 秒的样本量），防止在系统瞬间卡顿后，声音突然“快进”或爆音。 | **最高负载场景推荐**。当您在后台运行高 CPU 任务时，此模式能提供最平滑的播放体验。 |
+### 3.2. 通过函数指针实现回调与解耦
 
-### SPFM 通信协议详解
+函数指针是实现回调机制和模块解耦的关键。一个典型的例子是芯片转换模块的初始化函数，它接收一个“写入器” (writer) 函数作为参数。
 
-YASP 通过 FTDI D2XX 驱动与 SPFM 硬件进行通信。协议的核心是高效地将寄存器写入和等待命令发送到设备。
+```c
+// in opn_to_opm.c
+// 定义一个静态的函数指针变量，用于存储回调函数
+static void (*_writer)(uint8_t addr, uint8_t data);
 
-#### 设备识别与握手
+// 初始化函数，接收一个函数指针作为参数
+void opn_to_opm_init(chip_type_t type, uint32_t clock, void (*writer)(uint8_t, uint8_t)) {
+    // ...
+    _writer = writer; // 将传入的函数指针存储起来
+}
 
-在初始化时，YASP 会尝试识别 SPFM 设备的类型。
+// 在需要写入数据时，调用这个存储的函数指针
+static void _y(uint8_t addr, uint8_t data) {
+    if (_writer) {
+        _writer(addr, data);
+    }
+}
+```
+**解说**: `opn_to_opm_init` 并不知道数据最终会被写入到哪里——是直接发送到 SPFM 硬件，还是写入一个缓存文件。它只关心调用 `_writer` 函数。这种设计将**数据转换逻辑**与**数据写入目标**完全解耦。在 `vgm.c` 中，我们可以根据需要，向它传递不同的写入函数（`spfm_opm_writer` 或 `vgm_cache_opm_writer`），从而实现了极高的灵活性。
 
-1.  **握手信号**: 程序向设备发送 `0xFF` 字节。
-2.  **设备响应**:
-    *   **SPFM Light** 设备会返回 "LT" 字符串。
-    *   **SPFM 标准版** 设备会返回 "OK" 字符串。
-3.  **兼容性模式**: 根据代码中的注释，当前版本的 YASP **绕过**了此握手流程，并默认将设备识别为 `SPFM_TYPE_SPFM_LIGHT`。这是为了解决在某些特定硬件上，严格的握手流程可能导致识别失败的问题，从而提高了设备的兼容性。
+### 3.3. 指针与内存的精确控制
 
-#### 命令格式
+作为一款性能敏感的播放器，本项目大量使用指针直接操作内存，以实现最高效率。VGM 文件缓存的实现是最好的例子。
 
-根据设备类型的不同，命令格式也不同：
+```c
+// in vgm.c's vgm_play function
+// 1. 分配内存
+fseek(input_fp, 0, SEEK_END);
+long original_file_size = ftell(input_fp);
+fseek(input_fp, 0, SEEK_SET);
+uint8_t* original_file_data = malloc(original_file_size);
 
-*   **SPFM Light (4 字节):**
-    *   `{ slot, (port << 1), addr, data }`
-    *   `slot`: 芯片所在的插槽 (0 或 1)。
-    *   `port`: 芯片的端口。
-    *   `addr`: 要写入的寄存器地址。
-    *   `data`: 要写入的数据。
+// 2. 将文件完整读入内存
+fread(original_file_data, 1, original_file_size, input_fp);
+fclose(input_fp); // 立即关闭文件
 
-*   **SPFM 标准版 (3 字节):**
-    *   `{ (slot << 4) | port, addr, data }`
-    *   `slot`: 芯片所在的插槽 (0-7)。
-    *   `port`: 芯片的端口 (0-3)。
-    *   `addr`: 要写入的寄存器地址。
-    *   `data`: 要写入的数据。
+// 3. 直接通过指针从内存中读取和写入数据
+uint32_t gd3_offset_in_header = read_le32(original_file_data + 0x14);
+// ...
+fwrite(original_file_data + gd3_abs_offset, 1, total_gd3_size, g_cache_fp);
 
-*注意：当前版本的 YASP 为了兼容性，默认使用 SPFM Light 模式。*
+// 4. 释放内存
+free(original_file_data);
+```
+**解说**: 这种对 `malloc`、`free` 和指针算术（如 `original_file_data + 0x14`）的直接使用，是典型的 C 语言风格。它避免了高级语言中可能存在的额外开销，将文件 I/O 操作减到最少，并将所有处理都放在速度最快的内存中进行，这是实现高性能缓存和无损 GD3 标签处理的根本。
 
-#### 写入缓冲机制
+## 4. 核心功能与特色
 
-为了最大化吞吐量并减少 FTDI 驱动的调用开销，YASP 实现了一个写入缓冲区 (`spfm_write_buf`)。
+*   **广泛的芯片支持:** YASP 支持多种经典的音源芯片，无论是直接播放还是通过自动转换，覆盖了大量怀旧游戏音乐的需求。支持的芯片列表如下：
+    *   YM2608, YM2151, YM2612, YM2203, YM2413, YM3526, YM3812, Y8950, AY8910, SN76489, YMF262, SEGAPCM, RF5C68, YM2610
+*   **多格式播放:** 支持 `.vgm`, `.vgz`, 和 `.s98` 音乐文件。
+*   **GD3 标签保真:** 采用先进的内存处理技术，确保在转换和缓存过程中，VGM 文件内的 GD3 音乐标签被完整保留。
+*   **高级计时系统:** 提供多种基于高精度性能计数器的计时策略，确保在各种系统负载下都能实现精确、无抖动的音频播放。
+*   **内置文件浏览器:** 方便用户在文件系统中导航和选择音乐。
 
-1.  当调用 `spfm_write_reg` 等函数时，命令数据并**不会**立即发送，而是被暂存到这个缓冲区中。
-2.  只有当缓冲区满，或者需要执行一个精确的等待操作时，`spfm_flush` 函数才会被调用。
-3.  `spfm_flush` 会将整个缓冲区的数据通过一次 `FT_Write` 调用发送给 SPFM 设备，从而大大提高了效率。
+## 5. 关键技术剖析
 
-#### 硬件等待与软件等待
+### 5.1. VGM 文件处理流程
 
-YASP 采用了一种混合等待策略，以在精度和 CPU 占用之间取得平衡：
+为了解决在文件转换和缓存过程中遇到的数据一致性问题（特别是 GD3 标签的丢失），YASP 采用了一种健壮的、基于内存的处理流程。该机制的核心是：在需要创建缓存时，**先将整个原始 VGM 文件一次性完整读入内存**，然后关闭文件句柄。后续的转换、GD3 标签提取和新缓存文件的写入，都基于这个内存副本进行操作。这种“先完整载入，再隔离处理”的策略，确保了数据源的唯一性和不可变性，是保证播放流畅、转换无误和 GD3 标签不丢失的基石。
 
-*   **硬件等待 (Hardware Wait):**
-    *   当设备为 `SPFM_Light` 且等待时间极短（小于 10 个音频样本）时，YASP 会发送 `0x80` 命令。
-    *   这个命令由 SPFM 硬件本身来处理，可以实现非常精确的、几乎不占用 CPU 资源的短时间等待。
-*   **软件等待 (Software Wait):**
-    *   对于较长的等待，或者在不支持硬件等待的设备上，YASP 会调用 `yasp_usleep` 函数。
-    *   该函数会根据用户选择的定时器模式（如高精度 Sleep、多媒体定时器等）来执行一个高精度的软件等待。
+以下是 `vgm.c` 中 `vgm_play` 函数实现此流程的关键代码：
 
-这种设计使得 YASP 在处理 VGM/S98 文件中大量的短等待命令时非常高效，同时在需要长时间等待时又能让出 CPU，避免资源浪费。
+**1. 将整个原始 VGM 文件读入内存**
+```c
+// 1. Read entire original file into memory
+fseek(input_fp, 0, SEEK_END);
+long original_file_size = ftell(input_fp);
+fseek(input_fp, 0, SEEK_SET);
+uint8_t* original_file_data = malloc(original_file_size);
+if (!original_file_data || fread(original_file_data, 1, original_file_size, input_fp) != original_file_size) {
+    logging(LOG_ERROR, "Failed to read original VGM file into memory.");
+    if (original_file_data) free(original_file_data);
+    return;
+}
+fclose(input_fp); // Close original file, we have it in memory now
+```
+**解说**: 这是“先完整载入”策略的直接体现。代码获取文件大小，分配等大的内存，然后一次性将整个文件读入 `original_file_data` 缓冲区。完成后，立即关闭原始文件句柄，后续所有操作都与磁盘上的原始文件无关，从根本上避免了文件指针混乱的问题。
 
-### 操作方法
+**2. 从内存中提取 GD3 标签并写入缓存**
+```c
+// 4. Write GD3 block from memory to cache
+long gd3_start_in_cache = 0;
+uint32_t gd3_offset_in_header = read_le32(original_file_data + 0x14);
+if (gd3_offset_in_header > 0) {
+    uint32_t gd3_abs_offset = 0x14 + gd3_offset_in_header;
+    uint32_t gd3_length = read_le32(original_file_data + gd3_abs_offset + 8);
+    uint32_t total_gd3_size = 12 + gd3_length;
+    
+    gd3_start_in_cache = ftell(g_cache_fp);
+    fwrite(original_file_data + gd3_abs_offset, 1, total_gd3_size, g_cache_fp);
+}
+```
+**解说**: 这是“隔离处理”策略的关键一步。代码直接从内存缓冲区 `original_file_data` 中读取 GD3 标签的偏移和长度，然后将完整的 GD3 数据块（包括头部和内容）原封不动地写入新的缓存文件。这确保了 GD3 信息的无损迁移。
 
-#### 播放器界面
+**3. 从内存中进行数据转换**
+```c
+// In vgm_play:
+const uint8_t* vgm_data_ptr = original_file_data + g_vgm_header.vgm_data_offset;
+size_t vgm_data_size = (g_vgm_header.eof_offset + 4) - g_vgm_header.vgm_data_offset;
+vgm_convert_and_cache_opn_to_opm_from_mem(vgm_data_ptr, vgm_data_size, &g_vgm_header);
+
+// The conversion function itself:
+static bool vgm_convert_and_cache_opn_to_opm_from_mem(const uint8_t* vgm_data, size_t vgm_data_size, const vgm_header_t* original_header) {
+    // ... loop through vgm_data (memory buffer) and convert ...
+}
+```
+**解说**: 转换函数 `vgm_convert_and_cache_opn_to_opm_from_mem` 的输入不再是文件指针，而是指向内存中 VGM 数据部分的指针 `vgm_data`。这彻底避免了在文件流上进行读写操作可能引发的数据不一致问题，保证了转换过程的纯粹和可靠。
+
+### 5.2. 智能芯片转换
+
+当检测到用户硬件上缺少 VGM 文件所需的芯片，但存在可替代的目标芯片时，YASP 会自动执行转换。
+
+#### 5.2.1. 转换路径概览
+
+| 源芯片 (Source) | 目标芯片 (Target) | 转换模块 | 备注 |
+| :--- | :--- | :--- | :--- |
+| **YM2612/2203/2608 (OPN)** | YM2151 (OPM) | `opn_to_opm.c` | 核心 FM 音源转换，支持频率、包络等参数映射。 |
+| **AY8910 (PSG)** | YM2151 (OPM) | `ay_to_opm.c` | 使用 OPM 的 FM 合成来模拟 PSG 的方波和噪声。 |
+| **SN76489 (DCSG)** | AY8910 (PSG) | `sn_to_ay.c` | 中间步骤，将 SN76489 指令转为 AY8910 指令。 |
+| **SN76489 (DCSG)** | YM2151 (OPM) | `sn_to_ay.c` -> `ay_to_opm.c` | **转换链**：SN76489 -> AY8910 -> YM2151。 |
+
+#### 5.2.2. 核心转换源码详解
+
+**1. OPN (YM2612/2203/2608) -> OPM (YM2151)**
+
+这是最核心的 FM 音源转换。主要在 `opn_to_opm.c` 中实现。OPN 系列使用 `F-Number` 和 `Block` 定义频率，而 OPM 使用 `Key Code` 和 `Key Fraction`。转换必须通过以下数学公式完成：
+
+```c
+// 1. OPN 参数转为实际频率 (Hz)
+double freq = (_source_clock * fnum) / ((72.0 * _clock_div) * (1 << (20 - blk)));
+
+// 2. 频率转为 OPM 的音高值 (Key)
+const double BASE_FREQ_OPM = 277.2; // OPM 基准频率
+double key = 60.0 + log2((freq * _clock_ratio) / BASE_FREQ_OPM) * 12.0;
+
+// 3. Key 值拆分为 Key Code (KC) 和 Key Fraction (KF)
+*kc = (oct << 4) | note;
+*kf = (uint8_t)floor(frac * 64.0);
+```
+这段代码精确地将一个音源的频率体系映射到了另一个完全不同的体系上。
+
+**2. AY8910 (PSG) -> OPM (YM2151)**
+
+此转换在 `ay_to_opm.c` 中实现，目标是用 OPM 的 FM 合成来**模拟** PSG 的方波和噪声。OPM 本身没有方波通道，因此代码使用了一个特殊的 FM 音色（`CON=4`）来模拟方波。
+
+```c
+// 在 ay_to_opm_init 中，为 OPM 通道 4,5,6 设置模拟方波的音色
+_y(0x20 + opmCh, 0xfc); // RL=ON FB=7 CON=4
+_y(0x60 + opmCh, 0x1b); // M1: TL=27 (设置一个基础音量)
+_y(0x80 + opmCh, 0x1f); // M1: AR=31 (快速起音)
+```
+
+同时，PSG 的对数式音量需要通过查找表 `VOL_TO_TL` 转换为 OPM 的线性 `Total Level` (TL)。
+
+```c
+// VOL_TO_TL 数组
+static const int VOL_TO_TL[] = {127, 62, 56, 52, 46, 42, 36, 32, 28, 24, 20, 16, 12, 8, 4, 0};
+
+// 在 _updateTone 函数中应用
+const int tVol = (v & 0x10) ? 0 : (v & 0xf); // 获取音量值
+_y(0x70 + opmCh, fmin(127, VOL_TO_TL[tVol & 0xf])); // 查表并写入 OPM 的 TL 寄存器
+```
+
+**3. SN76489 (DCSG) -> AY8910 (PSG)**
+
+这是一个中间转换步骤，在 `sn_to_ay.c` 中实现。其核心是处理 SN76489 的通道3与噪声的混合逻辑，因为这与 AY8910 的行为不同。
+
+```c
+// 在 _updateSharedChannel 函数中处理混合逻辑
+static void _updateSharedChannel() {
+    int noiseChannel = _mixChannel; // 通常是通道 2
+    bool enableTone = _atts[noiseChannel] != 0xf;
+    bool enableNoise = _atts[3] != 0xf;
+
+    // 混合解析：如果噪声和音调都启用，噪声优先
+    if (enableTone && enableNoise) {
+        enableTone = false;
+    }
+    
+    // 根据解析结果，设置 AY8910 的通道和噪声使能寄存器 (R7)
+    const uint8_t toneMask = enableTone ? 0 : (1 << noiseChannel);
+    const uint8_t noiseMask = enableNoise ? (7 & ~(1 << noiseChannel)) : 7;
+    _y(7, (noiseMask << 3) | toneMask); // _y() 会调用 ay_to_opm_write_reg()
+}
+```
+这段代码是整个转换链能够正确发声的关键。
+
+### 5.3. 高级计时与刷新系统
+
+YASP 的播放精度和稳定性由“刷新模式”和“定时器模式”共同决定。
+
+#### 5.3.1. 刷新模式 (Flush Mode)
+
+刷新模式决定了播放器将寄存器数据发送到 SPFM 硬件的**粒度**。
+
+| 模式 (按键) | 名称 | 原理 |
+| :---: | :--- | :--- |
+| **1** | 寄存器级 (Register-Level) | **每一次**寄存器写入后，立刻调用 `spfm_flush()`。这保证了最高的实时性，但 USB 通信开销巨大。 |
+| **2** | **命令级 (Command-Level)** | 仅在处理完一个完整的 VGM 命令后（如 `0x61 nn nn` 这样的等待命令，或一个芯片写入命令），才调用 `spfm_flush()`。这是**性能和实时性的最佳平衡**，也是默认设置。 |
+
+#### 5.3.2. 定时器模式 (Timer Mode)
+
+定时器模式决定了播放器在处理完 VGM 命令后，如何精确地**等待**到下一个事件发生。所有模式都基于高精度性能计数器 (`QueryPerformanceCounter`) 进行误差补偿。
+
+| 模式 (按键) | 源码名称 | 原理 |
+| :---: | :--- | :--- |
+| **3** | High-Precision Sleep | 调用 `Sleep(1)` 等待，并用性能计数器补偿其巨大的不精确性。适用于低负载环境。 |
+| **4** | Hybrid Sleep | 使用 `CreateWaitableTimer` 等待 1ms，并补偿误差。比 `Sleep(1)` 更精确。 |
+| **5** | Multimedia Timer | 使用 `timeSetEvent` 设置一个 1ms 的高精度多媒体定时器。播放线程等待该定时器触发的事件。精度高，但高负载下事件可能延迟。 |
+| **6** | **VGMPlay Mode** | “忙等”的变体，不断调用 `Sleep(0)` 让出时间片，响应极快，但 CPU 占用率极高。 |
+| **7** | **Optimized VGMPlay Mode** | 模式 5 的优化版，增加了“防失控”机制，防止声音滞后和崩溃。**这是默认和最佳选择。** |
+
+#### 5.3.3. 定时器核心源码详解
+
+以下是 `util.c` 中 `yasp_usleep` 函数针对不同模式的核心实现：
+
+**模式 3: High-Precision Sleep**
+```c
+case 0: // High-Precision Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() < tick_to_wait) {
+        Sleep(1);
+    }
+    break;
+```
+**解说**: 这是最简单的实现。循环调用 `Sleep(1)`，每次让出至少 1ms 的时间片，直到性能计数器达到目标时间。`Sleep` 的精度很差，但 CPU 占用率低。
+
+**模式 4: Hybrid Sleep**
+```c
+case 1: // Hybrid Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() < tick_to_wait) {
+        WaitForSingleObject(g_waitable_timer, 1);
+    }
+    break;
+```
+**解说**: 使用 Windows 的可等待定时器 `WaitForSingleObject` 等待 1ms。它比 `Sleep(1)` 更精确，是精度和 CPU 占用的一个折中。
+
+**模式 5: Multimedia Timer**
+```c
+case 2: // Multimedia Timer
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() < tick_to_wait) {
+        WaitForSingleObject(g_timer_event, 1);
+    }
+    break;
+```
+**解说**: 依赖于一个由 `timeSetEvent` 创建的、在后台每 1ms 触发一次的 `g_timer_event` 事件。线程等待这个事件，精度很高。
+
+**模式 6: VGMPlay Mode**
+```c
+case 3: // VGMPlay Mode
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() < tick_to_wait) {
+        Sleep(0);
+    }
+    break;
+```
+**解说**: 这是“忙等”的一种形式。`Sleep(0)` 会让当前线程立即放弃剩余的时间片，让其他线程运行。这使得循环检测时间的频率非常高，响应极快，但会持续占用 CPU。
+
+**模式 7: Optimized VGMPlay Mode**
+此模式的优化不在 `yasp_usleep` 中，而在 `play.c` 的 `vgm_play` 函数里。它使用与模式 5 相同的等待机制，但增加了“防失控”逻辑：
+```c
+// 在 play.c 的 vgm_play 中
+if (g_timer_mode == 7) {
+    vgm_slice_to_do = min(vgm_slice_to_do, g_vgm_slice_limiter);
+}
+```
+**解说**: 如果因为系统繁忙导致定时器事件严重延迟，积压了大量需要播放的样本 (`vgm_slice_to_do`)，此代码会将其限制在一个最大值 (`g_vgm_slice_limiter`) 内。这可以防止声音出现长时间的滞后，并快速追上实时进度，代价是丢弃少量积压的样本。
+
+### 5.4. SPFM 通信协议
+
+YASP 通过 FTDI D2XX 驱动与 SPFM 硬件通信。其核心是**写入缓冲机制**和**混合等待策略**。对于极短的等待（<10个样本），发送硬件等待命令 `0x80`；对于较长的等待，则调用由上述定时器模式决定的高精度软件等待函数 `yasp_usleep`。
+
+## 6. 操作指南
 
 | 按键 | 功能 |
 | :--: | :-- |
-| `q` | 退出播放器 |
-| `p` | 暂停/继续播放 |
-| `n` | 下一首 |
-| `b` | 上一首 |
-| `r` | 开启/关闭随机播放 |
-| `f` | 打开文件浏览器 |
-| `+` | 加快播放速度 (步进 0.01) |
-| `-` | 减慢播放速度 (步进 0.01) |
-| `1` | 切换到 `Register-Level` 刷新模式 |
-| `2` | 切换到 `Command-Level` 刷新模式 (默认) |
-| `3`-`7` | 切换不同的 VGM 计时器模式 (详见上一节) |
+| `q` | 退出 |
+| `p` | 暂停/继续 |
+| `n` / `b` | 下一首 / 上一首 |
+| `r` | 切换随机/顺序播放 |
+| `f` | 打开/关闭文件浏览器 |
+| `+` / `-` | 加速/减速 |
+| `1` / `2` | 切换刷新模式 |
+| `3`-`7` | 切换定时器模式 |
 
-#### 文件浏览器界面
+## 7. 编译与构建
 
-| 按键 | 功能 |
-| :--: | :-- |
-| `↑` / `↓` | 上/下移动光标 |
-| `←` / `→` | 上/下翻页 |
-| `Enter` | 进入目录或选择要播放的文件 |
-| `Backspace` | 返回上一级目录 |
-| `f` | 退出文件浏览器，返回播放器界面 |
-
-### 编译方法
-
-#### Windows (使用 MinGW/MSYS2)
-
-1.  确保您已安装 MinGW-w64 或 MSYS2，并已将其 `bin` 目录添加到系统 PATH。
-2.  将 FTDI D2XX 驱动文件 (`ftd2xx.h`, `ftd2xx.lib` 或 `libftd2xx.a`) 放置在项目根目录下的 `ftdi_driver` 文件夹中。
-3.  打开命令行，导航到 `console_player` 目录。
-4.  运行 `make` 命令进行编译：
-    ```bash
-    make -C console_player
-    ```
-5.  编译成功后，将在 `console_player` 目录下生成 `yasp_test.exe`。
-
-#### Linux / macOS
-
-编译方法与 Windows 类似，但需要确保已安装 `libftdi` 开发库。`makefile` 会自动处理平台特定的链接选项。
-
-### 参考源码
-
-本 C 语言版本的播放器在开发过程中，深度参考了以下项目：
-
-*   **`node-spfm`** (由 Denjhang 开发):
-    *   **位置**: `D:\working\vscode-projects\yasp11\node-spfm-denjhang-main`
-    *   **贡献**: 这是一个功能完备的 Node.js 实现，为本项目的 C 语言移植提供了核心逻辑和算法基础，尤其是在 SPFM 通信协议、VGM/S98 文件解析和芯片控制逻辑方面。
-
-*   **VGMPlay** (由 Valley Bell 开发):
-    *   **贡献**: 在项目早期，传统的 `sleep`-based 计时方式在进行窗口切换、文件解压缩等高 CPU 负载操作时，会导致播放速度明显变慢、不稳定。为了解决此问题，项目引入并实现了 VGMPlay 的核心计时模型。该模型不依赖于固定的 `sleep`，而是根据真实流逝的时间 (`QueryPerformanceCounter`) 来动态计算需要处理的音频样本数量，从根本上保证了在各种系统负载下播放的稳定性和精确性。
-
-#### 主要参考部分:
-
-*   **SPFM 通信协议:**
-    `node-spfm/src/spfm.ts` 中定义的与 SPFM 硬件握手、发送命令和数据的逻辑，是本 C 项目中 `console_player/spfm.c` 实现的基础。包括设备初始化、芯片复位和寄存器写入等关键操作。
-*   **VGM 文件解析:**
-    `node-spfm/src/vgm.ts` 中的 VGM 文件头解析、数据块处理和命令解析逻辑，被直接借鉴并用 C 语言在 `console_player/vgm.c` 中重新实现。这确保了对 VGM 格式的精确支持。
-*   **芯片控制逻辑:**
-    `node-spfm/src/chips/` 目录下针对不同 FM 芯片（如 YM2151, YM2608）的控制类，为本项目的 `console_player/ym2151.c`, `console_player/ym2608.c` 等文件提供了寄存器地址和控制指令的准确参考。
-
-除了 `node-spfm`，本项目还涉及以下文件的修改与实现：
-
-*   `console_player/main.c`: 主程序入口，负责初始化、配置加载、播放循环和键盘输入处理。
-*   `console_player/play.c`: 播放器 UI 显示和文件播放逻辑的核心。
-*   `console_player/util.c` & `console_player/util.h`: 实现了各种计时器模式和辅助工具函数。
-*   `console_player/makefile`: 项目的构建脚本，负责编译和链接所有源文件。
+在 `console_player` 目录下运行 `make` 即可。
