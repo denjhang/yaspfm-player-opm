@@ -1,0 +1,508 @@
+[2025-09-27 19:18:05] >>ERROR<< No FTDI devices found.
+
+[2025-09-27 19:18:09] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:11] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:12] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:12] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-09-27 19:18:12] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-09-27 19:18:23] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-09-27 19:18:23] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-09-27 19:18:23] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:23] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:23] >>DEBUG<< Attempting to play file: ./music/lm-opn/LM_02.vgm
+[2025-09-27 19:18:23] >>DEBUG<< Calling vgm_play for ./music/lm-opn/LM_02.vgm
+[2025-09-27 19:18:23] >>INFO<< VGM requires YM2608, not found. Converting to YM2151 (OPM).
+
+[2025-09-27 19:18:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:27] >>DEBUG<< Attempting to play file: ./music/lm-opn/LM_03.vgm
+[2025-09-27 19:18:27] >>DEBUG<< Calling vgm_play for ./music/lm-opn/LM_03.vgm
+[2025-09-27 19:18:27] >>INFO<< VGM requires YM2608, not found. Converting to YM2151 (OPM).
+
+[2025-09-27 19:18:56] >>DEBUG<< File selected in browser: ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:18:56] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:56] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:56] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:18:56] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:19:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:02] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:02] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:07] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:07] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:07] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:07] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:38] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:38] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:38] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:38] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:40] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF04_.vgm
+[2025-09-27 19:19:40] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF04_.vgm
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:40] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF05_.vgm
+[2025-09-27 19:19:40] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF05_.vgm
+[2025-09-27 19:19:42] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:42] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:42] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF06_.vgm
+[2025-09-27 19:19:42] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF06_.vgm
+[2025-09-27 19:20:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:26] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF07_.vgm
+[2025-09-27 19:20:26] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF07_.vgm
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:48] >>INFO<< SPFM device closed.
+
+[2025-09-28 20:04:52] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-09-28 20:04:52] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-09-28 20:04:54] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-09-28 20:04:54] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-09-28 20:04:54] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:04:54] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:04:54] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF07_.vgm
+[2025-09-28 20:04:54] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF07_.vgm
+[2025-09-28 20:04:59] >>DEBUG<< File selected in browser: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:04:59] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:04:59] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:04:59] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:04:59] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:04:59] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:04:59] >>ERROR<< Failed to open cache file for writing: console_player/cache/02 Distant Valhalla (Opening).vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/03 Opening Demo 1.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/04 Opening Demo 2.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/05 Menu.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/05 Menu.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/05 Menu.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/06 Jungle (Exploration).vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/06 Jungle (Exploration).vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/06 Jungle (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/07 Jungle (Battle).vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/08 Shop.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/08 Shop.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/08 Shop.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/09 Mid Boss.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/09 Mid Boss.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/09 Mid Boss.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/10 Game Over.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/10 Game Over.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/10 Game Over.vgm.opm.vgm
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:00] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/11 Jungle ~ Cave.vgm
+[2025-09-28 20:05:00] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/11 Jungle ~ Cave.vgm
+[2025-09-28 20:05:00] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:00] >>ERROR<< Failed to open cache file for writing: console_player/cache/11 Jungle ~ Cave.vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/12 Cave (Exploration).vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/12 Cave (Exploration).vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/12 Cave (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/13 Cave (Battle).vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/13 Cave (Battle).vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/13 Cave (Battle).vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/14 Treasure Chest.vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/14 Treasure Chest.vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/14 Treasure Chest.vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/15 Stage Boss.vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/15 Stage Boss.vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/15 Stage Boss.vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/16 Stage Clear.vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/16 Stage Clear.vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/16 Stage Clear.vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/17 Cave ~ Volcanic Zone.vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/17 Cave ~ Volcanic Zone.vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/17 Cave ~ Volcanic Zone.vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/18 Volcanic Zone (Exploration).vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/18 Volcanic Zone (Exploration).vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/18 Volcanic Zone (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/19 Volcanic Zone (Battle).vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/19 Volcanic Zone (Battle).vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/19 Volcanic Zone (Battle).vgm.opm.vgm
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:01] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:01] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/20 Volcanic Zone ~ Ice Berg.vgm
+[2025-09-28 20:05:01] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/20 Volcanic Zone ~ Ice Berg.vgm
+[2025-09-28 20:05:01] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:01] >>ERROR<< Failed to open cache file for writing: console_player/cache/20 Volcanic Zone ~ Ice Berg.vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/21 Ice Berg (Exploration).vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/21 Ice Berg (Exploration).vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/21 Ice Berg (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/01 Backup Creation.vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/01 Backup Creation.vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/01 Backup Creation.vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/02 Distant Valhalla (Opening).vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/03 Opening Demo 1.vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/04 Opening Demo 2.vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/05 Menu.vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/05 Menu.vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/05 Menu.vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/06 Jungle (Exploration).vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/06 Jungle (Exploration).vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/06 Jungle (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:02] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:02] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:02] >>ERROR<< Failed to open cache file for writing: console_player/cache/07 Jungle (Battle).vgm.opm.vgm
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:03] >>INFO<< SPFM device closed.
+
+[2025-09-28 20:05:24] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-09-28 20:05:24] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-09-28 20:05:26] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/07 Jungle (Battle).vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/07 Jungle (Battle).vgm.opm.vgm
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/08 Shop.vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/08 Shop.vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/08 Shop.vgm.opm.vgm
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/09 Mid Boss.vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/09 Mid Boss.vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/09 Mid Boss.vgm.opm.vgm
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/10 Game Over.vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/10 Game Over.vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/10 Game Over.vgm.opm.vgm
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/11 Jungle ~ Cave.vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/11 Jungle ~ Cave.vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/11 Jungle ~ Cave.vgm.opm.vgm
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:26] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/12 Cave (Exploration).vgm
+[2025-09-28 20:05:26] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/12 Cave (Exploration).vgm
+[2025-09-28 20:05:26] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:26] >>ERROR<< Failed to open cache file for writing: console_player/cache/12 Cave (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/13 Cave (Battle).vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/13 Cave (Battle).vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/13 Cave (Battle).vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/14 Treasure Chest.vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/14 Treasure Chest.vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/14 Treasure Chest.vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/15 Stage Boss.vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/15 Stage Boss.vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/15 Stage Boss.vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/16 Stage Clear.vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/16 Stage Clear.vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/16 Stage Clear.vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/17 Cave ~ Volcanic Zone.vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/17 Cave ~ Volcanic Zone.vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/17 Cave ~ Volcanic Zone.vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/18 Volcanic Zone (Exploration).vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/18 Volcanic Zone (Exploration).vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/18 Volcanic Zone (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/19 Volcanic Zone (Battle).vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/19 Volcanic Zone (Battle).vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/19 Volcanic Zone (Battle).vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:27] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/20 Volcanic Zone ~ Ice Berg.vgm
+[2025-09-28 20:05:27] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/20 Volcanic Zone ~ Ice Berg.vgm
+[2025-09-28 20:05:27] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:27] >>ERROR<< Failed to open cache file for writing: console_player/cache/20 Volcanic Zone ~ Ice Berg.vgm.opm.vgm
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/21 Ice Berg (Exploration).vgm
+[2025-09-28 20:05:28] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/21 Ice Berg (Exploration).vgm
+[2025-09-28 20:05:28] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:28] >>ERROR<< Failed to open cache file for writing: console_player/cache/21 Ice Berg (Exploration).vgm.opm.vgm
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/01 Backup Creation.vgm
+[2025-09-28 20:05:28] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/01 Backup Creation.vgm
+[2025-09-28 20:05:28] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:28] >>ERROR<< Failed to open cache file for writing: console_player/cache/01 Backup Creation.vgm.opm.vgm
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:05:28] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/02 Distant Valhalla (Opening).vgm
+[2025-09-28 20:05:28] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:28] >>ERROR<< Failed to open cache file for writing: console_player/cache/02 Distant Valhalla (Opening).vgm.opm.vgm
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:28] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/03 Opening Demo 1.vgm
+[2025-09-28 20:05:28] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:28] >>ERROR<< Failed to open cache file for writing: console_player/cache/03 Opening Demo 1.vgm.opm.vgm
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:28] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/pop-opn/04 Opening Demo 2.vgm
+[2025-09-28 20:05:28] >>INFO<< Cache not found. Converting YM2608 to OPM...
+[2025-09-28 20:05:28] >>ERROR<< Failed to open cache file for writing: console_player/cache/04 Opening Demo 2.vgm.opm.vgm
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 20:05:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 20:05:28] >>INFO<< SPFM device closed.
+
