@@ -1,0 +1,17 @@
+[2025-09-28 15:36:04] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 15:36:04] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 15:36:04] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/15 - Iron-Blue Intention (Stage 4).vgm
+[2025-09-28 15:36:04] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/15 - Iron-Blue Intention (Stage 4).vgm
+[2025-09-28 15:36:04] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-09-28 15:36:29] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 15:36:29] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 15:36:29] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-28 15:36:29] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-28 15:36:29] >>INFO<< SPFM device closed.
+

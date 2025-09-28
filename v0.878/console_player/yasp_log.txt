@@ -1,0 +1,97 @@
+[2025-09-27 19:18:05] >>ERROR<< No FTDI devices found.
+
+[2025-09-27 19:18:09] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:11] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:12] >>ERROR<< No SPFM devices found.
+
+[2025-09-27 19:18:12] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-09-27 19:18:12] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-09-27 19:18:23] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-09-27 19:18:23] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-09-27 19:18:23] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:23] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:23] >>DEBUG<< Attempting to play file: ./music/lm-opn/LM_02.vgm
+[2025-09-27 19:18:23] >>DEBUG<< Calling vgm_play for ./music/lm-opn/LM_02.vgm
+[2025-09-27 19:18:23] >>INFO<< VGM requires YM2608, not found. Converting to YM2151 (OPM).
+
+[2025-09-27 19:18:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:27] >>DEBUG<< Attempting to play file: ./music/lm-opn/LM_03.vgm
+[2025-09-27 19:18:27] >>DEBUG<< Calling vgm_play for ./music/lm-opn/LM_03.vgm
+[2025-09-27 19:18:27] >>INFO<< VGM requires YM2608, not found. Converting to YM2151 (OPM).
+
+[2025-09-27 19:18:56] >>DEBUG<< File selected in browser: ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:18:56] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:18:56] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:18:56] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:18:56] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF01_.vgm
+[2025-09-27 19:19:02] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:02] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:02] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:02] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:07] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:07] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:07] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:07] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:38] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:38] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF02_.vgm
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:38] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:38] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF03_.vgm
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:40] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF04_.vgm
+[2025-09-27 19:19:40] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF04_.vgm
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:40] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:40] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF05_.vgm
+[2025-09-27 19:19:40] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF05_.vgm
+[2025-09-27 19:19:42] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:19:42] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:19:42] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF06_.vgm
+[2025-09-27 19:19:42] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF06_.vgm
+[2025-09-27 19:20:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:26] >>DEBUG<< Attempting to play file: ./music/if-vgm/IF07_.vgm
+[2025-09-27 19:20:26] >>DEBUG<< Calling vgm_play for ./music/if-vgm/IF07_.vgm
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-09-27 19:20:48] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-09-27 19:20:48] >>INFO<< SPFM device closed.
+
