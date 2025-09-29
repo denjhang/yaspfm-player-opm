@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASP - Yet Another Sound Player (Technical Documentation)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-bottom: 50px; /* Add padding to prevent content from being hidden by the progress bar */
+        }
+        #progress-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: #f0f0f0;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #0366d6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: .3em; }
+        h3 { font-size: 1.25em; }
+        h4 { font-size: 1em; }
+        a { color: #0366d6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            background-color: rgba(27,31,35,.05);
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+        pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f6f8fa;
+            border-radius: 3px;
+        }
+        pre code {
+            display: inline;
+            padding: 0;
+            margin: 0;
+            overflow: visible;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        th, td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+        th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+        ul, ol { padding-left: 2em; }
+        li { margin-top: .25em; }
+
+        /* Hierarchical TOC styles */
+        .toc-level-1 { font-weight: 500; }
+        .toc-level-2 { margin-left: 1.5em; }
+        .toc-level-3 { margin-left: 3em; }
+        .toc-level-4 { margin-left: 4.5em; }
+        .toc-level-1 > a { font-size: 1.1em; }
+        .toc-level-2 > a { font-size: 1.0em; }
+        .toc-level-3 > a { font-size: 0.95em; }
+        .toc-level-4 > a { font-size: 0.9em; color: #333; }
+
+        blockquote {
+            margin-left: 0;
+            padding-left: 1em;
+            color: #6a737d;
+            border-left: .25em solid #dfe2e5;
+        }
+    </style>
+</head>
+<body>
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+<h1 id="yasp-yet-another-sound-player-technical-documentation">YASP - Yet Another Sound Player (Technical Documentation)</h1>
+<h2 id="abstract">Abstract</h2>
+<p>YASP (Yet Another Sound Player) is a powerful command-line music player designed for the SPFM (Sound-Processing FM-synthesis) family of hardware. It focuses on efficiently and accurately playing classic VGM and S98 format music files. This document aims to provide a deep dive into its core technical implementations, including the advanced timing system, SPFM communication protocol, and the innovative chip conversion and caching mechanism.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li class="toc-level-1"><a href="#1">1. Source Code References and Acknowledgments</a></li>
+<li class="toc-level-1"><a href="#2">2. Project Background and Architecture</a></li>
+<li class="toc-level-1"><a href="#3">3. Core Features</a></li>
+<li class="toc-level-1"><a href="#4">4. Analysis of Key Technologies</a></li>
+<li class="toc-level-2"><a href="#4-1">4.1. VGM File Processing Workflow</a></li>
+<li class="toc-level-2"><a href="#4-2">4.2. Intelligent Chip Conversion</a></li>
+<li class="toc-level-3"><a href="#4-2-1">4.2.1. Conversion Path Overview</a></li>
+<li class="toc-level-3"><a href="#4-2-2">4.2.2. OPN to OPM Detailed Conversion Rules</a></li>
+<li class="toc-level-2"><a href="#4-3">4.3. Advanced Timing and Flush System</a></li>
+<li class="toc-level-3"><a href="#4-3-1">4.3.1. Flush Mode</a></li>
+<li class="toc-level-3"><a href="#4-3-2">4.3.2. Timer Mode</a></li>
+<li class="toc-level-3"><a href="#4-3-3">4.3.3. Timer Core Source Code Explained</a></li>
+<li class="toc-level-2"><a href="#4-4">4.4. SPFM Communication Protocol</a></li>
+<li class="toc-level-1"><a href="#5">5. Performance Optimization-Version Comparison</a></li>
+<li class="toc-level-2"><a href="#5-1">5.1. The Root Cause: Why Was the Old Version Faster?</a></li>
+<li class="toc-level-2"><a href="#5-2">5.2. The Fixes: How We Restored and Surpassed the Old Performance</a></li>
+<li class="toc-level-1"><a href="#6">6. User Guide</a></li>
+<li class="toc-level-1"><a href="#7">7. Compilation and Build</a></li>
+<li class="toc-level-1"><a href="#8">8. Troubleshooting and Changelog</a></li>
+<li class="toc-level-2"><a href="#8-1">8.1. Troubleshooting: Uncontrolled, Rapid Skipping of Tracks</a></li>
+<li class="toc-level-3"><a href="#8-1-1">8.1.1. Diagnostic Process</a></li>
+<li class="toc-level-3"><a href="#8-1-2">8.1.2. The Final Solution</a></li>
+<li class="toc-level-2"><a href="#8-2">8.2. Bug Fixes & Improvements (v0.881)</a></li>
+<li class="toc-level-3"><a href="#8-2-1">8.2.1. Fixed Loop Logic for Converted VGM Files</a></li>
+<li class="toc-level-3"><a href="#8-2-2">8.2.2. Fixed Auto-Skip Issue After Playback Completion</a></li>
+<li class="toc-level-3"><a href="#8-2-3">8.2.3. Corrected Total Time Calculation in UI</a></li>
+<li class="toc-level-3"><a href="#8-2-4">8.2.4. Corrected VGM Chip Info Display in UI</a></li>
+<li class="toc-level-3"><a href="#8-2-5">8.2.5. Added Detection for Invalid VGM Files</a></li>
+<li class="toc-level-2"><a href="#8-3">8.3. Feature Enhancements & Bug Fixes (v0.884)</a></li>
+<li class="toc-level-3"><a href="#8-3-1">8.3.1. Optimized Startup and Directory Management</a></li>
+<li class="toc-level-3"><a href="#8-3-2">8.3.2. Enhanced File Browser Functionality</a></li>
+<li class="toc-level-3"><a href="#8-3-3">8.3.3. Added Clear Cache Functionality</a></li>
+</ul>
+<hr>
+<h2 id="1">1. Source Code References and Acknowledgments</h2>
+<p><a id="1"></a></p>
+<p>The development of YASP was heavily influenced by the following outstanding projects. We express our sincere respect and gratitude to their authors. Their work provided a solid foundation and critical inspiration for YASP's implementation.</p>
+<ul>
+<li>  <strong><code>yasp (Yet Another SPFM Light Player)</code></strong></li>
+<li>  <strong>Author</strong>: uobikiemukot</li>
+<li>  <strong>Contribution</strong>: <strong>The starting point and initial inspiration for this project.</strong> The name YASP is inherited from this project, and its early code structure provided a valuable initial framework and direction for development.</li>
+</ul>
+<ul>
+<li>  <strong><code>node-spfm</code></strong></li>
+<li>  <strong>Authors</strong>: Mitsutaka Okazaki (digital-sound-antiques), Denjhang</li>
+<li>  <strong>Contribution</strong>: Provided the core logic and algorithmic foundation for this project, especially in the areas of SPFM communication protocol (<code>spfm.c</code>), chip control, and the OPN to OPM conversion algorithm (<code>opn_to_opm.c</code>).</li>
+</ul>
+<ul>
+<li>  <strong><code>VGMPlay</code></strong></li>
+<li>  <strong>Author</strong>: Valley Bell</li>
+<li>  <strong>Contribution</strong>: The advanced timing system in this project (the <code>yasp_usleep</code> function in <code>util.c</code>) is entirely based on VGMPlay's core timing model, which fundamentally solved playback stability issues. Mode 6 (VGMPlay Mode) and Mode 7 (Optimized VGMPlay Mode) are directly derived from its ideas.</li>
+</ul>
+<ul>
+<li>  <strong><code>vgmplay-msx</code></strong></li>
+<li>  <strong>Author</strong>: Laurens Holst (grauw)</li>
+<li>  <strong>Contribution</strong>: Provided the precise look-up table for OPN to OPM LFO frequency conversion, originating from the file <code>vgmplay-msx/src/drivers/emulations/OPNFMOnSFG.asm</code> in his project. Without this reference, achieving an audibly correct LFO effect would not have been possible.</li>
+</ul>
+<ul>
+<li>  <strong><code>vgm-conv</code></strong></li>
+<li>  <strong>Author</strong>: Mitsutaka Okazaki (digital-sound-antiques)</li>
+<li>  <strong>Contribution</strong>: The precise mathematical models for chip frequency conversion were derived from this project.</li>
+</ul>
+<ul>
+<li>  <strong><code>vgm-parser-js</code></strong></li>
+<li>  <strong>Author</strong>: Mitsutaka Okazaki (digital-sound-antiques)</li>
+<li>  <strong>Contribution</strong>: When solving the GD3 tag caching issue, this project borrowed the robust "load entire file into memory" processing strategy from its <code>vgm-parser-main</code> module (<code>vgm.c</code>), which was key to the final successful implementation.</li>
+</ul>
+<h2 id="2">2. Project Background and Architecture</h2>
+<p><a id="2"></a></p>
+<p>YASP aims to provide SPFM hardware enthusiasts with a powerful and highly customizable command-line music player. The project is a collaboration between <strong>Denjhang</strong> (Project Owner/Lead Developer) and <strong>Cline</strong> (AI Software Engineer). Denjhang was responsible for requirements, architecture, and key technology validation, while Cline handled implementation, integration, and documentation.</p>
+<p><strong>Core Architecture:</strong></p>
+<ul>
+<li>  <code>main.c</code>: The main program entry point, responsible for initialization, configuration loading, the main playback loop, and keyboard input handling.</li>
+<li>  <code>play.c</code>: The core of the player's UI rendering and state management.</li>
+<li>  <code>vgm.c</code> / <code>s98.c</code>: Responsible for parsing, command processing, and playback logic for VGM and S98 files, respectively.</li>
+<li>  <code>opn_to_opm.c</code>, <code>ay_to_opm.c</code>, <code>sn_to_ay.c</code>: Modules that implement chip instruction conversion.</li>
+<li>  <code>util.c</code>: Contains utility functions such as high-precision timers, the <code>yasp_usleep</code> implementation, and <code>ini</code> file I/O.</li>
+<li>  <code>spfm.c</code>: Encapsulates the low-level logic for communicating with SPFM hardware via the FTDI D2XX driver.</li>
+</ul>
+<h2 id="3">3. Core Features</h2>
+<p><a id="3"></a></p>
+<ul>
+<li>  <strong>Extensive Chip Support:</strong> YASP supports a wide variety of classic sound chips, either directly or through automatic conversion, covering a vast range of retro game music. The supported chips are:</li>
+<li>  YM2608, YM2151, YM2612, YM2203, YM2413, YM3526, YM3812, Y8950, AY8910, SN76489, YMF262, SEGAPCM, RF5C68, YM2610</li>
+<li>  <strong>Multi-Format Playback:</strong> Supports <code>.vgm</code>, <code>.vgz</code>, and <code>.s98</code> music files.</li>
+<li>  <strong>GD3 Tag Fidelity:</strong> Employs an advanced memory-based processing technique to ensure that GD3 music tags within VGM files are fully preserved during conversion and caching.</li>
+<li>  <strong>Advanced Timing System:</strong> Provides multiple timing strategies based on the high-precision performance counter to ensure accurate, jitter-free audio playback under various system loads.</li>
+<li>  <strong>Built-in File Browser:</strong> Allows users to easily navigate the file system and select music.</li>
+</ul>
+<h2 id="4">4. Analysis of Key Technologies</h2>
+<p><a id="4"></a></p>
+<h3 id="4-1">4.1. VGM File Processing Workflow</h3>
+<p><a id="4-1"></a></p>
+<p>To resolve data consistency issues encountered during file conversion and caching (especially the loss of GD3 tags), YASP adopts a robust, memory-based processing workflow. The core of this mechanism is: when a cache needs to be created, the <strong>entire original VGM file is first read into memory in a single operation</strong>, and the file handle is then closed. Subsequent conversion, GD3 tag extraction, and writing of the new cache file are all performed on this in-memory copy. This "load completely, then process in isolation" strategy ensures the data source is unique and immutable, which is the cornerstone of smooth playback, error-free conversion, and the preservation of GD3 tags.</p>
+<p>The following are key code snippets from <code>vgm.c</code>'s <code>vgm_play</code> function that implement this workflow:</p>
+<p><strong>1. Read the Entire Original VGM File into Memory</strong></p>
+<pre><code class="language-c">// 1. Read entire original file into memory
+fseek(input_fp, 0, SEEK_END);
+long original_file_size = ftell(input_fp);
+fseek(input_fp, 0, SEEK_SET);
+uint8_t* original_file_data = malloc(original_file_size);
+if (!original_file_data || fread(original_file_data, 1, original_file_size, input_fp) != original_file_size) {
+    logging(LOG_ERROR, &quot;Failed to read original VGM file into memory.&quot;);
+    if (original_file_data) free(original_file_data);
+    return;
+}
+fclose(input_fp); // Close original file, we have it in memory now
+</code></pre>
+<p><strong>Explanation</strong>: This is a direct implementation of the "load completely" strategy. The code gets the file size, allocates an equivalent amount of memory, and reads the entire file into the <code>original_file_data</code> buffer in one go. After this, the original file handle is closed, and all subsequent operations are independent of the on-disk file, fundamentally preventing file pointer confusion.</p>
+<p><strong>2. Extract GD3 Tags from Memory and Write to Cache</strong></p>
+<pre><code class="language-c">// 4. Write GD3 block from memory to cache
+long gd3_start_in_cache = 0;
+uint32_t gd3_offset_in_header = read_le32(original_file_data + 0x14);
+if (gd3_offset_in_header &gt; 0) {
+    uint32_t gd3_abs_offset = 0x14 + gd3_offset_in_header;
+    uint32_t gd3_length = read_le32(original_file_data + gd3_abs_offset + 8);
+    uint32_t total_gd3_size = 12 + gd3_length;
+    
+    gd3_start_in_cache = ftell(g_cache_fp);
+    fwrite(original_file_data + gd3_abs_offset, 1, total_gd3_size, g_cache_fp);
+}
+</code></pre>
+<p><strong>Explanation</strong>: This is a critical step in the "process in isolation" strategy. The code reads the offset and length of the GD3 tag directly from the <code>original_file_data</code> memory buffer, then writes the complete GD3 data block (including its header and content) verbatim into the new cache file. This ensures a lossless transfer of GD3 information.</p>
+<p><strong>3. Perform Data Conversion from Memory</strong></p>
+<pre><code class="language-c">// In vgm_play:
+const uint8_t* vgm_data_ptr = original_file_data + g_vgm_header.vgm_data_offset;
+size_t vgm_data_size = (g_vgm_header.eof_offset + 4) - g_vgm_header.vgm_data_offset;
+vgm_convert_and_cache_opn_to_opm_from_mem(vgm_data_ptr, vgm_data_size, &amp;g_vgm_header);
+
+// The conversion function itself:
+static bool vgm_convert_and_cache_opn_to_opm_from_mem(const uint8_t* vgm_data, size_t vgm_data_size, const vgm_header_t* original_header) {
+    // ... loop through vgm_data (memory buffer) and convert ...
+}
+</code></pre>
+<p><strong>Explanation</strong>: The input to the conversion function <code>vgm_convert_and_cache_opn_to_opm_from_mem</code> is no longer a file pointer, but a pointer <code>vgm_data</code> to the VGM data section in memory. This completely avoids data inconsistency issues that could arise from read/write operations on a file stream, ensuring the conversion process is pure and reliable.</p>
+<h3 id="4-2">4.2. Intelligent Chip Conversion</h3>
+<p><a id="4-2"></a></p>
+<p>When YASP detects that a chip required by a VGM file is missing on the user's hardware but a viable alternative exists, it automatically performs a conversion.</p>
+<h4 id="4-2-1">4.2.1. Conversion Path Overview</h4>
+<p><a id="4-2-1"></a></p>
+<table>
+<thead>
+<tr>
+<th>Source Chip</th>
+<th>Target Chip</th>
+<th>Conversion Module(s)</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YM2612/2203/2608 (OPN)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>opn_to_opm.c</code></td>
+<td>Core FM-synthesis conversion, supporting mapping of frequency, envelope, etc.</td>
+</tr>
+<tr>
+<td><strong>AY8910 (PSG)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>ay_to_opm.c</code></td>
+<td>Simulates PSG's square waves and noise using OPM's FM synthesis.</td>
+</tr>
+<tr>
+<td><strong>SN76489 (DCSG)</strong></td>
+<td>AY8910 (PSG)</td>
+<td><code>sn_to_ay.c</code></td>
+<td>Intermediate step, converts SN76489 instructions to AY8910 instructions.</td>
+</tr>
+<tr>
+<td><strong>SN76489 (DCSG)</strong></td>
+<td>YM2151 (OPM)</td>
+<td><code>sn_to_ay.c</code> -> <code>ay_to_opm.c</code></td>
+<td><strong>Conversion Chain</strong>: SN76489 -> AY8910 -> YM2151.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-2-2">4.2.2. OPN to OPM Detailed Conversion Rules</h4>
+<p><a id="4-2-2"></a></p>
+<p>To play OPN music without an OPN chip, YASP implements a real-time, register-level converter. It translates OPN register writes into functionally equivalent OPM register writes.</p>
+<h5 id="4-2-2-1">4.2.2.1. Register Map Overview</h5>
+<table>
+<thead>
+<tr>
+<th>OPN (YM2612/2203)</th>
+<th>OPM (YM2151)</th>
+<th>Brief Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x22</code> (LFRQ)</td>
+<td><code>0x18</code> (LFRQ)</td>
+<td>LFO Frequency conversion</td>
+</tr>
+<tr>
+<td><code>0x28</code> (Key On/Off)</td>
+<td><code>0x08</code> (Key On/Off)</td>
+<td>Channel and operator on/off switch</td>
+</tr>
+<tr>
+<td><code>0x30..0x8F</code> (Operator)</td>
+<td><code>0x40..0xBF</code> (Operator)</td>
+<td>Operator parameters (DT, MUL, TL, KS, AR, DR, SR, RR, SL, SSG-EG)</td>
+</tr>
+<tr>
+<td><code>0xA0..0xA6</code> (F-Num/Block)</td>
+<td><code>0x28..0x37</code> (KC/KF)</td>
+<td>Frequency (pitch) conversion</td>
+</tr>
+<tr>
+<td><code>0xB0..0xB2</code> (FB/CONNECT)</td>
+<td><code>0x20..0x27</code> (RL/FB/CONNECT)</td>
+<td>Feedback and Algorithm</td>
+</tr>
+<tr>
+<td><code>B4..B6</code> (L/R/AMS/PMS)</td>
+<td><code>0x38..0x3F</code> (PMS/AMS)</td>
+<td>Panning, LFO sensitivity</td>
+</tr>
+</tbody>
+</table>
+<h5 id="4-2-2-2">4.2.2.2. Detailed Conversion Rules</h5>
+<h6 id="1">1. LFO Frequency (LFRQ)</h6>
+<ul>
+<li>  <strong>OPN <code>0x22</code> -> OPM <code>0x18</code></strong></li>
+<li>  OPN's LFO has only 8 frequency steps, while OPM's is more granular. The converter uses a Look-Up Table (LUT) to map the OPN value to the closest equivalent on the OPM. This LUT is based on the implementation in <code>OPNFMOnSFG.asm</code> to ensure auditory consistency.</li>
+</ul>
+<p>    <strong>Look-Up Table (C Array):</strong></p>
+<pre><code class="language- ```c">    const uint8_t lfo_lut[] = {0, 0, 0, 0, 0, 0, 0, 0, 0xC1, 0xC7, 0xC9, 0xCB, 0xCD, 0xD4, 0xF9, 0xFF};
+</code></pre>
+<p>    <strong>Usage Example:</strong></p>
+<p>    When a value is written to OPN's <code>0x22</code> register, the program takes its lower 4 bits (<code>data & 0x0F</code>) as an index to look up the corresponding OPM value in the <code>lfo_lut</code> array. This value is then written to OPM's <code>0x18</code> register.</p>
+<table>
+<thead>
+<tr>
+<th>OPN <code>0x22</code> Input (data)</th>
+<th>Index (data & 0x0F)</th>
+<th>OPM <code>0x18</code> Output (lfo_lut[index])</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00</code> - <code>0x07</code></td>
+<td>0 - 7</td>
+<td><code>0x00</code> (LFO Off)</td>
+</tr>
+<tr>
+<td><code>0x08</code></td>
+<td>8</td>
+<td><code>0xC1</code></td>
+</tr>
+<tr>
+<td><code>0x09</code></td>
+<td>9</td>
+<td><code>0xC7</code></td>
+</tr>
+<tr>
+<td><code>0x0A</code></td>
+<td>10</td>
+<td><code>0xC9</code></td>
+</tr>
+<tr>
+<td><code>0x0B</code></td>
+<td>11</td>
+<td><code>0xCB</code></td>
+</tr>
+<tr>
+<td><code>0x0C</code></td>
+<td>12</td>
+<td><code>0xCD</code></td>
+</tr>
+<tr>
+<td><code>0x0D</code></td>
+<td>13</td>
+<td><code>0xD4</code></td>
+</tr>
+<tr>
+<td><code>0x0E</code></td>
+<td>14</td>
+<td><code>0xF9</code></td>
+</tr>
+<tr>
+<td><code>0x0F</code></td>
+<td>15</td>
+<td><code>0xFF</code></td>
+</tr>
+</tbody>
+</table>
+<h6 id="2">2. Key On/Off</h6>
+<ul>
+<li>  <strong>OPN <code>0x28</code> -> OPM <code>0x08</code></strong></li>
+<li>  This register controls which operators (slots) of which channel are activated or silenced. The channel selection is in the lower 3 bits for both OPN and OPM. The operator selection is in the upper 4 bits for OPN and the upper 3 bits for OPM. The conversion requires appropriate bit shifting and masking.</li>
+</ul>
+<ul>
+<li>  <strong>Key Code</strong>: <code>_write_func(0x08, (slots << 3) | ch);</code></li>
+</ul>
+<h6 id="3">3. Operator Parameters (DT, MUL, TL, etc.)</h6>
+<ul>
+<li>  <strong>OPN <code>0x30..0x8F</code> -> OPM <code>0x40..0xBF</code></strong></li>
+<li>  These registers control the core parameters of FM synthesis, such as Detune, Multiple, Total Level, Attack Rate, etc. Fortunately, OPN and OPM are largely compatible in their bit definitions for these parameters. The conversion is mainly a recalculation of addresses.</li>
+<li>  The address format for OPN is <code>Base + Channel + SlotOffset</code>, and for OPM it is <code>Base + Channel + SlotOffset</code>. The conversion function calculates the corresponding OPM address based on the input OPN address.</li>
+<li>  <strong>Key Code</strong>: <code>uint8_t base = 0x40 + ((addr & 0xf0) - 0x30) <em> 2; uint8_t offset = slot </em> 8 + ch; _write_func(base + offset, data);</code></li>
+</ul>
+<h6 id="4">4. Frequency (F-Number/Block to Key Code/Fraction)</h6>
+<ul>
+<li>  <strong>OPN <code>0xA0..0xA6</code> -> OPM <code>0x28..0x37</code></strong></li>
+<li>  This is the most complex conversion. OPN uses <code>F-Number</code> and <code>Block</code> (octave) to define frequency, while OPM uses <code>Key Code</code> (note) and <code>Key Fraction</code> (fine-tuning).</li>
+<li>  The conversion process is as follows:</li>
+</ul>
+<ol>
+<li> Calculate the actual frequency in Hz from the OPN's F-Num and Block.</li>
+<li> <code>freq = (source_clock <em> fnum) / (divisor </em> (1 << (20 - blk)))</code></li>
+<li> Convert the calculated frequency (Hz) into an OPM note and fraction.</li>
+<li> <code>key = 60 + log2((freq <em> clock_ratio) / BASE_FREQ_OPM) </em> 12.0</code></li>
+<li> Finally, decompose <code>key</code> into OPM's <code>KC</code> (octave + note) and <code>KF</code> (fraction) and write them to the respective registers.</li>
+</ol>
+<ul>
+<li>  <strong>Key Code</strong>: <code>opn_freq_to_opm_key(fnum, blk, &kc, &kf); _write_func(0x28 + ch, kc); _write_func(0x30 + ch, kf << 2);</code></li>
+</ul>
+<h6 id="5">5. Feedback/Algorithm (FB/CONNECT)</h6>
+<ul>
+<li>  <strong>OPN <code>0xB0..0xB2</code> -> OPM <code>0x20..0x27</code></strong></li>
+<li>  The bit definitions for OPN and OPM are similar here, but the OPM register also includes panning information (RL). Therefore, when writing, the panning setting for that channel must first be read from a cache, then combined with the feedback/algorithm value before being written.</li>
+</ul>
+<ul>
+<li>  <strong>Key Code</strong>: <code>_write_func(0x20 + ch, (get_rl_flags(ch) << 6) | (data & 0x3f));</code></li>
+</ul>
+<h6 id="6">6. Panning/LFO Sensitivity (L/R/AMS/PMS)</h6>
+<ul>
+<li>  <strong>OPN <code>0xB4..0xB6</code> -> OPM <code>0x38..0x3F</code></strong></li>
+<li>  OPN packs panning (L/R) and LFO sensitivity (AMS/PMS) into the same register, while OPM separates them.</li>
+<li>  During conversion:</li>
+</ul>
+<ol>
+<li> The panning information is extracted from the OPN register and cached for use in other register conversions.</li>
+<li> PMS (Pitch Modulation Sensitivity) and AMS (Amplitude Modulation Sensitivity) are extracted.</li>
+<li> Notably, to allow the user to control the intensity of the LFO effect in real-time, the code applies a global amplitude multiplier <code>g_opn_lfo_amplitude</code> to the PMS value. After extensive testing, it was found that setting this scaling factor to <strong>0.9</strong> produces a sound that most closely matches the original OPN audio.</li>
+<li> The processed PMS and AMS are written to OPM's <code>0x38-0x3F</code> registers.</li>
+</ol>
+<ul>
+<li>  <strong>Key Code</strong>: <code>uint8_t scaled_pms = (uint8_t)(pms * g_opn_lfo_amplitude); _write_func(0x38 + ch, (scaled_pms << 4) | ams);</code></li>
+</ul>
+<h3 id="4-3">4.3. Advanced Timing and Flush System</h3>
+<p><a id="4-3"></a></p>
+<p>YASP's playback precision and stability are determined by the combination of "Flush Mode" and "Timer Mode".</p>
+<h4 id="4-3-1">4.3.1. Flush Mode</h4>
+<p><a id="4-3-1"></a></p>
+<p>Flush mode determines the <strong>granularity</strong> at which the player sends register data to the SPFM hardware.</p>
+<table>
+<thead>
+<tr>
+<th>Mode (Key)</th>
+<th>Name</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Register-Level</td>
+<td><code>spfm_flush()</code> is called immediately after <strong>every single</strong> register write. This ensures the highest real-time responsiveness but creates huge USB communication overhead.</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Command-Level</strong></td>
+<td><code>spfm_flush()</code> is only called after a complete VGM command is processed (e.g., a wait command like <code>0x61 nn nn</code>, or a chip write command). This is the <strong>best balance between performance and real-time feel</strong> and is the default setting.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-3-2">4.3.2. Timer Mode</h4>
+<p><a id="4-3-2"></a></p>
+<p>Timer mode determines how the player <strong>waits</strong> precisely for the next event after processing a VGM command. All modes use the high-precision performance counter (<code>QueryPerformanceCounter</code>) for error compensation.</p>
+<table>
+<thead>
+<tr>
+<th>Mode (Key)</th>
+<th>Source Code Name</th>
+<th>Principle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3</strong></td>
+<td>High-Precision Sleep</td>
+<td>Calls <code>Sleep(1)</code> to wait and compensates for its significant inaccuracy using the performance counter. Suitable for low-load environments.</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Hybrid Sleep</td>
+<td>Uses <code>CreateWaitableTimer</code> to wait for 1ms and compensates for errors. More precise than <code>Sleep(1)</code>.</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Multimedia Timer</td>
+<td>Uses <code>timeSetEvent</code> to set up a 1ms high-precision multimedia timer. The playback thread waits for the event triggered by this timer. High precision, but events can be delayed under high load.</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>VGMPlay Mode</strong></td>
+<td>A "busy-wait" variant that constantly calls <code>Sleep(0)</code> to yield its time slice. Extremely responsive, but causes very high CPU usage.</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>Optimized VGMPlay Mode</strong></td>
+<td>An optimized version of Mode 5 with an "anti-runaway" mechanism to prevent audio lag and crashes. <strong>This is the default and best choice.</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-3-3">4.3.3. Timer Core Source Code Explained</h4>
+<p><a id="4-3-3"></a></p>
+<p>The following are the core implementations for each mode in the <code>yasp_usleep</code> function from <code>util.c</code>:</p>
+<p><strong>Mode 3: High-Precision Sleep</strong></p>
+<pre><code class="language-c">case 0: // High-Precision Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        Sleep(1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: This is the simplest implementation. It loops, calling <code>Sleep(1)</code> to yield at least 1ms of CPU time until the performance counter reaches the target time. The precision of <code>Sleep</code> is poor, but it has low CPU usage.</p>
+<p><strong>Mode 4: Hybrid Sleep</strong></p>
+<pre><code class="language-c">case 1: // Hybrid Sleep
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        WaitForSingleObject(g_waitable_timer, 1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: Uses Windows' waitable timer <code>WaitForSingleObject</code> to wait for 1ms. It is more precise than <code>Sleep(1)</code> and offers a compromise between precision and CPU usage.</p>
+<p><strong>Mode 5: Multimedia Timer</strong></p>
+<pre><code class="language-c">case 2: // Multimedia Timer
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        WaitForSingleObject(g_timer_event, 1);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: Relies on a <code>g_timer_event</code> that is triggered every 1ms in the background by <code>timeSetEvent</code>. The thread waits for this event, providing high precision.</p>
+<p><strong>Mode 6: VGMPlay Mode</strong></p>
+<pre><code class="language-c">case 3: // VGMPlay Mode
+    tick_to_wait = get_tick() + us_to_tick(us);
+    while (get_tick() &lt; tick_to_wait) {
+        Sleep(0);
+    }
+    break;
+</code></pre>
+<p><strong>Explanation</strong>: This is a form of "busy-waiting". <code>Sleep(0)</code> immediately yields the remainder of the current thread's time slice, allowing other threads to run. This allows the loop to check the time very frequently, making it extremely responsive but at the cost of high CPU usage.</p>
+<p><strong>Mode 7: Optimized VGMPlay Mode</strong></p>
+<p>The optimization for this mode is not in <code>yasp_usleep</code> but in the <code>vgm_play</code> function in <code>play.c</code>. It uses the same waiting mechanism as Mode 5 but adds an "anti-runaway" logic:</p>
+<pre><code class="language-c">// In play.c&apos;s vgm_play
+if (g_timer_mode == 7) {
+    vgm_slice_to_do = min(vgm_slice_to_do, g_vgm_slice_limiter);
+}
+</code></pre>
+<p><strong>Explanation</strong>: If the system is busy and timer events are severely delayed, causing a large backlog of samples to be played (<code>vgm_slice_to_do</code>), this code limits the backlog to a maximum value (<code>g_vgm_slice_limiter</code>). This prevents long audio lags and allows the playback to quickly catch up to real-time, at the cost of dropping a few backlogged samples.</p>
+<h3 id="4-4">4.4. SPFM Communication Protocol</h3>
+<p><a id="4-4"></a></p>
+<p>YASP communicates with SPFM hardware via the FTDI D2XX driver. Its core is a <strong>write buffering mechanism</strong> and a <strong>hybrid wait strategy</strong>. For extremely short waits (<10 samples), it sends a hardware wait command <code>0x80</code>; for longer waits, it calls the high-precision software wait function <code>yasp_usleep</code>, which is determined by the selected timer mode.</p>
+<h2 id="5">5. Performance Optimization-Version Comparison</h2>
+<p><a id="5"></a></p>
+<p>During development, we observed that the current version (before fixes) exhibited a noticeable regression in performance compared to the older <code>console_player862</code> version, specifically in the responsiveness of the file browser and the smoothness of music playback. This section provides an in-depth analysis of the root causes and details the optimization measures implemented to address these issues.</p>
+<h3 id="5-1">5.1. The Root Cause: Why Was the Old Version Faster?</h3>
+<p><a id="5-1"></a></p>
+<p>After analyzing the <code>console_player862</code> source code, we identified two core reasons for the performance degradation:</p>
+<p><strong>1. Synchronous File System Reads Blocking the Main Thread</strong></p>
+<ul>
+<li>  <strong>Old Version (<code>862</code>) Behavior</strong>: The file browser loaded directory contents asynchronously in a separate thread. This meant that even when entering a large directory with thousands of files, the main thread (responsible for UI rendering and keyboard input) <strong>was not blocked</strong>, and the interface remained responsive at all times.</li>
+<li>  <strong>New Version (Before Fixes) Behavior</strong>: The file browser called <code>scandir</code> <strong>synchronously</strong> in the main thread. When <code>scandir</code> traversed a large directory, it could take hundreds of milliseconds or even seconds, during which the entire program would freeze, unable to respond to any user input or refresh the UI, leading to a severe feeling of lag.</li>
+</ul>
+<p><strong>2. Inefficient UI Refresh Mechanism</strong></p>
+<ul>
+<li>  <strong>Old Version (<code>862</code>) Behavior</strong>: UI refreshes were <strong>event-driven</strong>. The <code>update_ui()</code> function was only called to redraw the interface when the playback state changed (e.g., switching songs, pausing) or when there was user input. This approach is extremely efficient.</li>
+<li>  <strong>New Version (Before Fixes) Behavior</strong>: The UI refresh was placed in a <strong>fixed, high-frequency loop</strong>. Regardless of whether the state had changed, the main loop would call <code>update_ui()</code> at a very high frequency (every few milliseconds), causing a large number of redundant calculations and screen redraws. This not only wasted CPU resources but could also conflict with the playback thread's timer, affecting playback stability.</li>
+</ul>
+<h3 id="5-2">5.2. The Fixes: How We Restored and Surpassed the Old Performance</h3>
+<p><a id="5-2"></a></p>
+<p>To address these issues, we implemented the following key optimizations:</p>
+<p><strong>1. Introduced Asynchronous File List Loading (<code>browser.c</code>)</strong></p>
+<p>We refactored the file browser to restore and improve the asynchronous loading mechanism.</p>
+<pre><code class="language-c">// In browser.c
+static bool g_loading_thread_active = false;
+static HANDLE g_loading_thread_handle = NULL;
+
+// When a user enters a directory, instead of scanning directly, create a new thread
+void refresh_file_list(const char* path) {
+    // ...
+    g_loading_thread_handle = CreateThread(NULL, 0, loading_thread_func, new_path, 0, NULL);
+    // ...
+}
+
+// The new loading thread is responsible for the time-consuming scandir operation
+static DWORD WINAPI loading_thread_func(LPVOID lpParam) {
+    g_loading_thread_active = true;
+    // ...
+    int n = scandir(path, &amp;g_namelist, 0, alphasort); // The heavy lifting happens here
+    // ...
+    g_loading_thread_active = false;
+    return 0;
+}
+</code></pre>
+<p><strong>Explanation</strong>: When the user selects a directory, the main function <code>refresh_file_list</code> no longer executes <code>scandir</code> itself. Instead, it returns immediately and delegates this time-consuming operation to a newly created <code>loading_thread_func</code> thread. During the loading period, the <code>g_loading_thread_active</code> flag is set to <code>true</code>, allowing the UI to display a "Loading..." message, while the main thread remains fluid and responsive to user actions.</p>
+<p><strong>2. Implemented Event-Driven UI Refreshes (<code>main.c</code>, <code>play.c</code>)</strong></p>
+<p>We completely removed the inefficient, high-frequency UI redraw calls from the main loop and introduced a global flag, <code>g_ui_refresh_request</code>.</p>
+<pre><code class="language-c">// In the main loop of main.c
+int main() {
+    // ...
+    while (!g_quit_flag) {
+        if (g_ui_refresh_request) {
+            update_ui(...);
+            g_ui_refresh_request = false; // Clear the flag immediately after redrawing
+        }
+        // ... Handle keyboard input ...
+        yasp_usleep(16000); // The main loop can now sleep peacefully
+    }
+    // ...
+}
+</code></pre>
+<p><strong>Explanation</strong>: <code>update_ui()</code> is now only called when <code>g_ui_refresh_request</code> is <code>true</code>. This flag is set only at moments when the UI genuinely needs to be updated, such as:</p>
+<ul>
+<li>  When a song starts playing (<code>play_file</code>)</li>
+<li>  When the user pauses/resumes or changes modes (in the keyboard handling section of <code>main.c</code>)</li>
+<li>  When the file browser finishes loading (<code>browser.c</code>)</li>
+</ul>
+<p>This <strong>event-driven</strong> model reduces the UI refresh frequency from hundreds of times per second to only a few necessary updates, significantly lowering CPU usage and fundamentally resolving potential conflicts between UI refreshes and the playback timer.</p>
+<p>With these two core optimizations, YASP has not only restored the smooth experience of the older <code>862</code> version but has also achieved further improvements in code structure and maintainability.</p>
+<h2 id="6">6. User Guide</h2>
+<p><a id="6"></a></p>
+<p>YASP is operated entirely via the keyboard. The interface is divided into the <strong>Main Player Interface</strong> and the <strong>File Browser</strong>.</p>
+<h3 id="6-1">6.1. Main Player Interface</h3>
+<p>The main interface displays real-time information about the currently playing music, player status, and hardware configuration.</p>
+<h4 id="6-1-1">6.1.1. Interface Layout (ASCII Diagram)</h4>
+<pre><code class="language-">+------------------------------------------------------------------------------+
+| YASP - Yet Another Sound Player                               (Line 0)       |
+| --------------------------------------------------            (Line 1)       |
+| Track: [Current Track Name]                                   (Line 2)       |
+| Game: [Game Title]                                            (Line 3)       |
+| System: [Game Platform]                                       (Line 4)       |
+| Author: [Composer]                                            (Line 5)       |
+| Date: [Release Date]                                          (Line 6)       |
+| VGM By: [VGM File Creator]                                    (Line 7)       |
+| VGM Chip: [Chip Type] ([Clock Speed]MHz)                      (Line 8)       |
+| Status: [Playing.../Paused]                                   (Line 9)       |
+| Total Time: [Total Duration] | Loops: [Loop Count]            (Line 10)      |
+| Flush Mode (1,2): [Current Flush Mode]                        (Line 11)      |
+| Timer (3-7): [Current Timer Mode]                             (Line 12)      |
+| Mode: [Playback Mode] | Speed: [Playback Speed]x              (Line 13)      |
+| OPN LFO Amp: [LFO Amplitude]                                  (Line 14)      |
+| Slot 0: [Chip 0] | Slot 1: [Chip 1]                           (Line 15)      |
+| Conversion: [Conversion Status]                               (Line 16)      |
+| --------------------------------------------------            (Line 17)      |
+| [Key Legend]                                                  (Line 18)      |
++------------------------------------------------------------------------------+
+</code></pre>
+<h4 id="6-1-2">6.1.2. Interface Description</h4>
+<ul>
+<li>  <strong>Lines 2-7</strong>: Display metadata read from the VGM file's GD3 tag. If the tag is absent, the filename is shown.</li>
+<li>  <strong>Line 8 (VGM Chip)</strong>: Shows the sound chip and its clock speed as originally specified in the VGM file.</li>
+<li>  <strong>Line 9 (Status)</strong>: Indicates whether playback is active or paused.</li>
+<li>  <strong>Line 10 (Total Time / Loops)</strong>: Shows the calculated total playback duration (including loops) and the user-defined loop count.</li>
+<li class="toc-level-3">  <strong>Line 11 (Flush Mode)</strong>: The strategy for sending data to the SPFM hardware (see <a href="#4-3-1">4.3.1</a>).</li>
+<li class="toc-level-3">  <strong>Line 12 (Timer)</strong>: The waiting strategy used by the player (see <a href="#4-3-2">4.3.2</a>).</li>
+<li>  <strong>Line 13 (Mode / Speed)</strong>: Shows whether playback is sequential or random, and the playback speed multiplier.</li>
+<li>  <strong>Line 14 (OPN LFO Amp)</strong>: Only displayed during OPN->OPM conversion; adjusts the intensity of the LFO effect.</li>
+<li>  <strong>Line 15 (Slot 0 / Slot 1)</strong>: Shows the chip types actually installed in the two slots of the SPFM hardware.</li>
+<li>  <strong>Line 16 (Conversion)</strong>: Indicates the current playback method (direct play, real-time conversion, or from cache).</li>
+</ul>
+<h3 id="6-2">6.2. File Browser</h3>
+<p>Press <code>f</code> on the main screen to enter the file browser.</p>
+<pre><code class="language-">+------------------------------------------------------------------------------+
+| Path: [Current Path]                                                         |
+| --------------------------------------------------                           |
+| &gt; [.]                                                                        |
+|   [..]                                                                       |
+|   [Directory1]/                                                              |
+|   [File1.vgm]                                                                |
+|   [File2.s98]                                                                |
+|   ...                                                                        |
++------------------------------------------------------------------------------+
+</code></pre>
+<ul>
+<li>  Use the <code>Up/Down</code> arrow keys to select a file or directory.</li>
+<li>  Press <code>Enter</code> to play the selected file or enter the selected directory.</li>
+<li>  Press <code>f</code> at any time to close the browser and return to the main player interface.</li>
+</ul>
+<h3 id="6-3">6.3. Key Bindings</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>q</code></td>
+<td><strong>Quit Program</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td><strong>Pause / Resume</strong></td>
+<td>Toggles the playback state.</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td><strong>Next Track</strong></td>
+<td>Immediately skips to the next song in the playlist.</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><strong>Previous Track</strong></td>
+<td>Immediately skips to the previous song in the playlist.</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td><strong>Toggle Playback Mode</strong></td>
+<td>Switches between "Sequential" and "Random" playback.</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td><strong>Toggle File Browser</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>+</code> / <code>-</code></td>
+<td><strong>Adjust Playback Speed</strong></td>
+<td>Increases or decreases the speed multiplier in steps of 0.05.</td>
+</tr>
+<tr>
+<td><code>Up/Down</code></td>
+<td><strong>Adjust OPN LFO Amplitude</strong></td>
+<td>Only active during OPN->OPM conversion; enhances or reduces the LFO effect in real-time.</td>
+</tr>
+<tr>
+<td><code>Left/Right</code></td>
+<td><strong>Adjust Loop Count</strong></td>
+<td>Decreases or increases the number of times the song will loop.</td>
+</tr>
+<tr>
+<td><code>1</code> / <code>2</code></td>
+<td><strong>Switch Flush Mode</strong></td>
+<td>Toggles between "Register-Level" and "Command-Level" flushing.</td>
+</tr>
+<tr>
+<td><code>3</code> - <code>7</code></td>
+<td><strong>Switch Timer Mode</strong></td>
+<td>Switches between different timing strategies to adapt to various system loads.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7">7. Compilation and Build</h2>
+<p><a id="7"></a></p>
+<p>The YASP project is built using <code>make</code> and depends on the <code>MinGW-w64</code> compilation environment and FTDI's official <code>D2XX</code> driver library.</p>
+<h3 id="7-1">7.1. Environment Requirements</h3>
+<ul>
+<li>  <strong>Compiler</strong>: <code>MinGW-w64</code> (the <code>x86_64-w64-mingw32</code> version is recommended for 64-bit compilation).</li>
+<li>  <strong>Build Tool</strong>: <code>make</code> (usually installed with MinGW-w64).</li>
+<li>  <strong>Dependencies</strong>:</li>
+<li>  <code>ftd2xx.h</code>: The FTDI D2XX driver header file, which must be placed in the <code>console_player</code> directory.</li>
+<li>  <code>ftd2xx64.dll</code>: The 64-bit FTDI D2XX dynamic link library, which must be placed in the <code>console_player</code> directory.</li>
+</ul>
+<h3 id="7-2">7.2. Makefile Explained</h3>
+<p>The <code>console_player/makefile</code> in the project's root directory defines all the build rules.</p>
+<ul>
+<li>  <strong><code>CC</code></strong>: Defines the C compiler, defaulting to <code>gcc</code>.</li>
+<li>  <strong><code>CFLAGS</code></strong>: Compilation flags.</li>
+<li>  <code>-m64</code>: Generate 64-bit code.</li>
+<li>  <code>-Wall</code>, <code>-Wextra</code>: Enable all standard and extra warnings to improve code quality.</li>
+<li>  <code>-g</code>: Generate debugging information, useful for tools like GDB.</li>
+<li>  <code>-O0</code>: Disable all optimizations, ensuring that the code's behavior exactly matches the source during debugging.</li>
+<li>  <code>-I"../ftdi_driver"</code>: Add the <code>ftdi_driver</code> directory to the header search path to find <code>ftd2xx.h</code>.</li>
+<li>  <strong><code>LDFLAGS</code></strong>: Linker flags, passed to the compiler during the linking phase.</li>
+<li>  <code>-m64</code>: Create a 64-bit executable.</li>
+<li>  <code>-s</code>: Strip the symbol table and relocation information from the final executable to reduce its size.</li>
+<li>  <code>-L"../ftdi_driver/amd64"</code>: Add the <code>ftdi_driver/amd64</code> directory to the library search path so the linker can find <code>libftd2xx.a</code>.</li>
+<li>  <strong><code>LIBS</code></strong>: The libraries to link against.</li>
+<li>  <code>-lftd2xx</code>: Links the FTDI D2XX driver library, used for communicating with the SPFM hardware.</li>
+<li>  <code>-lm</code>: Links the math library (<code>libm</code>), which provides functions like <code>log2</code> used in frequency conversion.</li>
+<li>  <code>-lwinmm</code>: (Windows only) Links the Windows Multimedia library (<code>winmm.lib</code>), providing high-precision timer functions like <code>timeSetEvent</code>.</li>
+<li>  <code>-lavrt</code>: (Windows only) Links the Multimedia Class Scheduler Service library (<code>avrt.lib</code>), allowing the playback thread's priority to be boosted to "Pro Audio" level to reduce audio jitter.</li>
+<li>  <code>-lole32</code>: (Windows only) Links the OLE32 library, which provides COM services and is a dependency for the <code>avrt</code> library.</li>
+<li>  <code>-lpthread</code>: (POSIX systems like Linux only) Links the POSIX Threads library, used for creating and managing threads.</li>
+<li>  <strong><code>SOURCES</code></strong>: Defines all the <code>.c</code> source files to be compiled.</li>
+<li>  <strong><code>OBJECTS</code></strong>: Automatically generates a list of corresponding <code>.o</code> object files from <code>SOURCES</code>.</li>
+<li>  <strong><code>TARGET</code></strong>: Defines the name of the final executable, defaulting to <code>yasp_test.exe</code>.</li>
+</ul>
+<h3 id="7-3">7.3. Build and Run</h3>
+<ol>
+<li> <strong>Execute Build</strong>: Open a terminal and run the <code>make</code> command from the <strong>project root</strong> (<code>yasp</code>), using the <code>-C</code> flag to specify the directory containing the <code>makefile</code>.</li>
+</ol>
+<pre><code class="language- ```bash">    make -C console_player
+</code></pre>
+<p>    <code>make</code> will automatically compile all source files according to the rules in <code>console_player/makefile</code> and produce the <code>yasp_test.exe</code> executable in the <code>console_player</code> directory.</p>
+<ol>
+<li> <strong>Run the Program</strong>:</li>
+</ol>
+<pre><code class="language- ```bash">    ./console_player/yasp_test.exe
+</code></pre>
+<ol>
+<li> <strong>Clean Build Files</strong>: If you need to recompile all files, you can run <code>make clean</code>.</li>
+</ol>
+<pre><code class="language- ```bash">    make -C console_player clean
+</code></pre>
+<p>    This command will delete all generated <code>.o</code> object files and the <code>yasp_test.exe</code> executable from the <code>console_player</code> directory.</p>
+<hr>
+<h2 id="8">8. Troubleshooting and Changelog</h2>
+<p><a id="8"></a></p>
+<h3 id="8-1">8.1. Troubleshooting: Uncontrolled, Rapid Skipping of Tracks</h3>
+<p><a id="8-1"></a></p>
+<p>While developing the chip conversion and caching features, we encountered a very tricky bug: when playing a VGM file that required real-time conversion (e.g., OPN -> OPM), the program would immediately end the current track and "auto-skip" to the next one in the playlist, making it impossible to listen to any song that needed conversion.</p>
+<h4 id="8-1-1">8.1.1. Diagnostic Process</h4>
+<p><a id="8-1-1"></a></p>
+<p>After multiple, detailed debugging sessions with the project owner, <strong>Denjhang</strong>, we eliminated several possibilities and ultimately pinpointed the problem to the cache file creation process.</p>
+<ol>
+<li> <strong>Initial Suspicion: File Pointer Confusion</strong></li>
+</ol>
+<ul>
+<li>  Initially, we suspected that the read and write operations were using the same <code>FILE*</code> pointer when creating the cache file, leading to a corrupted file stream state.</li>
+<li>  <strong>Fix Attempt</strong>: We introduced a strategy to "first read the entire VGM file into memory, then perform conversion and writing from memory." While this architecturally resolved the risk of pointer misuse and successfully preserved GD3 tags, the "auto-skipping" issue persisted.</li>
+</ul>
+<ol>
+<li> <strong>Deeper Analysis: The Silent Failure of <code>fopen</code></strong></li>
+</ol>
+<ul>
+<li>  In the code's logic, the program attempts to open a new cache file in write mode (<code>"wb"</code>). However, we overlooked a critical behavior of the C standard library: if <code>fopen</code> tries to create a file in a <strong>non-existent directory</strong>, it will <strong>fail silently and return <code>NULL</code></strong> without automatically creating the directory.</li>
+<li>  <strong>The Critical Clue</strong>: The project owner, <strong>Denjhang</strong>, astutely observed: "<strong>I noticed that no cache files were being generated.</strong>" This clue was the decisive turning point that led to solving the entire problem. It directly proved that the <code>fopen(cache_filename, "wb")</code> call was failing.</li>
+</ul>
+<ol>
+<li> <strong>Final Root Cause Identification</strong></li>
+</ol>
+<ul>
+<li>  When <code>fopen</code> failed, the subsequent code logic did not perform adequate <code>NULL</code> checks, causing the program to proceed with an invalid, <code>NULL</code> file handle for subsequent playback operations.</li>
+<li>  When the playback thread (<code>vgm_player_thread</code>) attempted to read data from this <code>NULL</code> file handle, <code>fread</code> or other file operations would immediately return an error (usually 0 or -1). This instantly triggered the playback loop's exit condition, <code>g_is_playing = false</code>.</li>
+<li>  The main playback loop detected that <code>g_is_playing</code> had become <code>false</code>, assumed the current song had "finished playing," and naturally switched to the next track. This perfectly explained the phenomenon of "uncontrolled, rapid skipping of tracks."</li>
+</ul>
+<h4 id="8-1-2">8.1.2. The Final Solution</h4>
+<p><a id="8-1-2"></a></p>
+<p>The solution was very direct: <strong>forcefully ensure the <code>cache</code> directory exists</strong> before calling <code>fopen</code> to create a cache file.</p>
+<p>We added platform-specific directory creation code to the <code>vgm_play</code> function in <code>vgm.c</code>:</p>
+<pre><code class="language-c">// In vgm.c&apos;s vgm_play function, before attempting to create a cache file
+// --- CACHE DOES NOT EXIST, CREATE IT ---
+logging(INFO, &quot;Cache not found. Converting %s to OPM...&quot;, chip_type_to_string(g_vgm_chip_type));
+
+#ifdef _WIN32
+    _mkdir(&quot;console_player/cache&quot;);
+#else
+    mkdir(&quot;console_player/cache&quot;, 0755);
+#endif
+
+// Then, safely call fopen
+g_cache_fp = fopen(cache_filename, &quot;wb&quot;);
+if (!g_cache_fp) {
+    // ... error handling ...
+}
+</code></pre>
+<p><strong>Explanation</strong>: This code uses <code>_mkdir</code> (Windows) or <code>mkdir</code> (Linux/macOS) to attempt to create the <code>console_player/cache</code> directory. If the directory already exists, this call is safely ignored; if it doesn't, it is created. This ensures that the subsequent <code>fopen</code> call always executes in a valid path, fundamentally solving the file creation failure.</p>
+<p>This case study profoundly illustrates the importance of <strong>validating preconditions (such as directory existence)</strong> when performing low-level file I/O operations.</p>
+<h3 id="8-2">8.2. Bug Fixes & Improvements (v0.881)</h3>
+<p><a id="8-2"></a></p>
+<p>This update addresses several critical issues and improves core functionality:</p>
+<h4 id="8-2-1">8.2.1. Fixed Loop Logic for Converted VGM Files</h4>
+<p><a id="8-2-1"></a></p>
+<ul>
+<li>  <strong>Problem</strong>: Converted cache VGM files (e.g., YM2612 to YM2151) did not correctly inherit the loop point from the original file, forcing them to loop from the beginning.</li>
+<li>  <strong>Fix</strong>:</li>
+</ul>
+<ol>
+<li> Introduced <code>g_original_loop_offset</code> and <code>g_converted_loop_offset</code> global variables in <code>vgm.c</code> to track loop points during conversion.</li>
+<li> Modified <code>vgm_convert_and_cache_from_mem</code> to check if the current file pointer reaches the original loop offset.</li>
+<li> When the point is reached, the current write position in the <strong>cache file</strong> is recorded to <code>g_converted_loop_offset</code>.</li>
+<li> Finally, <code>vgm_play</code> uses this newly calculated offset to write the correct loop start point back into the cache file's header, ensuring accurate looping.</li>
+</ol>
+<h4 id="8-2-2">8.2.2. Fixed Auto-Skip Issue After Playback Completion</h4>
+<p><a id="8-2-2"></a></p>
+<ul>
+<li>  <strong>Problem</strong>: In some cases (especially after using "Next" or "Previous" during playback), a song would not automatically advance to the next track in the playlist after finishing all its loops.</li>
+<li>  <strong>Fix</strong>:</li>
+</ul>
+<ol>
+<li> The issue was located in the <code>player_thread_func</code> in <code>main.c</code>.</li>
+<li> The original logic would incorrectly set <code>g_is_playing</code> to <code>false</code> and break the playback loop if user-initiated track change flags were set when a song ended.</li>
+<li> The logic was revised. Now, if a song finishes naturally, it correctly gets the next song index and continues playing. If it was interrupted by the user, the main loop handles the track change, preventing the thread from exiting prematurely.</li>
+</ol>
+<h4 id="8-2-3">8.2.3. Corrected Total Time Calculation in UI</h4>
+<p><a id="8-2-3"></a></p>
+<ul>
+<li>  <strong>Problem</strong>: The "Total Time" displayed in the UI did not account for the number of loops, resulting in an inaccurate duration.</li>
+<li>  <strong>Fix</strong>: The calculation in <code>play.c</code>'s <code>update_ui</code> function was changed to: <code>Total Samples + (Loop Samples * (Loop Count - 1))</code>. This ensures the displayed time accurately reflects the full playback duration, including all loops.</li>
+</ul>
+<h4 id="8-2-4">8.2.4. Corrected VGM Chip Info Display in UI</h4>
+<p><a id="8-2-4"></a></p>
+<ul>
+<li>  <strong>Problem</strong>: When playing a converted cache file, the "VGM Chip" field showed the target chip (e.g., YM2151) instead of the original chip from the source VGM file (e.g., YM2612).</li>
+<li>  <strong>Fix</strong>:</li>
+</ul>
+<ol>
+<li> <code>g_original_vgm_chip_type</code> is now used in <code>vgm.c</code> to specifically store the original file's chip type during header parsing.</li>
+<li> The <code>update_ui</code> function in <code>play.c</code> now checks the <code>g_is_playing_from_cache</code> flag. If playing from cache, it forces the display to use <code>g_original_vgm_chip_type</code> and the original header info for the chip name and clock speed.</li>
+</ol>
+<h4 id="8-2-5">8.2.5. Added Detection for Invalid VGM Files</h4>
+<p><a id="8-2-5"></a></p>
+<ul>
+<li>  <strong>Problem</strong>: For incomplete or corrupted VGM files (e.g., where all chip clocks are 0), the player would still attempt to guess a clock frequency and play, potentially leading to incorrect behavior.</li>
+<li>  <strong>Fix</strong>: A check was added to <code>play.c</code>'s <code>update_ui</code> function. Before displaying chip info, it now verifies if all known chip clocks in the VGM header are zero. If so, it displays "VGM Chip: Invalid/Unsupported" to clearly indicate a potential file issue to the user.</li>
+</ul>
+<h3 id="8-3">8.3. Feature Enhancements & Bug Fixes (v0.884)</h3>
+<p><a id="8-3"></a></p>
+<p>This update focuses on improving user experience, startup logic, and the robustness of file management.</p>
+<h4 id="8-3-1">8.3.1. Optimized Startup and Directory Management</h4>
+<p><a id="8-3-1"></a></p>
+<ul>
+<li>  <strong>Automatic Directory Creation</strong>: The program now checks for the existence of the <code>music</code> and <code>cache</code> directories upon startup. If they don't exist, they are created automatically, preventing potential errors caused by missing directories.</li>
+<li>  <strong>Intelligent Music Scanning</strong>:</li>
+<li>  The program first checks if the <code>last_file</code> entry in the configuration file (<code>config.ini</code>) is valid. If the file does not exist, the entry is considered invalid.</li>
+<li>  If <code>last_file</code> is invalid, the program prioritizes scanning the <code>music</code> directory.</li>
+<li>  If the <code>music</code> directory is empty, the program falls back to scanning its current working directory to ensure playable music can be found.</li>
+<li>  <strong>Direct to Browser on No Music</strong>: If no supported music files are found in any of the default paths, the program no longer exits. Instead, it automatically enters the file browser mode, allowing the user to locate music files manually.</li>
+</ul>
+<h4 id="8-3-2">8.3.2. Enhanced File Browser Functionality</h4>
+<p><a id="8-3-2"></a></p>
+<ul>
+<li>  <strong>Context-Aware Startup</strong>: When entering the file browser from the main player interface by pressing <code>f</code>, the browser now automatically navigates to the directory of the currently playing song, rather than always starting from the program's main directory. This significantly improves ease of use.</li>
+<li>  <strong>Unified Path Separators</strong>: All internal path handling in the browser now consistently uses forward slashes (<code>/</code>), resolving potential path parsing issues on the Windows platform caused by mixed use of backslashes (<code>\</code>) and forward slashes (<code>/</code>).</li>
+<li>  <strong>Fixed Parent Directory Navigation</strong>: Fixed an issue where selecting <code>..</code> in the file system's root directory (e.g., <code>C:/</code>) would incorrectly jump to the drive list. Now, navigating up from the root directory is correctly ignored.</li>
+</ul>
+<h4 id="8-3-3">8.3.3. Added Clear Cache Functionality</h4>
+<p><a id="8-3-3"></a></p>
+<ul>
+<li>  After the chip selection process, the program now prompts the user whether to clear the conversion cache. The user can press <code>y</code> to delete all files in the <code>cache</code> directory, which is useful for resolving potential cache corruption issues or freeing up disk space.</li>
+</ul>
+
+<script>
+    window.onscroll = function() {
+        updateProgressBar();
+    };
+
+    document.getElementById("progress-container").onclick = function(event) {
+        var rect = this.getBoundingClientRect();
+        var clickX = event.clientX - rect.left;
+        var percentage = clickX / this.offsetWidth;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        window.scrollTo(0, height * percentage);
+    };
+
+    function updateProgressBar() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    }
+</script>
+</body>
+</html>
