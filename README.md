@@ -1,4 +1,4 @@
-# YASP - Yet Another Sound Player (Technical Documentation)
+# YASP - Yet Another Sound Player (Technical Documentation) v0.888
 
 ## Abstract
 
