@@ -1,0 +1,218 @@
+[2025-10-02 00:27:21] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-10-02 00:27:21] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-10-02 00:27:25] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-10-02 00:27:25] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-10-02 00:27:27] >>INFO<< Clearing cache directory: D:\working\vscode-projects\yasp11\yasp\console_player/cache
+[2025-10-02 00:27:27] >>ERROR<< Failed to remove: D:\working\vscode-projects\yasp11\yasp\console_player/cache/1
+[2025-10-02 00:27:27] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm.opm.vgm
+[2025-10-02 00:27:27] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/PA-PA-PA.vgm.opm.vgm
+[2025-10-02 00:27:27] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Perseve.vgm.opm.vgm
+[2025-10-02 00:27:27] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:27:27] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:27:27] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:27:27] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:27:27] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:19] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:19] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:19] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Perseve.vgm
+[2025-10-02 00:28:19] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Perseve.vgm
+[2025-10-02 00:28:19] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:22] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:22] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:22] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:22] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:22] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:23] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:23] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:23] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:23] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:23] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:24] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:24] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:24] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:24] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:24] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:26] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:26] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:26] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:26] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:26] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:26] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:26] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:28:26] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:33] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:33] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:33] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:33] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:28:33] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:28:45] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:28:45] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:28:45] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/NeXt-dAy-DiHalt-2007-4-.vgm
+[2025-10-02 00:28:45] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/NeXt-dAy-DiHalt-2007-4-.vgm
+[2025-10-02 00:28:45] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:29:09] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:29:09] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:29:09] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Winter-Fragment-2023-DiHalt-2023-1-.vgm
+[2025-10-02 00:29:09] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Winter-Fragment-2023-DiHalt-2023-1-.vgm
+[2025-10-02 00:29:09] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:29:14] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:29:14] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:29:14] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/what-if-god-was-one-of-us-Joan-Osborne-cover-.vgm
+[2025-10-02 00:29:14] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/what-if-god-was-one-of-us-Joan-Osborne-cover-.vgm
+[2025-10-02 00:29:14] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:29:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:29:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:29:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:29:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:29:36] >>INFO<< SPFM device closed.
+
+[2025-10-02 00:37:01] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-10-02 00:37:01] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-10-02 00:38:26] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-10-02 00:38:26] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-10-02 00:38:28] >>INFO<< Clearing cache directory: D:\working\vscode-projects\yasp11\yasp\console_player/cache
+[2025-10-02 00:38:28] >>ERROR<< Failed to remove: D:\working\vscode-projects\yasp11\yasp\console_player/cache/1
+[2025-10-02 00:38:28] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm.opm.vgm
+[2025-10-02 00:38:28] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/PA-PA-PA.vgm.opm.vgm
+[2025-10-02 00:38:28] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Perseve.vgm.opm.vgm
+[2025-10-02 00:38:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:38:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:38:28] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/what-if-god-was-one-of-us-Joan-Osborne-cover-.vgm
+[2025-10-02 00:38:28] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/what-if-god-was-one-of-us-Joan-Osborne-cover-.vgm
+[2025-10-02 00:38:28] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:38:39] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:38:39] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:38:39] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Winter-Fragment-2023-DiHalt-2023-1-.vgm
+[2025-10-02 00:38:39] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Winter-Fragment-2023-DiHalt-2023-1-.vgm
+[2025-10-02 00:38:39] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:38:41] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:38:41] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:38:41] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/NeXt-dAy-DiHalt-2007-4-.vgm
+[2025-10-02 00:38:41] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/NeXt-dAy-DiHalt-2007-4-.vgm
+[2025-10-02 00:38:41] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:38:43] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:38:43] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:38:43] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:38:43] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm
+[2025-10-02 00:38:43] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:38:44] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:38:44] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:38:44] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:38:44] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:38:44] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:39:12] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:39:12] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:39:12] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:39:12] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:39:12] >>INFO<< SPFM device closed.
+
+[2025-10-02 00:41:48] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-10-02 00:41:48] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-10-02 00:41:58] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-10-02 00:41:58] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-10-02 00:42:00] >>INFO<< Clearing cache directory: D:\working\vscode-projects\yasp11\yasp\console_player/cache
+[2025-10-02 00:42:00] >>ERROR<< Failed to remove: D:\working\vscode-projects\yasp11\yasp\console_player/cache/1
+[2025-10-02 00:42:00] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/NeXt-dAy-DiHalt-2007-4-.vgm.opm.vgm
+[2025-10-02 00:42:00] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Nice-Place-Realtime-DiHalt-Lite-2017-2-.vgm.opm.vgm
+[2025-10-02 00:42:00] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/PA-PA-PA.vgm.opm.vgm
+[2025-10-02 00:42:00] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/what-if-god-was-one-of-us-Joan-Osborne-cover-.vgm.opm.vgm
+[2025-10-02 00:42:00] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/Winter-Fragment-2023-DiHalt-2023-1-.vgm.opm.vgm
+[2025-10-02 00:42:00] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:42:00] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:42:00] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:42:00] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:42:00] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:42:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:42:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:42:28] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:42:28] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:42:28] >>INFO<< SPFM device closed.
+
+[2025-10-02 00:55:19] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-10-02 00:55:19] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-10-02 00:55:27] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-10-02 00:55:27] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-10-02 00:55:29] >>INFO<< Clearing cache directory: D:\working\vscode-projects\yasp11\yasp\console_player/cache
+[2025-10-02 00:55:29] >>ERROR<< Failed to remove: D:\working\vscode-projects\yasp11\yasp\console_player/cache/1
+[2025-10-02 00:55:29] >>INFO<< Removed: D:\working\vscode-projects\yasp11\yasp\console_player/cache/PA-PA-PA.vgm.opm.vgm
+[2025-10-02 00:55:29] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:55:29] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:55:29] >>DEBUG<< Attempting to play file: D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:55:29] >>DEBUG<< Calling vgm_play for D:/working/vscode-projects/yasp11/yasp/console_player/music/PSG/PA-PA-PA.vgm
+[2025-10-02 00:55:29] >>INFO<< Cache not found. Converting AY8910 to OPM...
+[2025-10-02 00:56:07] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:56:07] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:56:07] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-02 00:56:07] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-02 00:56:07] >>INFO<< SPFM device closed.
+

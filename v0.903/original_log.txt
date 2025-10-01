@@ -1,0 +1,2239 @@
+--- Parsing VGM from 5.00s to 15.00s ---
+Sample range: 220500 to 661500
+
+Time (s)     Samples      Command             
+--------------------------------------------------
+5.0000       220500       AY8910: reg 0x02, val 0x5F
+5.0000       220500       AY8910: reg 0x03, val 0x03
+5.0000       220500       AY8910: reg 0x04, val 0xC0
+5.0000       220500       AY8910: reg 0x06, val 0x0A
+5.0000       220500       AY8910: reg 0x09, val 0x0E
+5.0000       220500       WAIT: 882 samples (1/50s)
+5.0200       221382       AY8910: reg 0x02, val 0xDF
+5.0200       221382       AY8910: reg 0x04, val 0xC9
+5.0200       221382       AY8910: reg 0x06, val 0x09
+5.0200       221382       AY8910: reg 0x08, val 0x0D
+5.0200       221382       AY8910: reg 0x09, val 0x0D
+5.0200       221382       WAIT: 882 samples (1/50s)
+5.0400       222264       AY8910: reg 0x00, val 0x9F
+5.0400       222264       AY8910: reg 0x02, val 0x5F
+5.0400       222264       AY8910: reg 0x03, val 0x02
+5.0400       222264       AY8910: reg 0x04, val 0xD2
+5.0400       222264       AY8910: reg 0x06, val 0x07
+5.0400       222264       AY8910: reg 0x08, val 0x0A
+5.0400       222264       AY8910: reg 0x09, val 0x0F
+5.0400       222264       WAIT: 882 samples (1/50s)
+5.0600       223146       AY8910: reg 0x02, val 0xDF
+5.0600       223146       AY8910: reg 0x04, val 0xDB
+5.0600       223146       AY8910: reg 0x06, val 0x02
+5.0600       223146       AY8910: reg 0x08, val 0x09
+5.0600       223146       WAIT: 882 samples (1/50s)
+5.0800       224028       AY8910: reg 0x02, val 0x5F
+5.0800       224028       AY8910: reg 0x03, val 0x03
+5.0800       224028       AY8910: reg 0x04, val 0xE4
+5.0800       224028       AY8910: reg 0x06, val 0x0A
+5.0800       224028       AY8910: reg 0x09, val 0x0E
+5.0800       224028       WAIT: 882 samples (1/50s)
+5.1000       224910       AY8910: reg 0x02, val 0xDF
+5.1000       224910       AY8910: reg 0x04, val 0xE9
+5.1000       224910       AY8910: reg 0x06, val 0x09
+5.1000       224910       AY8910: reg 0x09, val 0x0D
+5.1000       224910       WAIT: 882 samples (1/50s)
+5.1200       225792       AY8910: reg 0x00, val 0xB2
+5.1200       225792       AY8910: reg 0x03, val 0x02
+5.1200       225792       AY8910: reg 0x04, val 0x7E
+5.1200       225792       AY8910: reg 0x07, val 0x38
+5.1200       225792       AY8910: reg 0x08, val 0x0F
+5.1200       225792       AY8910: reg 0x09, val 0x0F
+5.1200       225792       AY8910: reg 0x0A, val 0x0E
+5.1200       225792       WAIT: 882 samples (1/50s)
+5.1400       226674       AY8910: reg 0x02, val 0x5F
+5.1400       226674       AY8910: reg 0x03, val 0x04
+5.1400       226674       AY8910: reg 0x08, val 0x0E
+5.1400       226674       WAIT: 882 samples (1/50s)
+5.1600       227556       AY8910: reg 0x03, val 0x05
+5.1600       227556       AY8910: reg 0x09, val 0x0E
+5.1600       227556       WAIT: 882 samples (1/50s)
+5.1800       228438       AY8910: reg 0x02, val 0xDF
+5.1800       228438       AY8910: reg 0x03, val 0x06
+5.1800       228438       AY8910: reg 0x08, val 0x0D
+5.1800       228438       WAIT: 882 samples (1/50s)
+5.2000       229320       AY8910: reg 0x00, val 0x96
+5.2000       229320       AY8910: reg 0x02, val 0x5F
+5.2000       229320       AY8910: reg 0x03, val 0x08
+5.2000       229320       AY8910: reg 0x04, val 0x7D
+5.2000       229320       AY8910: reg 0x08, val 0x0A
+5.2000       229320       AY8910: reg 0x09, val 0x0D
+5.2000       229320       WAIT: 882 samples (1/50s)
+5.2200       230202       AY8910: reg 0x02, val 0xDF
+5.2200       230202       AY8910: reg 0x04, val 0x7C
+5.2200       230202       AY8910: reg 0x08, val 0x09
+5.2200       230202       AY8910: reg 0x09, val 0x0C
+5.2200       230202       WAIT: 882 samples (1/50s)
+5.2400       231084       AY8910: reg 0x02, val 0x5F
+5.2400       231084       AY8910: reg 0x03, val 0x09
+5.2400       231084       AY8910: reg 0x04, val 0x7B
+5.2400       231084       AY8910: reg 0x09, val 0x0A
+5.2400       231084       WAIT: 882 samples (1/50s)
+5.2600       231966       AY8910: reg 0x02, val 0xDF
+5.2600       231966       AY8910: reg 0x04, val 0x7A
+5.2600       231966       AY8910: reg 0x09, val 0x07
+5.2600       231966       WAIT: 882 samples (1/50s)
+5.2800       232848       AY8910: reg 0x00, val 0xEF
+5.2800       232848       AY8910: reg 0x03, val 0x01
+5.2800       232848       AY8910: reg 0x04, val 0x79
+5.2800       232848       AY8910: reg 0x06, val 0x00
+5.2800       232848       AY8910: reg 0x07, val 0x2A
+5.2800       232848       AY8910: reg 0x08, val 0x0F
+5.2800       232848       AY8910: reg 0x09, val 0x0C
+5.2800       232848       WAIT: 882 samples (1/50s)
+5.3000       233730       AY8910: reg 0x04, val 0x78
+5.3000       233730       AY8910: reg 0x08, val 0x0E
+5.3000       233730       AY8910: reg 0x09, val 0x0A
+5.3000       233730       WAIT: 882 samples (1/50s)
+5.3200       234612       AY8910: reg 0x04, val 0x77
+5.3200       234612       AY8910: reg 0x09, val 0x08
+5.3200       234612       WAIT: 882 samples (1/50s)
+5.3400       235494       AY8910: reg 0x08, val 0x0D
+5.3400       235494       AY8910: reg 0x09, val 0x06
+5.3400       235494       WAIT: 882 samples (1/50s)
+5.3600       236376       AY8910: reg 0x00, val 0xB2
+5.3600       236376       AY8910: reg 0x08, val 0x0A
+5.3600       236376       AY8910: reg 0x09, val 0x04
+5.3600       236376       AY8910: reg 0x0A, val 0x0D
+5.3600       236376       WAIT: 882 samples (1/50s)
+5.3800       237258       AY8910: reg 0x08, val 0x09
+5.3800       237258       AY8910: reg 0x09, val 0x02
+5.3800       237258       WAIT: 882 samples (1/50s)
+5.4000       238140       AY8910: reg 0x07, val 0x3A
+5.4000       238140       AY8910: reg 0x09, val 0x00
+5.4000       238140       WAIT: 882 samples (1/50s)
+5.4200       239022       WAIT: 882 samples (1/50s)
+5.4400       239904       AY8910: reg 0x00, val 0x96
+5.4400       239904       AY8910: reg 0x07, val 0x2A
+5.4400       239904       AY8910: reg 0x08, val 0x0F
+5.4400       239904       AY8910: reg 0x09, val 0x0C
+5.4400       239904       WAIT: 882 samples (1/50s)
+5.4600       240786       AY8910: reg 0x08, val 0x0E
+5.4600       240786       WAIT: 882 samples (1/50s)
+5.4800       241668       AY8910: reg 0x09, val 0x0B
+5.4800       241668       WAIT: 882 samples (1/50s)
+5.5000       242550       AY8910: reg 0x08, val 0x0D
+5.5000       242550       WAIT: 882 samples (1/50s)
+5.5200       243432       AY8910: reg 0x00, val 0xEF
+5.5200       243432       AY8910: reg 0x08, val 0x0A
+5.5200       243432       AY8910: reg 0x09, val 0x0A
+5.5200       243432       WAIT: 882 samples (1/50s)
+5.5400       244314       AY8910: reg 0x08, val 0x09
+5.5400       244314       WAIT: 882 samples (1/50s)
+5.5600       245196       AY8910: reg 0x09, val 0x09
+5.5600       245196       WAIT: 882 samples (1/50s)
+5.5800       246078       WAIT: 882 samples (1/50s)
+5.6000       246960       AY8910: reg 0x00, val 0x9F
+5.6000       246960       AY8910: reg 0x03, val 0x02
+5.6000       246960       AY8910: reg 0x04, val 0x75
+5.6000       246960       AY8910: reg 0x07, val 0x38
+5.6000       246960       AY8910: reg 0x08, val 0x0F
+5.6000       246960       AY8910: reg 0x09, val 0x0F
+5.6000       246960       WAIT: 882 samples (1/50s)
+5.6200       247842       AY8910: reg 0x02, val 0x5F
+5.6200       247842       AY8910: reg 0x03, val 0x04
+5.6200       247842       AY8910: reg 0x04, val 0x73
+5.6200       247842       AY8910: reg 0x08, val 0x0E
+5.6200       247842       WAIT: 882 samples (1/50s)
+5.6400       248724       AY8910: reg 0x03, val 0x05
+5.6400       248724       AY8910: reg 0x04, val 0x75
+5.6400       248724       AY8910: reg 0x09, val 0x0E
+5.6400       248724       WAIT: 882 samples (1/50s)
+5.6600       249606       AY8910: reg 0x02, val 0xDF
+5.6600       249606       AY8910: reg 0x03, val 0x06
+5.6600       249606       AY8910: reg 0x04, val 0x77
+5.6600       249606       AY8910: reg 0x08, val 0x0D
+5.6600       249606       WAIT: 882 samples (1/50s)
+5.6800       250488       AY8910: reg 0x00, val 0x96
+5.6800       250488       AY8910: reg 0x02, val 0x5F
+5.6800       250488       AY8910: reg 0x03, val 0x08
+5.6800       250488       AY8910: reg 0x04, val 0x79
+5.6800       250488       AY8910: reg 0x08, val 0x0A
+5.6800       250488       AY8910: reg 0x09, val 0x0D
+5.6800       250488       WAIT: 882 samples (1/50s)
+5.7000       251370       AY8910: reg 0x02, val 0xDF
+5.7000       251370       AY8910: reg 0x04, val 0x7B
+5.7000       251370       AY8910: reg 0x08, val 0x09
+5.7000       251370       AY8910: reg 0x09, val 0x0C
+5.7000       251370       WAIT: 882 samples (1/50s)
+5.7200       252252       AY8910: reg 0x02, val 0x5F
+5.7200       252252       AY8910: reg 0x03, val 0x09
+5.7200       252252       AY8910: reg 0x04, val 0x79
+5.7200       252252       AY8910: reg 0x09, val 0x0A
+5.7200       252252       WAIT: 882 samples (1/50s)
+5.7400       253134       AY8910: reg 0x02, val 0xDF
+5.7400       253134       AY8910: reg 0x04, val 0x77
+5.7400       253134       AY8910: reg 0x09, val 0x07
+5.7400       253134       WAIT: 882 samples (1/50s)
+5.7600       254016       AY8910: reg 0x00, val 0xB2
+5.7600       254016       AY8910: reg 0x03, val 0x01
+5.7600       254016       AY8910: reg 0x07, val 0x2A
+5.7600       254016       AY8910: reg 0x08, val 0x0F
+5.7600       254016       AY8910: reg 0x09, val 0x0C
+5.7600       254016       WAIT: 882 samples (1/50s)
+5.7800       254898       AY8910: reg 0x04, val 0x75
+5.7800       254898       AY8910: reg 0x08, val 0x0E
+5.7800       254898       AY8910: reg 0x09, val 0x0A
+5.7800       254898       WAIT: 882 samples (1/50s)
+5.8000       255780       AY8910: reg 0x04, val 0x73
+5.8000       255780       AY8910: reg 0x09, val 0x08
+5.8000       255780       WAIT: 882 samples (1/50s)
+5.8200       256662       AY8910: reg 0x04, val 0x75
+5.8200       256662       AY8910: reg 0x08, val 0x0D
+5.8200       256662       AY8910: reg 0x09, val 0x06
+5.8200       256662       WAIT: 882 samples (1/50s)
+5.8400       257544       AY8910: reg 0x00, val 0x9F
+5.8400       257544       AY8910: reg 0x04, val 0x77
+5.8400       257544       AY8910: reg 0x08, val 0x0A
+5.8400       257544       AY8910: reg 0x09, val 0x04
+5.8400       257544       WAIT: 882 samples (1/50s)
+5.8600       258426       AY8910: reg 0x04, val 0x79
+5.8600       258426       AY8910: reg 0x08, val 0x09
+5.8600       258426       AY8910: reg 0x09, val 0x02
+5.8600       258426       WAIT: 882 samples (1/50s)
+5.8800       259308       AY8910: reg 0x04, val 0x7B
+5.8800       259308       AY8910: reg 0x07, val 0x3A
+5.8800       259308       AY8910: reg 0x09, val 0x00
+5.8800       259308       WAIT: 882 samples (1/50s)
+5.9000       260190       AY8910: reg 0x04, val 0x79
+5.9000       260190       WAIT: 882 samples (1/50s)
+5.9200       261072       AY8910: reg 0x00, val 0xC8
+5.9200       261072       AY8910: reg 0x04, val 0x77
+5.9200       261072       AY8910: reg 0x07, val 0x2A
+5.9200       261072       AY8910: reg 0x08, val 0x0F
+5.9200       261072       AY8910: reg 0x09, val 0x0C
+5.9200       261072       WAIT: 882 samples (1/50s)
+5.9400       261954       AY8910: reg 0x08, val 0x0E
+5.9400       261954       WAIT: 882 samples (1/50s)
+5.9600       262836       AY8910: reg 0x04, val 0x75
+5.9600       262836       AY8910: reg 0x09, val 0x0B
+5.9600       262836       WAIT: 882 samples (1/50s)
+5.9800       263718       AY8910: reg 0x04, val 0x73
+5.9800       263718       AY8910: reg 0x08, val 0x0D
+5.9800       263718       WAIT: 882 samples (1/50s)
+6.0000       264600       AY8910: reg 0x00, val 0xB2
+6.0000       264600       AY8910: reg 0x04, val 0x75
+6.0000       264600       AY8910: reg 0x08, val 0x0A
+6.0000       264600       AY8910: reg 0x09, val 0x0A
+6.0000       264600       WAIT: 882 samples (1/50s)
+6.0200       265482       AY8910: reg 0x04, val 0x77
+6.0200       265482       AY8910: reg 0x08, val 0x09
+6.0200       265482       WAIT: 882 samples (1/50s)
+6.0400       266364       AY8910: reg 0x04, val 0x79
+6.0400       266364       AY8910: reg 0x09, val 0x09
+6.0400       266364       WAIT: 882 samples (1/50s)
+6.0600       267246       AY8910: reg 0x04, val 0x7B
+6.0600       267246       WAIT: 882 samples (1/50s)
+6.0800       268128       AY8910: reg 0x00, val 0x9F
+6.0800       268128       AY8910: reg 0x04, val 0x79
+6.0800       268128       AY8910: reg 0x08, val 0x0F
+6.0800       268128       AY8910: reg 0x09, val 0x0C
+6.0800       268128       WAIT: 882 samples (1/50s)
+6.1000       269010       AY8910: reg 0x04, val 0x77
+6.1000       269010       AY8910: reg 0x08, val 0x0E
+6.1000       269010       WAIT: 882 samples (1/50s)
+6.1200       269892       AY8910: reg 0x09, val 0x0B
+6.1200       269892       WAIT: 882 samples (1/50s)
+6.1400       270774       AY8910: reg 0x04, val 0x75
+6.1400       270774       AY8910: reg 0x08, val 0x0D
+6.1400       270774       WAIT: 882 samples (1/50s)
+6.1600       271656       AY8910: reg 0x00, val 0xC8
+6.1600       271656       AY8910: reg 0x04, val 0x73
+6.1600       271656       AY8910: reg 0x08, val 0x0A
+6.1600       271656       AY8910: reg 0x09, val 0x0A
+6.1600       271656       WAIT: 882 samples (1/50s)
+6.1800       272538       AY8910: reg 0x04, val 0x75
+6.1800       272538       AY8910: reg 0x08, val 0x09
+6.1800       272538       WAIT: 882 samples (1/50s)
+6.2000       273420       AY8910: reg 0x04, val 0x77
+6.2000       273420       AY8910: reg 0x09, val 0x09
+6.2000       273420       WAIT: 882 samples (1/50s)
+6.2200       274302       AY8910: reg 0x04, val 0x79
+6.2200       274302       WAIT: 882 samples (1/50s)
+6.2400       275184       AY8910: reg 0x00, val 0x96
+6.2400       275184       AY8910: reg 0x02, val 0x5F
+6.2400       275184       AY8910: reg 0x03, val 0x02
+6.2400       275184       AY8910: reg 0x04, val 0x7B
+6.2400       275184       AY8910: reg 0x06, val 0x07
+6.2400       275184       AY8910: reg 0x07, val 0x28
+6.2400       275184       AY8910: reg 0x08, val 0x0F
+6.2400       275184       AY8910: reg 0x09, val 0x0F
+6.2400       275184       WAIT: 882 samples (1/50s)
+6.2600       276066       AY8910: reg 0x02, val 0xDF
+6.2600       276066       AY8910: reg 0x04, val 0x79
+6.2600       276066       AY8910: reg 0x06, val 0x02
+6.2600       276066       AY8910: reg 0x08, val 0x0E
+6.2600       276066       WAIT: 882 samples (1/50s)
+6.2800       276948       AY8910: reg 0x02, val 0x5F
+6.2800       276948       AY8910: reg 0x03, val 0x03
+6.2800       276948       AY8910: reg 0x04, val 0x77
+6.2800       276948       AY8910: reg 0x06, val 0x0A
+6.2800       276948       AY8910: reg 0x09, val 0x0E
+6.2800       276948       WAIT: 882 samples (1/50s)
+6.3000       277830       AY8910: reg 0x02, val 0xDF
+6.3000       277830       AY8910: reg 0x06, val 0x09
+6.3000       277830       AY8910: reg 0x08, val 0x0D
+6.3000       277830       AY8910: reg 0x09, val 0x0D
+6.3000       277830       WAIT: 882 samples (1/50s)
+6.3200       278712       AY8910: reg 0x00, val 0x9F
+6.3200       278712       AY8910: reg 0x02, val 0x5F
+6.3200       278712       AY8910: reg 0x03, val 0x04
+6.3200       278712       AY8910: reg 0x04, val 0x75
+6.3200       278712       AY8910: reg 0x06, val 0x08
+6.3200       278712       AY8910: reg 0x08, val 0x0A
+6.3200       278712       AY8910: reg 0x09, val 0x0C
+6.3200       278712       WAIT: 882 samples (1/50s)
+6.3400       279594       AY8910: reg 0x02, val 0xDF
+6.3400       279594       AY8910: reg 0x04, val 0x73
+6.3400       279594       AY8910: reg 0x06, val 0x07
+6.3400       279594       AY8910: reg 0x08, val 0x09
+6.3400       279594       AY8910: reg 0x09, val 0x0B
+6.3400       279594       WAIT: 882 samples (1/50s)
+6.3600       280476       AY8910: reg 0x03, val 0x01
+6.3600       280476       AY8910: reg 0x04, val 0x75
+6.3600       280476       AY8910: reg 0x06, val 0x06
+6.3600       280476       AY8910: reg 0x07, val 0x2A
+6.3600       280476       AY8910: reg 0x09, val 0x0A
+6.3600       280476       WAIT: 882 samples (1/50s)
+6.3800       281358       AY8910: reg 0x04, val 0x77
+6.3800       281358       AY8910: reg 0x06, val 0x05
+6.3800       281358       AY8910: reg 0x09, val 0x08
+6.3800       281358       WAIT: 882 samples (1/50s)
+6.4000       282240       AY8910: reg 0x00, val 0xB2
+6.4000       282240       AY8910: reg 0x03, val 0x02
+6.4000       282240       AY8910: reg 0x04, val 0x79
+6.4000       282240       AY8910: reg 0x07, val 0x38
+6.4000       282240       AY8910: reg 0x08, val 0x0F
+6.4000       282240       AY8910: reg 0x09, val 0x0F
+6.4000       282240       WAIT: 882 samples (1/50s)
+6.4200       283122       AY8910: reg 0x02, val 0x5F
+6.4200       283122       AY8910: reg 0x03, val 0x04
+6.4200       283122       AY8910: reg 0x04, val 0x7B
+6.4200       283122       AY8910: reg 0x08, val 0x0E
+6.4200       283122       WAIT: 882 samples (1/50s)
+6.4400       284004       AY8910: reg 0x03, val 0x05
+6.4400       284004       AY8910: reg 0x04, val 0x79
+6.4400       284004       AY8910: reg 0x09, val 0x0E
+6.4400       284004       WAIT: 882 samples (1/50s)
+6.4600       284886       AY8910: reg 0x02, val 0xDF
+6.4600       284886       AY8910: reg 0x03, val 0x06
+6.4600       284886       AY8910: reg 0x04, val 0x77
+6.4600       284886       AY8910: reg 0x08, val 0x0D
+6.4600       284886       WAIT: 882 samples (1/50s)
+6.4800       285768       AY8910: reg 0x00, val 0x96
+6.4800       285768       AY8910: reg 0x02, val 0x5F
+6.4800       285768       AY8910: reg 0x03, val 0x08
+6.4800       285768       AY8910: reg 0x08, val 0x0A
+6.4800       285768       AY8910: reg 0x09, val 0x0D
+6.4800       285768       WAIT: 882 samples (1/50s)
+6.5000       286650       AY8910: reg 0x02, val 0xDF
+6.5000       286650       AY8910: reg 0x04, val 0x75
+6.5000       286650       AY8910: reg 0x08, val 0x09
+6.5000       286650       AY8910: reg 0x09, val 0x0C
+6.5000       286650       WAIT: 882 samples (1/50s)
+6.5200       287532       AY8910: reg 0x02, val 0x5F
+6.5200       287532       AY8910: reg 0x03, val 0x09
+6.5200       287532       AY8910: reg 0x04, val 0x73
+6.5200       287532       AY8910: reg 0x09, val 0x0A
+6.5200       287532       WAIT: 882 samples (1/50s)
+6.5400       288414       AY8910: reg 0x02, val 0xDF
+6.5400       288414       AY8910: reg 0x04, val 0x75
+6.5400       288414       AY8910: reg 0x09, val 0x07
+6.5400       288414       WAIT: 882 samples (1/50s)
+6.5600       289296       AY8910: reg 0x00, val 0xEF
+6.5600       289296       AY8910: reg 0x03, val 0x01
+6.5600       289296       AY8910: reg 0x04, val 0x77
+6.5600       289296       AY8910: reg 0x06, val 0x00
+6.5600       289296       AY8910: reg 0x07, val 0x2A
+6.5600       289296       AY8910: reg 0x08, val 0x0F
+6.5600       289296       AY8910: reg 0x09, val 0x0C
+6.5600       289296       WAIT: 882 samples (1/50s)
+6.5800       290178       AY8910: reg 0x04, val 0x79
+6.5800       290178       AY8910: reg 0x08, val 0x0E
+6.5800       290178       AY8910: reg 0x09, val 0x0A
+6.5800       290178       WAIT: 882 samples (1/50s)
+6.6000       291060       AY8910: reg 0x04, val 0x7B
+6.6000       291060       AY8910: reg 0x09, val 0x08
+6.6000       291060       WAIT: 882 samples (1/50s)
+6.6200       291942       AY8910: reg 0x04, val 0x79
+6.6200       291942       AY8910: reg 0x08, val 0x0D
+6.6200       291942       AY8910: reg 0x09, val 0x06
+6.6200       291942       WAIT: 882 samples (1/50s)
+6.6400       292824       AY8910: reg 0x00, val 0xB2
+6.6400       292824       AY8910: reg 0x04, val 0x77
+6.6400       292824       AY8910: reg 0x08, val 0x0A
+6.6400       292824       AY8910: reg 0x09, val 0x04
+6.6400       292824       WAIT: 882 samples (1/50s)
+6.6600       293706       AY8910: reg 0x08, val 0x09
+6.6600       293706       AY8910: reg 0x09, val 0x02
+6.6600       293706       WAIT: 882 samples (1/50s)
+6.6800       294588       AY8910: reg 0x04, val 0x75
+6.6800       294588       AY8910: reg 0x07, val 0x3A
+6.6800       294588       AY8910: reg 0x09, val 0x00
+6.6800       294588       WAIT: 882 samples (1/50s)
+6.7000       295470       AY8910: reg 0x04, val 0x73
+6.7000       295470       WAIT: 882 samples (1/50s)
+6.7200       296352       AY8910: reg 0x00, val 0x85
+6.7200       296352       AY8910: reg 0x04, val 0x75
+6.7200       296352       AY8910: reg 0x07, val 0x2A
+6.7200       296352       AY8910: reg 0x08, val 0x0F
+6.7200       296352       AY8910: reg 0x09, val 0x0C
+6.7200       296352       WAIT: 882 samples (1/50s)
+6.7400       297234       AY8910: reg 0x04, val 0x77
+6.7400       297234       AY8910: reg 0x08, val 0x0E
+6.7400       297234       WAIT: 882 samples (1/50s)
+6.7600       298116       AY8910: reg 0x04, val 0x79
+6.7600       298116       AY8910: reg 0x09, val 0x0B
+6.7600       298116       WAIT: 882 samples (1/50s)
+6.7800       298998       AY8910: reg 0x04, val 0x7B
+6.7800       298998       AY8910: reg 0x08, val 0x0D
+6.7800       298998       WAIT: 882 samples (1/50s)
+6.8000       299880       AY8910: reg 0x00, val 0xEF
+6.8000       299880       AY8910: reg 0x04, val 0x79
+6.8000       299880       AY8910: reg 0x08, val 0x0A
+6.8000       299880       AY8910: reg 0x09, val 0x0A
+6.8000       299880       WAIT: 882 samples (1/50s)
+6.8200       300762       AY8910: reg 0x04, val 0x77
+6.8200       300762       AY8910: reg 0x08, val 0x09
+6.8200       300762       WAIT: 882 samples (1/50s)
+6.8400       301644       AY8910: reg 0x09, val 0x09
+6.8400       301644       WAIT: 882 samples (1/50s)
+6.8600       302526       AY8910: reg 0x04, val 0x75
+6.8600       302526       WAIT: 882 samples (1/50s)
+6.8800       303408       AY8910: reg 0x00, val 0x96
+6.8800       303408       AY8910: reg 0x03, val 0x02
+6.8800       303408       AY8910: reg 0x04, val 0x73
+6.8800       303408       AY8910: reg 0x07, val 0x38
+6.8800       303408       AY8910: reg 0x08, val 0x0F
+6.8800       303408       AY8910: reg 0x09, val 0x0F
+6.8800       303408       WAIT: 882 samples (1/50s)
+6.9000       304290       AY8910: reg 0x02, val 0x5F
+6.9000       304290       AY8910: reg 0x03, val 0x04
+6.9000       304290       AY8910: reg 0x04, val 0x75
+6.9000       304290       AY8910: reg 0x08, val 0x0E
+6.9000       304290       WAIT: 882 samples (1/50s)
+6.9200       305172       AY8910: reg 0x03, val 0x05
+6.9200       305172       AY8910: reg 0x04, val 0x77
+6.9200       305172       AY8910: reg 0x09, val 0x0E
+6.9200       305172       WAIT: 882 samples (1/50s)
+6.9400       306054       AY8910: reg 0x02, val 0xDF
+6.9400       306054       AY8910: reg 0x03, val 0x06
+6.9400       306054       AY8910: reg 0x04, val 0x79
+6.9400       306054       AY8910: reg 0x08, val 0x0D
+6.9400       306054       WAIT: 882 samples (1/50s)
+6.9600       306936       AY8910: reg 0x00, val 0x85
+6.9600       306936       AY8910: reg 0x02, val 0x5F
+6.9600       306936       AY8910: reg 0x03, val 0x08
+6.9600       306936       AY8910: reg 0x04, val 0x7B
+6.9600       306936       AY8910: reg 0x08, val 0x0A
+6.9600       306936       AY8910: reg 0x09, val 0x0D
+6.9600       306936       WAIT: 882 samples (1/50s)
+6.9800       307818       AY8910: reg 0x02, val 0xDF
+6.9800       307818       AY8910: reg 0x04, val 0x79
+6.9800       307818       AY8910: reg 0x08, val 0x09
+6.9800       307818       AY8910: reg 0x09, val 0x0C
+6.9800       307818       WAIT: 882 samples (1/50s)
+7.0000       308700       AY8910: reg 0x02, val 0x5F
+7.0000       308700       AY8910: reg 0x03, val 0x09
+7.0000       308700       AY8910: reg 0x04, val 0x77
+7.0000       308700       AY8910: reg 0x09, val 0x0A
+7.0000       308700       WAIT: 882 samples (1/50s)
+7.0200       309582       AY8910: reg 0x02, val 0xDF
+7.0200       309582       AY8910: reg 0x09, val 0x07
+7.0200       309582       WAIT: 882 samples (1/50s)
+7.0400       310464       AY8910: reg 0x00, val 0x9F
+7.0400       310464       AY8910: reg 0x03, val 0x01
+7.0400       310464       AY8910: reg 0x04, val 0x75
+7.0400       310464       AY8910: reg 0x07, val 0x2A
+7.0400       310464       AY8910: reg 0x08, val 0x0F
+7.0400       310464       AY8910: reg 0x09, val 0x0C
+7.0400       310464       WAIT: 882 samples (1/50s)
+7.0600       311346       AY8910: reg 0x04, val 0x73
+7.0600       311346       AY8910: reg 0x08, val 0x0E
+7.0600       311346       AY8910: reg 0x09, val 0x0A
+7.0600       311346       WAIT: 882 samples (1/50s)
+7.0800       312228       AY8910: reg 0x04, val 0x75
+7.0800       312228       AY8910: reg 0x09, val 0x08
+7.0800       312228       WAIT: 882 samples (1/50s)
+7.1000       313110       AY8910: reg 0x04, val 0x77
+7.1000       313110       AY8910: reg 0x08, val 0x0D
+7.1000       313110       AY8910: reg 0x09, val 0x06
+7.1000       313110       WAIT: 882 samples (1/50s)
+7.1200       313992       AY8910: reg 0x00, val 0x96
+7.1200       313992       AY8910: reg 0x04, val 0x79
+7.1200       313992       AY8910: reg 0x08, val 0x0A
+7.1200       313992       AY8910: reg 0x09, val 0x04
+7.1200       313992       WAIT: 882 samples (1/50s)
+7.1400       314874       AY8910: reg 0x04, val 0x7B
+7.1400       314874       AY8910: reg 0x08, val 0x09
+7.1400       314874       AY8910: reg 0x09, val 0x02
+7.1400       314874       WAIT: 882 samples (1/50s)
+7.1600       315756       AY8910: reg 0x04, val 0x79
+7.1600       315756       AY8910: reg 0x07, val 0x3A
+7.1600       315756       AY8910: reg 0x09, val 0x00
+7.1600       315756       WAIT: 882 samples (1/50s)
+7.1800       316638       AY8910: reg 0x04, val 0x77
+7.1800       316638       WAIT: 882 samples (1/50s)
+7.2000       317520       AY8910: reg 0x00, val 0xEF
+7.2000       317520       AY8910: reg 0x07, val 0x2A
+7.2000       317520       AY8910: reg 0x08, val 0x0F
+7.2000       317520       AY8910: reg 0x09, val 0x0C
+7.2000       317520       WAIT: 882 samples (1/50s)
+7.2200       318402       AY8910: reg 0x04, val 0x75
+7.2200       318402       AY8910: reg 0x08, val 0x0E
+7.2200       318402       AY8910: reg 0x09, val 0x0A
+7.2200       318402       WAIT: 882 samples (1/50s)
+7.2400       319284       AY8910: reg 0x04, val 0x73
+7.2400       319284       AY8910: reg 0x09, val 0x08
+7.2400       319284       WAIT: 882 samples (1/50s)
+7.2600       320166       AY8910: reg 0x04, val 0x75
+7.2600       320166       AY8910: reg 0x08, val 0x0D
+7.2600       320166       AY8910: reg 0x09, val 0x06
+7.2600       320166       WAIT: 882 samples (1/50s)
+7.2800       321048       AY8910: reg 0x00, val 0x9F
+7.2800       321048       AY8910: reg 0x04, val 0x77
+7.2800       321048       AY8910: reg 0x08, val 0x0A
+7.2800       321048       AY8910: reg 0x09, val 0x04
+7.2800       321048       WAIT: 882 samples (1/50s)
+7.3000       321930       AY8910: reg 0x04, val 0x79
+7.3000       321930       AY8910: reg 0x08, val 0x09
+7.3000       321930       AY8910: reg 0x09, val 0x02
+7.3000       321930       WAIT: 882 samples (1/50s)
+7.3200       322812       AY8910: reg 0x04, val 0x7B
+7.3200       322812       AY8910: reg 0x07, val 0x3A
+7.3200       322812       AY8910: reg 0x09, val 0x00
+7.3200       322812       WAIT: 882 samples (1/50s)
+7.3400       323694       AY8910: reg 0x04, val 0x79
+7.3400       323694       WAIT: 882 samples (1/50s)
+7.3600       324576       AY8910: reg 0x00, val 0x96
+7.3600       324576       AY8910: reg 0x02, val 0x5F
+7.3600       324576       AY8910: reg 0x03, val 0x02
+7.3600       324576       AY8910: reg 0x04, val 0x77
+7.3600       324576       AY8910: reg 0x06, val 0x07
+7.3600       324576       AY8910: reg 0x07, val 0x28
+7.3600       324576       AY8910: reg 0x08, val 0x0F
+7.3600       324576       AY8910: reg 0x09, val 0x0F
+7.3600       324576       WAIT: 882 samples (1/50s)
+7.3800       325458       AY8910: reg 0x02, val 0xDF
+7.3800       325458       AY8910: reg 0x06, val 0x02
+7.3800       325458       AY8910: reg 0x08, val 0x0E
+7.3800       325458       WAIT: 882 samples (1/50s)
+7.4000       326340       AY8910: reg 0x02, val 0x5F
+7.4000       326340       AY8910: reg 0x03, val 0x03
+7.4000       326340       AY8910: reg 0x04, val 0x75
+7.4000       326340       AY8910: reg 0x06, val 0x0A
+7.4000       326340       AY8910: reg 0x09, val 0x0E
+7.4000       326340       WAIT: 882 samples (1/50s)
+7.4200       327222       AY8910: reg 0x02, val 0xDF
+7.4200       327222       AY8910: reg 0x04, val 0x73
+7.4200       327222       AY8910: reg 0x06, val 0x09
+7.4200       327222       AY8910: reg 0x08, val 0x0D
+7.4200       327222       AY8910: reg 0x09, val 0x0D
+7.4200       327222       WAIT: 882 samples (1/50s)
+7.4400       328104       AY8910: reg 0x00, val 0xEF
+7.4400       328104       AY8910: reg 0x02, val 0x5F
+7.4400       328104       AY8910: reg 0x03, val 0x02
+7.4400       328104       AY8910: reg 0x04, val 0x75
+7.4400       328104       AY8910: reg 0x06, val 0x07
+7.4400       328104       AY8910: reg 0x08, val 0x0A
+7.4400       328104       AY8910: reg 0x09, val 0x0C
+7.4400       328104       WAIT: 882 samples (1/50s)
+7.4600       328986       AY8910: reg 0x02, val 0xDF
+7.4600       328986       AY8910: reg 0x04, val 0x77
+7.4600       328986       AY8910: reg 0x06, val 0x02
+7.4600       328986       AY8910: reg 0x08, val 0x09
+7.4600       328986       WAIT: 882 samples (1/50s)
+7.4800       329868       AY8910: reg 0x02, val 0x5F
+7.4800       329868       AY8910: reg 0x03, val 0x03
+7.4800       329868       AY8910: reg 0x04, val 0x79
+7.4800       329868       AY8910: reg 0x06, val 0x0A
+7.4800       329868       AY8910: reg 0x09, val 0x0B
+7.4800       329868       WAIT: 882 samples (1/50s)
+7.5000       330750       AY8910: reg 0x02, val 0xDF
+7.5000       330750       AY8910: reg 0x04, val 0x7B
+7.5000       330750       AY8910: reg 0x06, val 0x09
+7.5000       330750       AY8910: reg 0x09, val 0x0A
+7.5000       330750       WAIT: 882 samples (1/50s)
+7.5200       331632       AY8910: reg 0x00, val 0x85
+7.5200       331632       AY8910: reg 0x02, val 0x5F
+7.5200       331632       AY8910: reg 0x03, val 0x02
+7.5200       331632       AY8910: reg 0x04, val 0x79
+7.5200       331632       AY8910: reg 0x06, val 0x07
+7.5200       331632       AY8910: reg 0x08, val 0x0F
+7.5200       331632       AY8910: reg 0x09, val 0x0D
+7.5200       331632       WAIT: 882 samples (1/50s)
+7.5400       332514       AY8910: reg 0x02, val 0xDF
+7.5400       332514       AY8910: reg 0x04, val 0x77
+7.5400       332514       AY8910: reg 0x06, val 0x02
+7.5400       332514       AY8910: reg 0x08, val 0x0E
+7.5400       332514       WAIT: 882 samples (1/50s)
+7.5600       333396       AY8910: reg 0x02, val 0x5F
+7.5600       333396       AY8910: reg 0x03, val 0x03
+7.5600       333396       AY8910: reg 0x06, val 0x0A
+7.5600       333396       AY8910: reg 0x09, val 0x0C
+7.5600       333396       WAIT: 882 samples (1/50s)
+7.5800       334278       AY8910: reg 0x02, val 0xDF
+7.5800       334278       AY8910: reg 0x04, val 0x75
+7.5800       334278       AY8910: reg 0x06, val 0x09
+7.5800       334278       AY8910: reg 0x08, val 0x0D
+7.5800       334278       AY8910: reg 0x09, val 0x0B
+7.5800       334278       WAIT: 882 samples (1/50s)
+7.6000       335160       AY8910: reg 0x00, val 0x96
+7.6000       335160       AY8910: reg 0x02, val 0x5F
+7.6000       335160       AY8910: reg 0x03, val 0x02
+7.6000       335160       AY8910: reg 0x04, val 0x73
+7.6000       335160       AY8910: reg 0x06, val 0x07
+7.6000       335160       AY8910: reg 0x08, val 0x0A
+7.6000       335160       AY8910: reg 0x09, val 0x0E
+7.6000       335160       WAIT: 882 samples (1/50s)
+7.6200       336042       AY8910: reg 0x02, val 0xDF
+7.6200       336042       AY8910: reg 0x04, val 0x75
+7.6200       336042       AY8910: reg 0x06, val 0x02
+7.6200       336042       AY8910: reg 0x08, val 0x09
+7.6200       336042       WAIT: 882 samples (1/50s)
+7.6400       336924       AY8910: reg 0x02, val 0x5F
+7.6400       336924       AY8910: reg 0x03, val 0x03
+7.6400       336924       AY8910: reg 0x04, val 0x77
+7.6400       336924       AY8910: reg 0x06, val 0x0A
+7.6400       336924       AY8910: reg 0x09, val 0x0D
+7.6400       336924       WAIT: 882 samples (1/50s)
+7.6600       337806       AY8910: reg 0x02, val 0xDF
+7.6600       337806       AY8910: reg 0x04, val 0x79
+7.6600       337806       AY8910: reg 0x06, val 0x09
+7.6600       337806       AY8910: reg 0x09, val 0x0C
+7.6600       337806       WAIT: 882 samples (1/50s)
+7.6800       338688       AY8910: reg 0x00, val 0x77
+7.6800       338688       AY8910: reg 0x03, val 0x02
+7.6800       338688       AY8910: reg 0x04, val 0x7B
+7.6800       338688       AY8910: reg 0x07, val 0x38
+7.6800       338688       AY8910: reg 0x08, val 0x0F
+7.6800       338688       AY8910: reg 0x09, val 0x0F
+7.6800       338688       WAIT: 882 samples (1/50s)
+7.7000       339570       AY8910: reg 0x02, val 0x5F
+7.7000       339570       AY8910: reg 0x03, val 0x04
+7.7000       339570       AY8910: reg 0x04, val 0x79
+7.7000       339570       AY8910: reg 0x08, val 0x0E
+7.7000       339570       WAIT: 882 samples (1/50s)
+7.7200       340452       AY8910: reg 0x03, val 0x05
+7.7200       340452       AY8910: reg 0x04, val 0x77
+7.7200       340452       AY8910: reg 0x09, val 0x0E
+7.7200       340452       WAIT: 882 samples (1/50s)
+7.7400       341334       AY8910: reg 0x02, val 0xDF
+7.7400       341334       AY8910: reg 0x03, val 0x06
+7.7400       341334       AY8910: reg 0x08, val 0x0D
+7.7400       341334       WAIT: 882 samples (1/50s)
+7.7600       342216       AY8910: reg 0x00, val 0x85
+7.7600       342216       AY8910: reg 0x02, val 0x5F
+7.7600       342216       AY8910: reg 0x03, val 0x08
+7.7600       342216       AY8910: reg 0x04, val 0x75
+7.7600       342216       AY8910: reg 0x08, val 0x0A
+7.7600       342216       AY8910: reg 0x09, val 0x0D
+7.7600       342216       WAIT: 882 samples (1/50s)
+7.7800       343098       AY8910: reg 0x02, val 0xDF
+7.7800       343098       AY8910: reg 0x04, val 0x73
+7.7800       343098       AY8910: reg 0x08, val 0x09
+7.7800       343098       AY8910: reg 0x09, val 0x0C
+7.7800       343098       WAIT: 882 samples (1/50s)
+7.8000       343980       AY8910: reg 0x02, val 0x5F
+7.8000       343980       AY8910: reg 0x03, val 0x09
+7.8000       343980       AY8910: reg 0x04, val 0x75
+7.8000       343980       AY8910: reg 0x09, val 0x0A
+7.8000       343980       WAIT: 882 samples (1/50s)
+7.8200       344862       AY8910: reg 0x02, val 0xDF
+7.8200       344862       AY8910: reg 0x04, val 0x77
+7.8200       344862       AY8910: reg 0x09, val 0x07
+7.8200       344862       WAIT: 882 samples (1/50s)
+7.8400       345744       AY8910: reg 0x00, val 0xEF
+7.8400       345744       AY8910: reg 0x03, val 0x01
+7.8400       345744       AY8910: reg 0x04, val 0x79
+7.8400       345744       AY8910: reg 0x06, val 0x00
+7.8400       345744       AY8910: reg 0x07, val 0x2A
+7.8400       345744       AY8910: reg 0x08, val 0x0F
+7.8400       345744       AY8910: reg 0x09, val 0x0C
+7.8400       345744       WAIT: 882 samples (1/50s)
+7.8600       346626       AY8910: reg 0x04, val 0x7B
+7.8600       346626       AY8910: reg 0x08, val 0x0E
+7.8600       346626       AY8910: reg 0x09, val 0x0A
+7.8600       346626       WAIT: 882 samples (1/50s)
+7.8800       347508       AY8910: reg 0x04, val 0x79
+7.8800       347508       AY8910: reg 0x09, val 0x08
+7.8800       347508       WAIT: 882 samples (1/50s)
+7.9000       348390       AY8910: reg 0x04, val 0x77
+7.9000       348390       AY8910: reg 0x08, val 0x0D
+7.9000       348390       AY8910: reg 0x09, val 0x06
+7.9000       348390       WAIT: 882 samples (1/50s)
+7.9200       349272       AY8910: reg 0x00, val 0x77
+7.9200       349272       AY8910: reg 0x08, val 0x0A
+7.9200       349272       AY8910: reg 0x09, val 0x04
+7.9200       349272       WAIT: 882 samples (1/50s)
+7.9400       350154       AY8910: reg 0x04, val 0x75
+7.9400       350154       AY8910: reg 0x08, val 0x09
+7.9400       350154       AY8910: reg 0x09, val 0x02
+7.9400       350154       WAIT: 882 samples (1/50s)
+7.9600       351036       AY8910: reg 0x04, val 0x73
+7.9600       351036       AY8910: reg 0x07, val 0x3A
+7.9600       351036       AY8910: reg 0x09, val 0x00
+7.9600       351036       WAIT: 882 samples (1/50s)
+7.9800       351918       AY8910: reg 0x04, val 0x75
+7.9800       351918       WAIT: 882 samples (1/50s)
+8.0000       352800       AY8910: reg 0x00, val 0x85
+8.0000       352800       AY8910: reg 0x04, val 0x77
+8.0000       352800       AY8910: reg 0x07, val 0x2A
+8.0000       352800       AY8910: reg 0x08, val 0x0F
+8.0000       352800       AY8910: reg 0x09, val 0x0C
+8.0000       352800       WAIT: 882 samples (1/50s)
+8.0200       353682       AY8910: reg 0x04, val 0x79
+8.0200       353682       AY8910: reg 0x08, val 0x0E
+8.0200       353682       WAIT: 882 samples (1/50s)
+8.0400       354564       AY8910: reg 0x04, val 0x7B
+8.0400       354564       AY8910: reg 0x09, val 0x0B
+8.0400       354564       WAIT: 882 samples (1/50s)
+8.0600       355446       AY8910: reg 0x04, val 0x79
+8.0600       355446       AY8910: reg 0x08, val 0x0D
+8.0600       355446       WAIT: 882 samples (1/50s)
+8.0800       356328       AY8910: reg 0x00, val 0xEF
+8.0800       356328       AY8910: reg 0x04, val 0x77
+8.0800       356328       AY8910: reg 0x08, val 0x0A
+8.0800       356328       AY8910: reg 0x09, val 0x0A
+8.0800       356328       WAIT: 882 samples (1/50s)
+8.1000       357210       AY8910: reg 0x08, val 0x09
+8.1000       357210       WAIT: 882 samples (1/50s)
+8.1200       358092       AY8910: reg 0x04, val 0x75
+8.1200       358092       AY8910: reg 0x09, val 0x09
+8.1200       358092       WAIT: 882 samples (1/50s)
+8.1400       358974       AY8910: reg 0x04, val 0x73
+8.1400       358974       WAIT: 882 samples (1/50s)
+8.1600       359856       AY8910: reg 0x03, val 0x02
+8.1600       359856       AY8910: reg 0x04, val 0x75
+8.1600       359856       AY8910: reg 0x07, val 0x38
+8.1600       359856       AY8910: reg 0x08, val 0x0F
+8.1600       359856       AY8910: reg 0x09, val 0x0F
+8.1600       359856       WAIT: 882 samples (1/50s)
+8.1800       360738       AY8910: reg 0x02, val 0x5F
+8.1800       360738       AY8910: reg 0x03, val 0x04
+8.1800       360738       AY8910: reg 0x04, val 0x77
+8.1800       360738       AY8910: reg 0x08, val 0x0E
+8.1800       360738       WAIT: 882 samples (1/50s)
+8.2000       361620       AY8910: reg 0x03, val 0x05
+8.2000       361620       AY8910: reg 0x04, val 0x79
+8.2000       361620       AY8910: reg 0x09, val 0x0E
+8.2000       361620       WAIT: 882 samples (1/50s)
+8.2200       362502       AY8910: reg 0x02, val 0xDF
+8.2200       362502       AY8910: reg 0x03, val 0x06
+8.2200       362502       AY8910: reg 0x04, val 0x7B
+8.2200       362502       AY8910: reg 0x08, val 0x0D
+8.2200       362502       WAIT: 882 samples (1/50s)
+8.2400       363384       AY8910: reg 0x00, val 0x85
+8.2400       363384       AY8910: reg 0x02, val 0x5F
+8.2400       363384       AY8910: reg 0x03, val 0x08
+8.2400       363384       AY8910: reg 0x04, val 0x79
+8.2400       363384       AY8910: reg 0x08, val 0x0A
+8.2400       363384       AY8910: reg 0x09, val 0x0D
+8.2400       363384       WAIT: 882 samples (1/50s)
+8.2600       364266       AY8910: reg 0x02, val 0xDF
+8.2600       364266       AY8910: reg 0x04, val 0x77
+8.2600       364266       AY8910: reg 0x08, val 0x09
+8.2600       364266       AY8910: reg 0x09, val 0x0C
+8.2600       364266       WAIT: 882 samples (1/50s)
+8.2800       365148       AY8910: reg 0x02, val 0x5F
+8.2800       365148       AY8910: reg 0x03, val 0x09
+8.2800       365148       AY8910: reg 0x09, val 0x0A
+8.2800       365148       WAIT: 882 samples (1/50s)
+8.3000       366030       AY8910: reg 0x02, val 0xDF
+8.3000       366030       AY8910: reg 0x04, val 0x75
+8.3000       366030       AY8910: reg 0x09, val 0x07
+8.3000       366030       WAIT: 882 samples (1/50s)
+8.3200       366912       AY8910: reg 0x00, val 0x96
+8.3200       366912       AY8910: reg 0x03, val 0x01
+8.3200       366912       AY8910: reg 0x04, val 0x73
+8.3200       366912       AY8910: reg 0x07, val 0x2A
+8.3200       366912       AY8910: reg 0x08, val 0x0F
+8.3200       366912       AY8910: reg 0x09, val 0x0C
+8.3200       366912       WAIT: 882 samples (1/50s)
+8.3400       367794       AY8910: reg 0x04, val 0x75
+8.3400       367794       AY8910: reg 0x08, val 0x0E
+8.3400       367794       AY8910: reg 0x09, val 0x0A
+8.3400       367794       WAIT: 882 samples (1/50s)
+8.3600       368676       AY8910: reg 0x04, val 0x77
+8.3600       368676       AY8910: reg 0x09, val 0x08
+8.3600       368676       WAIT: 882 samples (1/50s)
+8.3800       369558       AY8910: reg 0x04, val 0x79
+8.3800       369558       AY8910: reg 0x08, val 0x0D
+8.3800       369558       AY8910: reg 0x09, val 0x06
+8.3800       369558       WAIT: 882 samples (1/50s)
+8.4000       370440       AY8910: reg 0x00, val 0xEF
+8.4000       370440       AY8910: reg 0x04, val 0x7B
+8.4000       370440       AY8910: reg 0x08, val 0x0A
+8.4000       370440       AY8910: reg 0x09, val 0x04
+8.4000       370440       WAIT: 882 samples (1/50s)
+8.4200       371322       AY8910: reg 0x04, val 0x79
+8.4200       371322       AY8910: reg 0x08, val 0x09
+8.4200       371322       AY8910: reg 0x09, val 0x02
+8.4200       371322       WAIT: 882 samples (1/50s)
+8.4400       372204       AY8910: reg 0x04, val 0x77
+8.4400       372204       AY8910: reg 0x07, val 0x3A
+8.4400       372204       AY8910: reg 0x09, val 0x00
+8.4400       372204       WAIT: 882 samples (1/50s)
+8.4600       373086       WAIT: 882 samples (1/50s)
+8.4800       373968       AY8910: reg 0x04, val 0x75
+8.4800       373968       AY8910: reg 0x07, val 0x2A
+8.4800       373968       AY8910: reg 0x08, val 0x0F
+8.4800       373968       AY8910: reg 0x09, val 0x0C
+8.4800       373968       WAIT: 882 samples (1/50s)
+8.5000       374850       AY8910: reg 0x04, val 0x73
+8.5000       374850       AY8910: reg 0x08, val 0x0E
+8.5000       374850       WAIT: 882 samples (1/50s)
+8.5200       375732       AY8910: reg 0x04, val 0x75
+8.5200       375732       AY8910: reg 0x09, val 0x0B
+8.5200       375732       WAIT: 882 samples (1/50s)
+8.5400       376614       AY8910: reg 0x04, val 0x77
+8.5400       376614       AY8910: reg 0x08, val 0x0D
+8.5400       376614       WAIT: 882 samples (1/50s)
+8.5600       377496       AY8910: reg 0x00, val 0x96
+8.5600       377496       AY8910: reg 0x04, val 0x79
+8.5600       377496       AY8910: reg 0x08, val 0x0A
+8.5600       377496       AY8910: reg 0x09, val 0x0A
+8.5600       377496       WAIT: 882 samples (1/50s)
+8.5800       378378       AY8910: reg 0x04, val 0x7B
+8.5800       378378       AY8910: reg 0x08, val 0x09
+8.5800       378378       WAIT: 882 samples (1/50s)
+8.6000       379260       AY8910: reg 0x04, val 0x79
+8.6000       379260       AY8910: reg 0x09, val 0x09
+8.6000       379260       WAIT: 882 samples (1/50s)
+8.6200       380142       AY8910: reg 0x04, val 0x77
+8.6200       380142       WAIT: 882 samples (1/50s)
+8.6400       381024       AY8910: reg 0x00, val 0x9F
+8.6400       381024       AY8910: reg 0x08, val 0x0F
+8.6400       381024       AY8910: reg 0x09, val 0x0C
+8.6400       381024       WAIT: 882 samples (1/50s)
+8.6600       381906       AY8910: reg 0x04, val 0x75
+8.6600       381906       AY8910: reg 0x08, val 0x0E
+8.6600       381906       WAIT: 882 samples (1/50s)
+8.6800       382788       AY8910: reg 0x04, val 0x73
+8.6800       382788       AY8910: reg 0x09, val 0x0B
+8.6800       382788       WAIT: 882 samples (1/50s)
+8.7000       383670       AY8910: reg 0x04, val 0x75
+8.7000       383670       AY8910: reg 0x08, val 0x0D
+8.7000       383670       WAIT: 882 samples (1/50s)
+8.7200       384552       AY8910: reg 0x00, val 0xEF
+8.7200       384552       AY8910: reg 0x04, val 0x77
+8.7200       384552       AY8910: reg 0x08, val 0x0A
+8.7200       384552       AY8910: reg 0x09, val 0x0A
+8.7200       384552       WAIT: 882 samples (1/50s)
+8.7400       385434       AY8910: reg 0x04, val 0x79
+8.7400       385434       AY8910: reg 0x08, val 0x09
+8.7400       385434       WAIT: 882 samples (1/50s)
+8.7600       386316       AY8910: reg 0x04, val 0x7B
+8.7600       386316       AY8910: reg 0x09, val 0x09
+8.7600       386316       WAIT: 882 samples (1/50s)
+8.7800       387198       AY8910: reg 0x04, val 0x79
+8.7800       387198       WAIT: 882 samples (1/50s)
+8.8000       388080       AY8910: reg 0x00, val 0x96
+8.8000       388080       AY8910: reg 0x02, val 0x5F
+8.8000       388080       AY8910: reg 0x03, val 0x02
+8.8000       388080       AY8910: reg 0x04, val 0x77
+8.8000       388080       AY8910: reg 0x06, val 0x07
+8.8000       388080       AY8910: reg 0x07, val 0x28
+8.8000       388080       AY8910: reg 0x08, val 0x0F
+8.8000       388080       AY8910: reg 0x09, val 0x0F
+8.8000       388080       WAIT: 882 samples (1/50s)
+8.8200       388962       AY8910: reg 0x02, val 0xDF
+8.8200       388962       AY8910: reg 0x06, val 0x02
+8.8200       388962       AY8910: reg 0x08, val 0x0E
+8.8200       388962       WAIT: 882 samples (1/50s)
+8.8400       389844       AY8910: reg 0x02, val 0x5F
+8.8400       389844       AY8910: reg 0x03, val 0x03
+8.8400       389844       AY8910: reg 0x04, val 0x75
+8.8400       389844       AY8910: reg 0x06, val 0x0A
+8.8400       389844       AY8910: reg 0x09, val 0x0E
+8.8400       389844       WAIT: 882 samples (1/50s)
+8.8600       390726       AY8910: reg 0x02, val 0xDF
+8.8600       390726       AY8910: reg 0x04, val 0x73
+8.8600       390726       AY8910: reg 0x06, val 0x09
+8.8600       390726       AY8910: reg 0x08, val 0x0D
+8.8600       390726       AY8910: reg 0x09, val 0x0D
+8.8600       390726       WAIT: 882 samples (1/50s)
+8.8800       391608       AY8910: reg 0x00, val 0x9F
+8.8800       391608       AY8910: reg 0x02, val 0x5F
+8.8800       391608       AY8910: reg 0x03, val 0x04
+8.8800       391608       AY8910: reg 0x04, val 0x75
+8.8800       391608       AY8910: reg 0x06, val 0x08
+8.8800       391608       AY8910: reg 0x08, val 0x0A
+8.8800       391608       AY8910: reg 0x09, val 0x0C
+8.8800       391608       WAIT: 882 samples (1/50s)
+8.9000       392490       AY8910: reg 0x02, val 0xDF
+8.9000       392490       AY8910: reg 0x04, val 0x77
+8.9000       392490       AY8910: reg 0x06, val 0x07
+8.9000       392490       AY8910: reg 0x08, val 0x09
+8.9000       392490       AY8910: reg 0x09, val 0x0B
+8.9000       392490       WAIT: 882 samples (1/50s)
+8.9200       393372       AY8910: reg 0x03, val 0x01
+8.9200       393372       AY8910: reg 0x04, val 0x79
+8.9200       393372       AY8910: reg 0x06, val 0x06
+8.9200       393372       AY8910: reg 0x07, val 0x2A
+8.9200       393372       AY8910: reg 0x09, val 0x0A
+8.9200       393372       WAIT: 882 samples (1/50s)
+8.9400       394254       AY8910: reg 0x04, val 0x7B
+8.9400       394254       AY8910: reg 0x06, val 0x05
+8.9400       394254       AY8910: reg 0x09, val 0x08
+8.9400       394254       WAIT: 882 samples (1/50s)
+8.9600       395136       AY8910: reg 0x03, val 0x02
+8.9600       395136       AY8910: reg 0x04, val 0x79
+8.9600       395136       AY8910: reg 0x07, val 0x38
+8.9600       395136       AY8910: reg 0x08, val 0x0F
+8.9600       395136       AY8910: reg 0x09, val 0x0F
+8.9600       395136       WAIT: 882 samples (1/50s)
+8.9800       396018       AY8910: reg 0x02, val 0x5F
+8.9800       396018       AY8910: reg 0x03, val 0x04
+8.9800       396018       AY8910: reg 0x04, val 0x77
+8.9800       396018       AY8910: reg 0x08, val 0x0E
+8.9800       396018       WAIT: 882 samples (1/50s)
+9.0000       396900       AY8910: reg 0x03, val 0x05
+9.0000       396900       AY8910: reg 0x09, val 0x0E
+9.0000       396900       WAIT: 882 samples (1/50s)
+9.0200       397782       AY8910: reg 0x02, val 0xDF
+9.0200       397782       AY8910: reg 0x03, val 0x06
+9.0200       397782       AY8910: reg 0x04, val 0x75
+9.0200       397782       AY8910: reg 0x08, val 0x0D
+9.0200       397782       WAIT: 882 samples (1/50s)
+9.0400       398664       AY8910: reg 0x00, val 0xEF
+9.0400       398664       AY8910: reg 0x02, val 0x5F
+9.0400       398664       AY8910: reg 0x03, val 0x08
+9.0400       398664       AY8910: reg 0x04, val 0x73
+9.0400       398664       AY8910: reg 0x08, val 0x0A
+9.0400       398664       AY8910: reg 0x09, val 0x0D
+9.0400       398664       WAIT: 882 samples (1/50s)
+9.0600       399546       AY8910: reg 0x02, val 0xDF
+9.0600       399546       AY8910: reg 0x04, val 0x75
+9.0600       399546       AY8910: reg 0x08, val 0x09
+9.0600       399546       AY8910: reg 0x09, val 0x0C
+9.0600       399546       WAIT: 882 samples (1/50s)
+9.0800       400428       AY8910: reg 0x02, val 0x5F
+9.0800       400428       AY8910: reg 0x03, val 0x09
+9.0800       400428       AY8910: reg 0x04, val 0x77
+9.0800       400428       AY8910: reg 0x09, val 0x0A
+9.0800       400428       WAIT: 882 samples (1/50s)
+9.1000       401310       AY8910: reg 0x02, val 0xDF
+9.1000       401310       AY8910: reg 0x04, val 0x79
+9.1000       401310       AY8910: reg 0x09, val 0x07
+9.1000       401310       WAIT: 882 samples (1/50s)
+9.1200       402192       AY8910: reg 0x00, val 0xB2
+9.1200       402192       AY8910: reg 0x03, val 0x01
+9.1200       402192       AY8910: reg 0x04, val 0x7B
+9.1200       402192       AY8910: reg 0x06, val 0x00
+9.1200       402192       AY8910: reg 0x07, val 0x2A
+9.1200       402192       AY8910: reg 0x08, val 0x0F
+9.1200       402192       AY8910: reg 0x09, val 0x0C
+9.1200       402192       WAIT: 882 samples (1/50s)
+9.1400       403074       AY8910: reg 0x04, val 0x79
+9.1400       403074       AY8910: reg 0x08, val 0x0E
+9.1400       403074       AY8910: reg 0x09, val 0x0A
+9.1400       403074       WAIT: 882 samples (1/50s)
+9.1600       403956       AY8910: reg 0x04, val 0x77
+9.1600       403956       AY8910: reg 0x09, val 0x08
+9.1600       403956       WAIT: 882 samples (1/50s)
+9.1800       404838       AY8910: reg 0x08, val 0x0D
+9.1800       404838       AY8910: reg 0x09, val 0x06
+9.1800       404838       WAIT: 882 samples (1/50s)
+9.2000       405720       AY8910: reg 0x00, val 0x96
+9.2000       405720       AY8910: reg 0x04, val 0x75
+9.2000       405720       AY8910: reg 0x08, val 0x0A
+9.2000       405720       AY8910: reg 0x09, val 0x04
+9.2000       405720       WAIT: 882 samples (1/50s)
+9.2200       406602       AY8910: reg 0x04, val 0x73
+9.2200       406602       AY8910: reg 0x08, val 0x09
+9.2200       406602       AY8910: reg 0x09, val 0x02
+9.2200       406602       WAIT: 882 samples (1/50s)
+9.2400       407484       AY8910: reg 0x04, val 0x75
+9.2400       407484       AY8910: reg 0x07, val 0x3A
+9.2400       407484       AY8910: reg 0x09, val 0x00
+9.2400       407484       WAIT: 882 samples (1/50s)
+9.2600       408366       AY8910: reg 0x04, val 0x77
+9.2600       408366       WAIT: 882 samples (1/50s)
+9.2800       409248       AY8910: reg 0x00, val 0x0A
+9.2800       409248       AY8910: reg 0x01, val 0x01
+9.2800       409248       AY8910: reg 0x04, val 0x2C
+9.2800       409248       AY8910: reg 0x05, val 0x04
+9.2800       409248       AY8910: reg 0x07, val 0x0E
+9.2800       409248       AY8910: reg 0x08, val 0x0F
+9.2800       409248       AY8910: reg 0x09, val 0x0C
+9.2800       409248       AY8910: reg 0x0A, val 0x0C
+9.2800       409248       AY8910: reg 0x0D, val 0x0C
+9.2800       409248       WAIT: 882 samples (1/50s)
+9.3000       410130       AY8910: reg 0x07, val 0x2E
+9.3000       410130       AY8910: reg 0x08, val 0x0E
+9.3000       410130       AY8910: reg 0x0A, val 0x1F
+9.3000       410130       AY8910: reg 0x0B, val 0x86
+9.3000       410130       WAIT: 882 samples (1/50s)
+9.3200       411012       AY8910: reg 0x09, val 0x0B
+9.3200       411012       WAIT: 882 samples (1/50s)
+9.3400       411894       AY8910: reg 0x08, val 0x0D
+9.3400       411894       WAIT: 882 samples (1/50s)
+9.3600       412776       AY8910: reg 0x00, val 0xB2
+9.3600       412776       AY8910: reg 0x01, val 0x00
+9.3600       412776       AY8910: reg 0x04, val 0x94
+9.3600       412776       AY8910: reg 0x05, val 0x05
+9.3600       412776       AY8910: reg 0x07, val 0x2A
+9.3600       412776       AY8910: reg 0x08, val 0x0A
+9.3600       412776       AY8910: reg 0x09, val 0x0A
+9.3600       412776       AY8910: reg 0x0A, val 0x0C
+9.3600       412776       WAIT: 882 samples (1/50s)
+9.3800       413658       AY8910: reg 0x08, val 0x09
+9.3800       413658       WAIT: 882 samples (1/50s)
+9.4000       414540       AY8910: reg 0x09, val 0x09
+9.4000       414540       WAIT: 882 samples (1/50s)
+9.4200       415422       WAIT: 882 samples (1/50s)
+9.4400       416304       AY8910: reg 0x00, val 0xEF
+9.4400       416304       AY8910: reg 0x03, val 0x02
+9.4400       416304       AY8910: reg 0x04, val 0xBE
+9.4400       416304       AY8910: reg 0x05, val 0x03
+9.4400       416304       AY8910: reg 0x07, val 0x1C
+9.4400       416304       AY8910: reg 0x08, val 0x0F
+9.4400       416304       AY8910: reg 0x09, val 0x0F
+9.4400       416304       AY8910: reg 0x0D, val 0x0C
+9.4400       416304       WAIT: 882 samples (1/50s)
+9.4600       417186       AY8910: reg 0x02, val 0x5F
+9.4600       417186       AY8910: reg 0x03, val 0x04
+9.4600       417186       AY8910: reg 0x07, val 0x3C
+9.4600       417186       AY8910: reg 0x08, val 0x0E
+9.4600       417186       AY8910: reg 0x0A, val 0x1F
+9.4600       417186       AY8910: reg 0x0B, val 0x78
+9.4600       417186       WAIT: 882 samples (1/50s)
+9.4800       418068       AY8910: reg 0x03, val 0x05
+9.4800       418068       AY8910: reg 0x09, val 0x0E
+9.4800       418068       WAIT: 882 samples (1/50s)
+9.5000       418950       AY8910: reg 0x02, val 0xDF
+9.5000       418950       AY8910: reg 0x03, val 0x06
+9.5000       418950       AY8910: reg 0x08, val 0x0D
+9.5000       418950       WAIT: 882 samples (1/50s)
+9.5200       419832       AY8910: reg 0x00, val 0x0A
+9.5200       419832       AY8910: reg 0x01, val 0x01
+9.5200       419832       AY8910: reg 0x02, val 0x5F
+9.5200       419832       AY8910: reg 0x03, val 0x08
+9.5200       419832       AY8910: reg 0x04, val 0x58
+9.5200       419832       AY8910: reg 0x05, val 0x08
+9.5200       419832       AY8910: reg 0x07, val 0x38
+9.5200       419832       AY8910: reg 0x08, val 0x0A
+9.5200       419832       AY8910: reg 0x09, val 0x0D
+9.5200       419832       AY8910: reg 0x0A, val 0x0C
+9.5200       419832       WAIT: 882 samples (1/50s)
+9.5400       420714       AY8910: reg 0x02, val 0xDF
+9.5400       420714       AY8910: reg 0x08, val 0x09
+9.5400       420714       AY8910: reg 0x09, val 0x0C
+9.5400       420714       WAIT: 882 samples (1/50s)
+9.5600       421596       AY8910: reg 0x02, val 0x5F
+9.5600       421596       AY8910: reg 0x03, val 0x09
+9.5600       421596       AY8910: reg 0x09, val 0x0A
+9.5600       421596       WAIT: 882 samples (1/50s)
+9.5800       422478       AY8910: reg 0x02, val 0xDF
+9.5800       422478       AY8910: reg 0x09, val 0x07
+9.5800       422478       WAIT: 882 samples (1/50s)
+9.6000       423360       AY8910: reg 0x00, val 0xC8
+9.6000       423360       AY8910: reg 0x01, val 0x00
+9.6000       423360       AY8910: reg 0x03, val 0x01
+9.6000       423360       AY8910: reg 0x04, val 0x20
+9.6000       423360       AY8910: reg 0x05, val 0x03
+9.6000       423360       AY8910: reg 0x07, val 0x0E
+9.6000       423360       AY8910: reg 0x08, val 0x0F
+9.6000       423360       AY8910: reg 0x09, val 0x0C
+9.6000       423360       AY8910: reg 0x0D, val 0x0C
+9.6000       423360       WAIT: 882 samples (1/50s)
+9.6200       424242       AY8910: reg 0x07, val 0x2E
+9.6200       424242       AY8910: reg 0x08, val 0x0E
+9.6200       424242       AY8910: reg 0x09, val 0x0A
+9.6200       424242       AY8910: reg 0x0A, val 0x1F
+9.6200       424242       AY8910: reg 0x0B, val 0x64
+9.6200       424242       WAIT: 882 samples (1/50s)
+9.6400       425124       AY8910: reg 0x09, val 0x08
+9.6400       425124       WAIT: 882 samples (1/50s)
+9.6600       426006       AY8910: reg 0x08, val 0x0D
+9.6600       426006       AY8910: reg 0x09, val 0x06
+9.6600       426006       WAIT: 882 samples (1/50s)
+9.6800       426888       AY8910: reg 0x00, val 0xEF
+9.6800       426888       AY8910: reg 0x04, val 0x7C
+9.6800       426888       AY8910: reg 0x05, val 0x07
+9.6800       426888       AY8910: reg 0x07, val 0x2A
+9.6800       426888       AY8910: reg 0x08, val 0x0A
+9.6800       426888       AY8910: reg 0x09, val 0x04
+9.6800       426888       AY8910: reg 0x0A, val 0x0C
+9.6800       426888       WAIT: 882 samples (1/50s)
+9.7000       427770       AY8910: reg 0x08, val 0x09
+9.7000       427770       AY8910: reg 0x09, val 0x02
+9.7000       427770       WAIT: 882 samples (1/50s)
+9.7200       428652       AY8910: reg 0x07, val 0x3A
+9.7200       428652       AY8910: reg 0x09, val 0x00
+9.7200       428652       WAIT: 882 samples (1/50s)
+9.7400       429534       WAIT: 882 samples (1/50s)
+9.7600       430416       AY8910: reg 0x00, val 0xB2
+9.7600       430416       AY8910: reg 0x04, val 0xCA
+9.7600       430416       AY8910: reg 0x05, val 0x02
+9.7600       430416       AY8910: reg 0x07, val 0x0E
+9.7600       430416       AY8910: reg 0x08, val 0x0F
+9.7600       430416       AY8910: reg 0x09, val 0x0C
+9.7600       430416       AY8910: reg 0x0D, val 0x0C
+9.7600       430416       WAIT: 882 samples (1/50s)
+9.7800       431298       AY8910: reg 0x07, val 0x2E
+9.7800       431298       AY8910: reg 0x08, val 0x0E
+9.7800       431298       AY8910: reg 0x09, val 0x0A
+9.7800       431298       AY8910: reg 0x0A, val 0x1F
+9.7800       431298       AY8910: reg 0x0B, val 0x59
+9.7800       431298       WAIT: 882 samples (1/50s)
+9.8000       432180       AY8910: reg 0x09, val 0x08
+9.8000       432180       WAIT: 882 samples (1/50s)
+9.8200       433062       AY8910: reg 0x08, val 0x0D
+9.8200       433062       AY8910: reg 0x09, val 0x06
+9.8200       433062       WAIT: 882 samples (1/50s)
+9.8400       433944       AY8910: reg 0x00, val 0xC8
+9.8400       433944       AY8910: reg 0x04, val 0x40
+9.8400       433944       AY8910: reg 0x05, val 0x06
+9.8400       433944       AY8910: reg 0x07, val 0x2A
+9.8400       433944       AY8910: reg 0x08, val 0x0A
+9.8400       433944       AY8910: reg 0x09, val 0x04
+9.8400       433944       AY8910: reg 0x0A, val 0x0C
+9.8400       433944       WAIT: 882 samples (1/50s)
+9.8600       434826       AY8910: reg 0x08, val 0x09
+9.8600       434826       AY8910: reg 0x09, val 0x02
+9.8600       434826       WAIT: 882 samples (1/50s)
+9.8800       435708       AY8910: reg 0x07, val 0x3A
+9.8800       435708       AY8910: reg 0x09, val 0x00
+9.8800       435708       WAIT: 882 samples (1/50s)
+9.9000       436590       WAIT: 882 samples (1/50s)
+9.9200       437472       AY8910: reg 0x00, val 0x9F
+9.9200       437472       AY8910: reg 0x02, val 0x5F
+9.9200       437472       AY8910: reg 0x03, val 0x02
+9.9200       437472       AY8910: reg 0x04, val 0x7C
+9.9200       437472       AY8910: reg 0x05, val 0x02
+9.9200       437472       AY8910: reg 0x07, val 0x0C
+9.9200       437472       AY8910: reg 0x08, val 0x0F
+9.9200       437472       AY8910: reg 0x09, val 0x0F
+9.9200       437472       AY8910: reg 0x0D, val 0x0C
+9.9200       437472       WAIT: 882 samples (1/50s)
+9.9400       438354       AY8910: reg 0x02, val 0xDF
+9.9400       438354       AY8910: reg 0x06, val 0x02
+9.9400       438354       AY8910: reg 0x07, val 0x2C
+9.9400       438354       AY8910: reg 0x08, val 0x0E
+9.9400       438354       AY8910: reg 0x0A, val 0x1F
+9.9400       438354       AY8910: reg 0x0B, val 0x50
+9.9400       438354       WAIT: 882 samples (1/50s)
+9.9600       439236       AY8910: reg 0x02, val 0x5F
+9.9600       439236       AY8910: reg 0x03, val 0x03
+9.9600       439236       AY8910: reg 0x06, val 0x0A
+9.9600       439236       AY8910: reg 0x09, val 0x0E
+9.9600       439236       WAIT: 882 samples (1/50s)
+9.9800       440118       AY8910: reg 0x02, val 0xDF
+9.9800       440118       AY8910: reg 0x06, val 0x09
+9.9800       440118       AY8910: reg 0x08, val 0x0D
+9.9800       440118       AY8910: reg 0x09, val 0x0D
+9.9800       440118       WAIT: 882 samples (1/50s)
+10.0000      441000       AY8910: reg 0x00, val 0xB2
+10.0000      441000       AY8910: reg 0x02, val 0x6F
+10.0000      441000       AY8910: reg 0x03, val 0x01
+10.0000      441000       AY8910: reg 0x04, val 0x94
+10.0000      441000       AY8910: reg 0x05, val 0x05
+10.0000      441000       AY8910: reg 0x06, val 0x07
+10.0000      441000       AY8910: reg 0x07, val 0x28
+10.0000      441000       AY8910: reg 0x08, val 0x0A
+10.0000      441000       AY8910: reg 0x09, val 0x0F
+10.0000      441000       AY8910: reg 0x0A, val 0x0C
+10.0000      441000       WAIT: 882 samples (1/50s)
+10.0200      441882       AY8910: reg 0x02, val 0xEF
+10.0200      441882       AY8910: reg 0x06, val 0x02
+10.0200      441882       AY8910: reg 0x08, val 0x09
+10.0200      441882       WAIT: 882 samples (1/50s)
+10.0400      442764       AY8910: reg 0x02, val 0x6F
+10.0400      442764       AY8910: reg 0x03, val 0x02
+10.0400      442764       AY8910: reg 0x06, val 0x0A
+10.0400      442764       AY8910: reg 0x09, val 0x0E
+10.0400      442764       WAIT: 882 samples (1/50s)
+10.0600      443646       AY8910: reg 0x02, val 0xEF
+10.0600      443646       AY8910: reg 0x06, val 0x09
+10.0600      443646       AY8910: reg 0x09, val 0x0D
+10.0600      443646       WAIT: 882 samples (1/50s)
+10.0800      444528       AY8910: reg 0x00, val 0x96
+10.0800      444528       AY8910: reg 0x02, val 0x5F
+10.0800      444528       AY8910: reg 0x04, val 0x58
+10.0800      444528       AY8910: reg 0x05, val 0x02
+10.0800      444528       AY8910: reg 0x06, val 0x00
+10.0800      444528       AY8910: reg 0x07, val 0x0C
+10.0800      444528       AY8910: reg 0x08, val 0x0F
+10.0800      444528       AY8910: reg 0x09, val 0x0F
+10.0800      444528       AY8910: reg 0x0D, val 0x0C
+10.0800      444528       WAIT: 882 samples (1/50s)
+10.1000      445410       AY8910: reg 0x02, val 0xDF
+10.1000      445410       AY8910: reg 0x06, val 0x02
+10.1000      445410       AY8910: reg 0x07, val 0x2C
+10.1000      445410       AY8910: reg 0x08, val 0x0E
+10.1000      445410       AY8910: reg 0x0A, val 0x1F
+10.1000      445410       AY8910: reg 0x0B, val 0x4B
+10.1000      445410       WAIT: 882 samples (1/50s)
+10.1200      446292       AY8910: reg 0x02, val 0x5F
+10.1200      446292       AY8910: reg 0x03, val 0x03
+10.1200      446292       AY8910: reg 0x06, val 0x0A
+10.1200      446292       AY8910: reg 0x09, val 0x0E
+10.1200      446292       WAIT: 882 samples (1/50s)
+10.1400      447174       AY8910: reg 0x02, val 0xDF
+10.1400      447174       AY8910: reg 0x06, val 0x09
+10.1400      447174       AY8910: reg 0x08, val 0x0D
+10.1400      447174       AY8910: reg 0x09, val 0x0D
+10.1400      447174       WAIT: 882 samples (1/50s)
+10.1600      448056       AY8910: reg 0x00, val 0x9F
+10.1600      448056       AY8910: reg 0x02, val 0x5F
+10.1600      448056       AY8910: reg 0x03, val 0x02
+10.1600      448056       AY8910: reg 0x04, val 0xF8
+10.1600      448056       AY8910: reg 0x05, val 0x04
+10.1600      448056       AY8910: reg 0x06, val 0x07
+10.1600      448056       AY8910: reg 0x07, val 0x28
+10.1600      448056       AY8910: reg 0x08, val 0x0A
+10.1600      448056       AY8910: reg 0x09, val 0x0F
+10.1600      448056       AY8910: reg 0x0A, val 0x0C
+10.1600      448056       WAIT: 882 samples (1/50s)
+10.1800      448938       AY8910: reg 0x02, val 0xDF
+10.1800      448938       AY8910: reg 0x06, val 0x02
+10.1800      448938       AY8910: reg 0x08, val 0x09
+10.1800      448938       WAIT: 882 samples (1/50s)
+10.2000      449820       AY8910: reg 0x02, val 0x5F
+10.2000      449820       AY8910: reg 0x03, val 0x03
+10.2000      449820       AY8910: reg 0x06, val 0x0A
+10.2000      449820       AY8910: reg 0x09, val 0x0E
+10.2000      449820       WAIT: 882 samples (1/50s)
+10.2200      450702       AY8910: reg 0x02, val 0xDF
+10.2200      450702       AY8910: reg 0x06, val 0x09
+10.2200      450702       AY8910: reg 0x09, val 0x0D
+10.2200      450702       WAIT: 882 samples (1/50s)
+10.2400      451584       AY8910: reg 0x00, val 0xB2
+10.2400      451584       AY8910: reg 0x02, val 0x65
+10.2400      451584       AY8910: reg 0x03, val 0x01
+10.2400      451584       AY8910: reg 0x04, val 0xB2
+10.2400      451584       AY8910: reg 0x05, val 0x00
+10.2400      451584       AY8910: reg 0x06, val 0x00
+10.2400      451584       AY8910: reg 0x07, val 0x2A
+10.2400      451584       AY8910: reg 0x08, val 0x0F
+10.2400      451584       AY8910: reg 0x09, val 0x0C
+10.2400      451584       AY8910: reg 0x0A, val 0x0E
+10.2400      451584       AY8910: reg 0x0D, val 0x0E
+10.2400      451584       WAIT: 882 samples (1/50s)
+10.2600      452466       AY8910: reg 0x04, val 0x96
+10.2600      452466       AY8910: reg 0x07, val 0x3A
+10.2600      452466       AY8910: reg 0x08, val 0x0E
+10.2600      452466       AY8910: reg 0x09, val 0x1F
+10.2600      452466       AY8910: reg 0x0B, val 0x2D
+10.2600      452466       WAIT: 882 samples (1/50s)
+10.2800      453348       AY8910: reg 0x04, val 0x77
+10.2800      453348       WAIT: 882 samples (1/50s)
+10.3000      454230       AY8910: reg 0x04, val 0xB2
+10.3000      454230       AY8910: reg 0x08, val 0x0D
+10.3000      454230       WAIT: 882 samples (1/50s)
+10.3200      455112       AY8910: reg 0x00, val 0x96
+10.3200      455112       AY8910: reg 0x08, val 0x0A
+10.3200      455112       AY8910: reg 0x0A, val 0x09
+10.3200      455112       WAIT: 882 samples (1/50s)
+10.3400      455994       AY8910: reg 0x04, val 0x96
+10.3400      455994       AY8910: reg 0x08, val 0x09
+10.3400      455994       WAIT: 882 samples (1/50s)
+10.3600      456876       AY8910: reg 0x04, val 0x77
+10.3600      456876       WAIT: 882 samples (1/50s)
+10.3800      457758       AY8910: reg 0x04, val 0xB2
+10.3800      457758       WAIT: 882 samples (1/50s)
+10.4000      458640       AY8910: reg 0x00, val 0xEF
+10.4000      458640       AY8910: reg 0x02, val 0xCA
+10.4000      458640       AY8910: reg 0x03, val 0x02
+10.4000      458640       AY8910: reg 0x07, val 0x2A
+10.4000      458640       AY8910: reg 0x08, val 0x0F
+10.4000      458640       AY8910: reg 0x09, val 0x0C
+10.4000      458640       AY8910: reg 0x0A, val 0x0E
+10.4000      458640       AY8910: reg 0x0D, val 0x0C
+10.4000      458640       WAIT: 882 samples (1/50s)
+10.4200      459522       AY8910: reg 0x04, val 0x96
+10.4200      459522       AY8910: reg 0x07, val 0x3A
+10.4200      459522       AY8910: reg 0x08, val 0x0E
+10.4200      459522       AY8910: reg 0x09, val 0x1F
+10.4200      459522       AY8910: reg 0x0B, val 0x59
+10.4200      459522       WAIT: 882 samples (1/50s)
+10.4400      460404       AY8910: reg 0x04, val 0x77
+10.4400      460404       WAIT: 882 samples (1/50s)
+10.4600      461286       AY8910: reg 0x04, val 0xB2
+10.4600      461286       AY8910: reg 0x08, val 0x0D
+10.4600      461286       WAIT: 882 samples (1/50s)
+10.4800      462168       AY8910: reg 0x00, val 0xB2
+10.4800      462168       AY8910: reg 0x08, val 0x0A
+10.4800      462168       AY8910: reg 0x0A, val 0x09
+10.4800      462168       WAIT: 882 samples (1/50s)
+10.5000      463050       AY8910: reg 0x04, val 0x96
+10.5000      463050       AY8910: reg 0x08, val 0x09
+10.5000      463050       WAIT: 882 samples (1/50s)
+10.5200      463932       AY8910: reg 0x04, val 0x77
+10.5200      463932       WAIT: 882 samples (1/50s)
+10.5400      464814       AY8910: reg 0x04, val 0xB2
+10.5400      464814       WAIT: 882 samples (1/50s)
+10.5600      465696       AY8910: reg 0x00, val 0x96
+10.5600      465696       AY8910: reg 0x02, val 0x5F
+10.5600      465696       AY8910: reg 0x04, val 0xEF
+10.5600      465696       AY8910: reg 0x06, val 0x07
+10.5600      465696       AY8910: reg 0x07, val 0x28
+10.5600      465696       AY8910: reg 0x08, val 0x0F
+10.5600      465696       AY8910: reg 0x09, val 0x0F
+10.5600      465696       AY8910: reg 0x0A, val 0x0E
+10.5600      465696       WAIT: 882 samples (1/50s)
+10.5800      466578       AY8910: reg 0x02, val 0xDF
+10.5800      466578       AY8910: reg 0x04, val 0xB2
+10.5800      466578       AY8910: reg 0x06, val 0x02
+10.5800      466578       AY8910: reg 0x08, val 0x0E
+10.5800      466578       WAIT: 882 samples (1/50s)
+10.6000      467460       AY8910: reg 0x02, val 0x5F
+10.6000      467460       AY8910: reg 0x03, val 0x03
+10.6000      467460       AY8910: reg 0x04, val 0x96
+10.6000      467460       AY8910: reg 0x06, val 0x0A
+10.6000      467460       AY8910: reg 0x09, val 0x0E
+10.6000      467460       WAIT: 882 samples (1/50s)
+10.6200      468342       AY8910: reg 0x02, val 0xDF
+10.6200      468342       AY8910: reg 0x04, val 0xEF
+10.6200      468342       AY8910: reg 0x06, val 0x09
+10.6200      468342       AY8910: reg 0x08, val 0x0D
+10.6200      468342       AY8910: reg 0x09, val 0x0D
+10.6200      468342       WAIT: 882 samples (1/50s)
+10.6400      469224       AY8910: reg 0x00, val 0xEF
+10.6400      469224       AY8910: reg 0x02, val 0x5F
+10.6400      469224       AY8910: reg 0x03, val 0x04
+10.6400      469224       AY8910: reg 0x06, val 0x08
+10.6400      469224       AY8910: reg 0x08, val 0x0A
+10.6400      469224       AY8910: reg 0x09, val 0x0C
+10.6400      469224       WAIT: 882 samples (1/50s)
+10.6600      470106       AY8910: reg 0x02, val 0xDF
+10.6600      470106       AY8910: reg 0x04, val 0xB2
+10.6600      470106       AY8910: reg 0x06, val 0x07
+10.6600      470106       AY8910: reg 0x08, val 0x09
+10.6600      470106       AY8910: reg 0x09, val 0x0B
+10.6600      470106       WAIT: 882 samples (1/50s)
+10.6800      470988       AY8910: reg 0x03, val 0x01
+10.6800      470988       AY8910: reg 0x04, val 0x96
+10.6800      470988       AY8910: reg 0x06, val 0x06
+10.6800      470988       AY8910: reg 0x07, val 0x2A
+10.6800      470988       AY8910: reg 0x09, val 0x0A
+10.6800      470988       WAIT: 882 samples (1/50s)
+10.7000      471870       AY8910: reg 0x04, val 0xEF
+10.7000      471870       AY8910: reg 0x06, val 0x05
+10.7000      471870       AY8910: reg 0x09, val 0x08
+10.7000      471870       WAIT: 882 samples (1/50s)
+10.7200      472752       AY8910: reg 0x00, val 0x9F
+10.7200      472752       AY8910: reg 0x02, val 0xCA
+10.7200      472752       AY8910: reg 0x03, val 0x02
+10.7200      472752       AY8910: reg 0x06, val 0x00
+10.7200      472752       AY8910: reg 0x08, val 0x0F
+10.7200      472752       AY8910: reg 0x09, val 0x0C
+10.7200      472752       AY8910: reg 0x0A, val 0x09
+10.7200      472752       AY8910: reg 0x0D, val 0x0C
+10.7200      472752       WAIT: 882 samples (1/50s)
+10.7400      473634       AY8910: reg 0x04, val 0xB2
+10.7400      473634       AY8910: reg 0x07, val 0x3A
+10.7400      473634       AY8910: reg 0x08, val 0x0E
+10.7400      473634       AY8910: reg 0x09, val 0x1F
+10.7400      473634       WAIT: 882 samples (1/50s)
+10.7600      474516       AY8910: reg 0x04, val 0x96
+10.7600      474516       WAIT: 882 samples (1/50s)
+10.7800      475398       AY8910: reg 0x04, val 0xEF
+10.7800      475398       AY8910: reg 0x08, val 0x0D
+10.7800      475398       WAIT: 882 samples (1/50s)
+10.8000      476280       AY8910: reg 0x00, val 0x96
+10.8000      476280       AY8910: reg 0x08, val 0x0A
+10.8000      476280       WAIT: 882 samples (1/50s)
+10.8200      477162       AY8910: reg 0x04, val 0xB2
+10.8200      477162       AY8910: reg 0x08, val 0x09
+10.8200      477162       WAIT: 882 samples (1/50s)
+10.8400      478044       AY8910: reg 0x04, val 0x96
+10.8400      478044       WAIT: 882 samples (1/50s)
+10.8600      478926       AY8910: reg 0x04, val 0xEF
+10.8600      478926       WAIT: 882 samples (1/50s)
+10.8800      479808       AY8910: reg 0x00, val 0xB2
+10.8800      479808       AY8910: reg 0x07, val 0x2A
+10.8800      479808       AY8910: reg 0x08, val 0x0F
+10.8800      479808       AY8910: reg 0x09, val 0x0C
+10.8800      479808       AY8910: reg 0x0A, val 0x0E
+10.8800      479808       AY8910: reg 0x0D, val 0x0E
+10.8800      479808       WAIT: 882 samples (1/50s)
+10.9000      480690       AY8910: reg 0x04, val 0xB2
+10.9000      480690       AY8910: reg 0x07, val 0x3A
+10.9000      480690       AY8910: reg 0x08, val 0x0E
+10.9000      480690       AY8910: reg 0x09, val 0x1F
+10.9000      480690       WAIT: 882 samples (1/50s)
+10.9200      481572       AY8910: reg 0x04, val 0x96
+10.9200      481572       WAIT: 882 samples (1/50s)
+10.9400      482454       AY8910: reg 0x04, val 0xEF
+10.9400      482454       AY8910: reg 0x08, val 0x0D
+10.9400      482454       WAIT: 882 samples (1/50s)
+10.9600      483336       AY8910: reg 0x00, val 0x9F
+10.9600      483336       AY8910: reg 0x08, val 0x0A
+10.9600      483336       WAIT: 882 samples (1/50s)
+10.9800      484218       AY8910: reg 0x04, val 0xB2
+10.9800      484218       AY8910: reg 0x08, val 0x09
+10.9800      484218       WAIT: 882 samples (1/50s)
+11.0000      485100       AY8910: reg 0x04, val 0x96
+11.0000      485100       WAIT: 882 samples (1/50s)
+11.0200      485982       AY8910: reg 0x04, val 0xEF
+11.0200      485982       WAIT: 882 samples (1/50s)
+11.0400      486864       AY8910: reg 0x00, val 0xC8
+11.0400      486864       AY8910: reg 0x02, val 0x65
+11.0400      486864       AY8910: reg 0x03, val 0x01
+11.0400      486864       AY8910: reg 0x07, val 0x2A
+11.0400      486864       AY8910: reg 0x08, val 0x0F
+11.0400      486864       AY8910: reg 0x09, val 0x0C
+11.0400      486864       AY8910: reg 0x0D, val 0x0E
+11.0400      486864       WAIT: 882 samples (1/50s)
+11.0600      487746       AY8910: reg 0x04, val 0xB2
+11.0600      487746       AY8910: reg 0x07, val 0x3A
+11.0600      487746       AY8910: reg 0x08, val 0x0E
+11.0600      487746       AY8910: reg 0x09, val 0x1F
+11.0600      487746       AY8910: reg 0x0B, val 0x2D
+11.0600      487746       WAIT: 882 samples (1/50s)
+11.0800      488628       AY8910: reg 0x04, val 0x96
+11.0800      488628       WAIT: 882 samples (1/50s)
+11.1000      489510       AY8910: reg 0x04, val 0xEF
+11.1000      489510       AY8910: reg 0x08, val 0x0D
+11.1000      489510       WAIT: 882 samples (1/50s)
+11.1200      490392       AY8910: reg 0x00, val 0xB2
+11.1200      490392       AY8910: reg 0x08, val 0x0A
+11.1200      490392       WAIT: 882 samples (1/50s)
+11.1400      491274       AY8910: reg 0x04, val 0xB2
+11.1400      491274       AY8910: reg 0x08, val 0x09
+11.1400      491274       WAIT: 882 samples (1/50s)
+11.1600      492156       AY8910: reg 0x04, val 0x96
+11.1600      492156       WAIT: 882 samples (1/50s)
+11.1800      493038       AY8910: reg 0x04, val 0xEF
+11.1800      493038       WAIT: 882 samples (1/50s)
+11.2000      493920       AY8910: reg 0x00, val 0x9F
+11.2000      493920       AY8910: reg 0x02, val 0x5F
+11.2000      493920       AY8910: reg 0x03, val 0x02
+11.2000      493920       AY8910: reg 0x06, val 0x07
+11.2000      493920       AY8910: reg 0x07, val 0x28
+11.2000      493920       AY8910: reg 0x08, val 0x0F
+11.2000      493920       AY8910: reg 0x09, val 0x0F
+11.2000      493920       AY8910: reg 0x0A, val 0x09
+11.2000      493920       WAIT: 882 samples (1/50s)
+11.2200      494802       AY8910: reg 0x02, val 0xDF
+11.2200      494802       AY8910: reg 0x04, val 0xB2
+11.2200      494802       AY8910: reg 0x06, val 0x02
+11.2200      494802       AY8910: reg 0x08, val 0x0E
+11.2200      494802       WAIT: 882 samples (1/50s)
+11.2400      495684       AY8910: reg 0x02, val 0x5F
+11.2400      495684       AY8910: reg 0x03, val 0x03
+11.2400      495684       AY8910: reg 0x04, val 0x96
+11.2400      495684       AY8910: reg 0x06, val 0x0A
+11.2400      495684       AY8910: reg 0x09, val 0x0E
+11.2400      495684       WAIT: 882 samples (1/50s)
+11.2600      496566       AY8910: reg 0x02, val 0xDF
+11.2600      496566       AY8910: reg 0x04, val 0xEF
+11.2600      496566       AY8910: reg 0x06, val 0x09
+11.2600      496566       AY8910: reg 0x08, val 0x0D
+11.2600      496566       AY8910: reg 0x09, val 0x0D
+11.2600      496566       WAIT: 882 samples (1/50s)
+11.2800      497448       AY8910: reg 0x00, val 0xC8
+11.2800      497448       AY8910: reg 0x02, val 0x5F
+11.2800      497448       AY8910: reg 0x03, val 0x04
+11.2800      497448       AY8910: reg 0x06, val 0x08
+11.2800      497448       AY8910: reg 0x08, val 0x0A
+11.2800      497448       AY8910: reg 0x09, val 0x0C
+11.2800      497448       WAIT: 882 samples (1/50s)
+11.3000      498330       AY8910: reg 0x02, val 0xDF
+11.3000      498330       AY8910: reg 0x04, val 0xB2
+11.3000      498330       AY8910: reg 0x06, val 0x07
+11.3000      498330       AY8910: reg 0x08, val 0x09
+11.3000      498330       AY8910: reg 0x09, val 0x0B
+11.3000      498330       WAIT: 882 samples (1/50s)
+11.3200      499212       AY8910: reg 0x03, val 0x01
+11.3200      499212       AY8910: reg 0x04, val 0x96
+11.3200      499212       AY8910: reg 0x06, val 0x06
+11.3200      499212       AY8910: reg 0x07, val 0x2A
+11.3200      499212       AY8910: reg 0x09, val 0x0A
+11.3200      499212       WAIT: 882 samples (1/50s)
+11.3400      500094       AY8910: reg 0x04, val 0xEF
+11.3400      500094       AY8910: reg 0x06, val 0x05
+11.3400      500094       AY8910: reg 0x09, val 0x08
+11.3400      500094       WAIT: 882 samples (1/50s)
+11.3600      500976       AY8910: reg 0x00, val 0x96
+11.3600      500976       AY8910: reg 0x02, val 0x65
+11.3600      500976       AY8910: reg 0x06, val 0x00
+11.3600      500976       AY8910: reg 0x08, val 0x0F
+11.3600      500976       AY8910: reg 0x09, val 0x0C
+11.3600      500976       AY8910: reg 0x0A, val 0x0E
+11.3600      500976       AY8910: reg 0x0D, val 0x0E
+11.3600      500976       WAIT: 882 samples (1/50s)
+11.3800      501858       AY8910: reg 0x04, val 0xB2
+11.3800      501858       AY8910: reg 0x07, val 0x3A
+11.3800      501858       AY8910: reg 0x08, val 0x0E
+11.3800      501858       AY8910: reg 0x09, val 0x1F
+11.3800      501858       WAIT: 882 samples (1/50s)
+11.4000      502740       AY8910: reg 0x04, val 0x96
+11.4000      502740       WAIT: 882 samples (1/50s)
+11.4200      503622       AY8910: reg 0x04, val 0xEF
+11.4200      503622       AY8910: reg 0x08, val 0x0D
+11.4200      503622       WAIT: 882 samples (1/50s)
+11.4400      504504       AY8910: reg 0x00, val 0x9F
+11.4400      504504       AY8910: reg 0x08, val 0x0A
+11.4400      504504       WAIT: 882 samples (1/50s)
+11.4600      505386       AY8910: reg 0x04, val 0xB2
+11.4600      505386       AY8910: reg 0x08, val 0x09
+11.4600      505386       WAIT: 882 samples (1/50s)
+11.4800      506268       AY8910: reg 0x04, val 0x96
+11.4800      506268       WAIT: 882 samples (1/50s)
+11.5000      507150       AY8910: reg 0x04, val 0xEF
+11.5000      507150       WAIT: 882 samples (1/50s)
+11.5200      508032       AY8910: reg 0x00, val 0xB2
+11.5200      508032       AY8910: reg 0x02, val 0xCA
+11.5200      508032       AY8910: reg 0x03, val 0x02
+11.5200      508032       AY8910: reg 0x07, val 0x2A
+11.5200      508032       AY8910: reg 0x08, val 0x0F
+11.5200      508032       AY8910: reg 0x09, val 0x0C
+11.5200      508032       AY8910: reg 0x0A, val 0x09
+11.5200      508032       AY8910: reg 0x0D, val 0x0C
+11.5200      508032       WAIT: 882 samples (1/50s)
+11.5400      508914       AY8910: reg 0x04, val 0xB2
+11.5400      508914       AY8910: reg 0x07, val 0x3A
+11.5400      508914       AY8910: reg 0x08, val 0x0E
+11.5400      508914       AY8910: reg 0x09, val 0x1F
+11.5400      508914       AY8910: reg 0x0B, val 0x59
+11.5400      508914       WAIT: 882 samples (1/50s)
+11.5600      509796       AY8910: reg 0x04, val 0x96
+11.5600      509796       WAIT: 882 samples (1/50s)
+11.5800      510678       AY8910: reg 0x04, val 0xEF
+11.5800      510678       AY8910: reg 0x08, val 0x0D
+11.5800      510678       WAIT: 882 samples (1/50s)
+11.6000      511560       AY8910: reg 0x00, val 0x96
+11.6000      511560       AY8910: reg 0x08, val 0x0A
+11.6000      511560       WAIT: 882 samples (1/50s)
+11.6200      512442       AY8910: reg 0x04, val 0xB2
+11.6200      512442       AY8910: reg 0x08, val 0x09
+11.6200      512442       WAIT: 882 samples (1/50s)
+11.6400      513324       AY8910: reg 0x04, val 0x96
+11.6400      513324       WAIT: 882 samples (1/50s)
+11.6600      514206       AY8910: reg 0x04, val 0xEF
+11.6600      514206       WAIT: 882 samples (1/50s)
+11.6800      515088       AY8910: reg 0x00, val 0xEF
+11.6800      515088       AY8910: reg 0x02, val 0x65
+11.6800      515088       AY8910: reg 0x03, val 0x01
+11.6800      515088       AY8910: reg 0x07, val 0x2A
+11.6800      515088       AY8910: reg 0x08, val 0x0F
+11.6800      515088       AY8910: reg 0x09, val 0x0C
+11.6800      515088       AY8910: reg 0x0A, val 0x0E
+11.6800      515088       AY8910: reg 0x0D, val 0x0E
+11.6800      515088       WAIT: 882 samples (1/50s)
+11.7000      515970       AY8910: reg 0x04, val 0xB2
+11.7000      515970       AY8910: reg 0x07, val 0x3A
+11.7000      515970       AY8910: reg 0x08, val 0x0E
+11.7000      515970       AY8910: reg 0x09, val 0x1F
+11.7000      515970       AY8910: reg 0x0B, val 0x2D
+11.7000      515970       WAIT: 882 samples (1/50s)
+11.7200      516852       AY8910: reg 0x04, val 0x96
+11.7200      516852       WAIT: 882 samples (1/50s)
+11.7400      517734       AY8910: reg 0x04, val 0xEF
+11.7400      517734       AY8910: reg 0x08, val 0x0D
+11.7400      517734       WAIT: 882 samples (1/50s)
+11.7600      518616       AY8910: reg 0x00, val 0xB2
+11.7600      518616       AY8910: reg 0x08, val 0x0A
+11.7600      518616       AY8910: reg 0x0A, val 0x09
+11.7600      518616       WAIT: 882 samples (1/50s)
+11.7800      519498       AY8910: reg 0x04, val 0xB2
+11.7800      519498       AY8910: reg 0x08, val 0x09
+11.7800      519498       WAIT: 882 samples (1/50s)
+11.8000      520380       AY8910: reg 0x04, val 0x96
+11.8000      520380       WAIT: 882 samples (1/50s)
+11.8200      521262       AY8910: reg 0x04, val 0xEF
+11.8200      521262       WAIT: 882 samples (1/50s)
+11.8400      522144       AY8910: reg 0x00, val 0x85
+11.8400      522144       AY8910: reg 0x02, val 0x5F
+11.8400      522144       AY8910: reg 0x03, val 0x02
+11.8400      522144       AY8910: reg 0x06, val 0x07
+11.8400      522144       AY8910: reg 0x07, val 0x28
+11.8400      522144       AY8910: reg 0x08, val 0x0F
+11.8400      522144       AY8910: reg 0x09, val 0x0F
+11.8400      522144       AY8910: reg 0x0A, val 0x0E
+11.8400      522144       WAIT: 882 samples (1/50s)
+11.8600      523026       AY8910: reg 0x02, val 0xDF
+11.8600      523026       AY8910: reg 0x04, val 0xB2
+11.8600      523026       AY8910: reg 0x06, val 0x02
+11.8600      523026       AY8910: reg 0x08, val 0x0E
+11.8600      523026       WAIT: 882 samples (1/50s)
+11.8800      523908       AY8910: reg 0x02, val 0x5F
+11.8800      523908       AY8910: reg 0x03, val 0x03
+11.8800      523908       AY8910: reg 0x04, val 0x96
+11.8800      523908       AY8910: reg 0x06, val 0x0A
+11.8800      523908       AY8910: reg 0x09, val 0x0E
+11.8800      523908       WAIT: 882 samples (1/50s)
+11.9000      524790       AY8910: reg 0x02, val 0xDF
+11.9000      524790       AY8910: reg 0x04, val 0xEF
+11.9000      524790       AY8910: reg 0x06, val 0x09
+11.9000      524790       AY8910: reg 0x08, val 0x0D
+11.9000      524790       AY8910: reg 0x09, val 0x0D
+11.9000      524790       WAIT: 882 samples (1/50s)
+11.9200      525672       AY8910: reg 0x00, val 0xEF
+11.9200      525672       AY8910: reg 0x02, val 0x5F
+11.9200      525672       AY8910: reg 0x03, val 0x04
+11.9200      525672       AY8910: reg 0x06, val 0x08
+11.9200      525672       AY8910: reg 0x08, val 0x0A
+11.9200      525672       AY8910: reg 0x09, val 0x0C
+11.9200      525672       AY8910: reg 0x0A, val 0x09
+11.9200      525672       WAIT: 882 samples (1/50s)
+11.9400      526554       AY8910: reg 0x02, val 0xDF
+11.9400      526554       AY8910: reg 0x04, val 0xB2
+11.9400      526554       AY8910: reg 0x06, val 0x07
+11.9400      526554       AY8910: reg 0x08, val 0x09
+11.9400      526554       AY8910: reg 0x09, val 0x0B
+11.9400      526554       WAIT: 882 samples (1/50s)
+11.9600      527436       AY8910: reg 0x03, val 0x01
+11.9600      527436       AY8910: reg 0x04, val 0x96
+11.9600      527436       AY8910: reg 0x06, val 0x06
+11.9600      527436       AY8910: reg 0x07, val 0x2A
+11.9600      527436       AY8910: reg 0x09, val 0x0A
+11.9600      527436       WAIT: 882 samples (1/50s)
+11.9800      528318       AY8910: reg 0x04, val 0xEF
+11.9800      528318       AY8910: reg 0x06, val 0x05
+11.9800      528318       AY8910: reg 0x09, val 0x08
+11.9800      528318       WAIT: 882 samples (1/50s)
+12.0000      529200       AY8910: reg 0x00, val 0x96
+12.0000      529200       AY8910: reg 0x02, val 0xCA
+12.0000      529200       AY8910: reg 0x03, val 0x02
+12.0000      529200       AY8910: reg 0x06, val 0x00
+12.0000      529200       AY8910: reg 0x08, val 0x0F
+12.0000      529200       AY8910: reg 0x09, val 0x0C
+12.0000      529200       AY8910: reg 0x0A, val 0x0E
+12.0000      529200       AY8910: reg 0x0D, val 0x0C
+12.0000      529200       WAIT: 882 samples (1/50s)
+12.0200      530082       AY8910: reg 0x04, val 0xB2
+12.0200      530082       AY8910: reg 0x07, val 0x3A
+12.0200      530082       AY8910: reg 0x08, val 0x0E
+12.0200      530082       AY8910: reg 0x09, val 0x1F
+12.0200      530082       AY8910: reg 0x0B, val 0x59
+12.0200      530082       WAIT: 882 samples (1/50s)
+12.0400      530964       AY8910: reg 0x04, val 0x96
+12.0400      530964       WAIT: 882 samples (1/50s)
+12.0600      531846       AY8910: reg 0x04, val 0xEF
+12.0600      531846       AY8910: reg 0x08, val 0x0D
+12.0600      531846       WAIT: 882 samples (1/50s)
+12.0800      532728       AY8910: reg 0x00, val 0x85
+12.0800      532728       AY8910: reg 0x08, val 0x0A
+12.0800      532728       WAIT: 882 samples (1/50s)
+12.1000      533610       AY8910: reg 0x04, val 0xB2
+12.1000      533610       AY8910: reg 0x08, val 0x09
+12.1000      533610       WAIT: 882 samples (1/50s)
+12.1200      534492       AY8910: reg 0x04, val 0x96
+12.1200      534492       WAIT: 882 samples (1/50s)
+12.1400      535374       AY8910: reg 0x04, val 0xEF
+12.1400      535374       WAIT: 882 samples (1/50s)
+12.1600      536256       AY8910: reg 0x00, val 0x9F
+12.1600      536256       AY8910: reg 0x07, val 0x2A
+12.1600      536256       AY8910: reg 0x08, val 0x0F
+12.1600      536256       AY8910: reg 0x09, val 0x0C
+12.1600      536256       AY8910: reg 0x0A, val 0x09
+12.1600      536256       AY8910: reg 0x0D, val 0x0E
+12.1600      536256       WAIT: 882 samples (1/50s)
+12.1800      537138       AY8910: reg 0x04, val 0xB2
+12.1800      537138       AY8910: reg 0x07, val 0x3A
+12.1800      537138       AY8910: reg 0x08, val 0x0E
+12.1800      537138       AY8910: reg 0x09, val 0x1F
+12.1800      537138       WAIT: 882 samples (1/50s)
+12.2000      538020       AY8910: reg 0x04, val 0x96
+12.2000      538020       WAIT: 882 samples (1/50s)
+12.2200      538902       AY8910: reg 0x04, val 0xEF
+12.2200      538902       AY8910: reg 0x08, val 0x0D
+12.2200      538902       WAIT: 882 samples (1/50s)
+12.2400      539784       AY8910: reg 0x00, val 0x96
+12.2400      539784       AY8910: reg 0x08, val 0x0A
+12.2400      539784       WAIT: 882 samples (1/50s)
+12.2600      540666       AY8910: reg 0x04, val 0xB2
+12.2600      540666       AY8910: reg 0x08, val 0x09
+12.2600      540666       WAIT: 882 samples (1/50s)
+12.2800      541548       AY8910: reg 0x04, val 0x96
+12.2800      541548       WAIT: 882 samples (1/50s)
+12.3000      542430       AY8910: reg 0x04, val 0xEF
+12.3000      542430       WAIT: 882 samples (1/50s)
+12.3200      543312       AY8910: reg 0x00, val 0xEF
+12.3200      543312       AY8910: reg 0x02, val 0x65
+12.3200      543312       AY8910: reg 0x03, val 0x01
+12.3200      543312       AY8910: reg 0x04, val 0xB2
+12.3200      543312       AY8910: reg 0x07, val 0x2A
+12.3200      543312       AY8910: reg 0x08, val 0x0F
+12.3200      543312       AY8910: reg 0x09, val 0x0C
+12.3200      543312       AY8910: reg 0x0A, val 0x0E
+12.3200      543312       AY8910: reg 0x0D, val 0x0E
+12.3200      543312       WAIT: 882 samples (1/50s)
+12.3400      544194       AY8910: reg 0x04, val 0x96
+12.3400      544194       AY8910: reg 0x07, val 0x3A
+12.3400      544194       AY8910: reg 0x08, val 0x0E
+12.3400      544194       AY8910: reg 0x09, val 0x1F
+12.3400      544194       AY8910: reg 0x0B, val 0x2D
+12.3400      544194       WAIT: 882 samples (1/50s)
+12.3600      545076       AY8910: reg 0x04, val 0x77
+12.3600      545076       WAIT: 882 samples (1/50s)
+12.3800      545958       AY8910: reg 0x04, val 0xB2
+12.3800      545958       AY8910: reg 0x08, val 0x0D
+12.3800      545958       WAIT: 882 samples (1/50s)
+12.4000      546840       AY8910: reg 0x00, val 0x9F
+12.4000      546840       AY8910: reg 0x08, val 0x0A
+12.4000      546840       AY8910: reg 0x0A, val 0x09
+12.4000      546840       WAIT: 882 samples (1/50s)
+12.4200      547722       AY8910: reg 0x04, val 0x96
+12.4200      547722       AY8910: reg 0x08, val 0x09
+12.4200      547722       WAIT: 882 samples (1/50s)
+12.4400      548604       AY8910: reg 0x04, val 0x77
+12.4400      548604       WAIT: 882 samples (1/50s)
+12.4600      549486       AY8910: reg 0x04, val 0xB2
+12.4600      549486       WAIT: 882 samples (1/50s)
+12.4800      550368       AY8910: reg 0x00, val 0x96
+12.4800      550368       AY8910: reg 0x02, val 0x5F
+12.4800      550368       AY8910: reg 0x03, val 0x02
+12.4800      550368       AY8910: reg 0x06, val 0x07
+12.4800      550368       AY8910: reg 0x07, val 0x28
+12.4800      550368       AY8910: reg 0x08, val 0x0F
+12.4800      550368       AY8910: reg 0x09, val 0x0F
+12.4800      550368       AY8910: reg 0x0A, val 0x0E
+12.4800      550368       WAIT: 882 samples (1/50s)
+12.5000      551250       AY8910: reg 0x02, val 0xDF
+12.5000      551250       AY8910: reg 0x04, val 0x96
+12.5000      551250       AY8910: reg 0x06, val 0x02
+12.5000      551250       AY8910: reg 0x08, val 0x0E
+12.5000      551250       WAIT: 882 samples (1/50s)
+12.5200      552132       AY8910: reg 0x02, val 0x5F
+12.5200      552132       AY8910: reg 0x03, val 0x03
+12.5200      552132       AY8910: reg 0x04, val 0x77
+12.5200      552132       AY8910: reg 0x06, val 0x0A
+12.5200      552132       AY8910: reg 0x09, val 0x0E
+12.5200      552132       WAIT: 882 samples (1/50s)
+12.5400      553014       AY8910: reg 0x02, val 0xDF
+12.5400      553014       AY8910: reg 0x04, val 0xB2
+12.5400      553014       AY8910: reg 0x06, val 0x09
+12.5400      553014       AY8910: reg 0x08, val 0x0D
+12.5400      553014       AY8910: reg 0x09, val 0x0D
+12.5400      553014       WAIT: 882 samples (1/50s)
+12.5600      553896       AY8910: reg 0x00, val 0xEF
+12.5600      553896       AY8910: reg 0x02, val 0x5F
+12.5600      553896       AY8910: reg 0x03, val 0x04
+12.5600      553896       AY8910: reg 0x06, val 0x08
+12.5600      553896       AY8910: reg 0x08, val 0x0A
+12.5600      553896       AY8910: reg 0x09, val 0x0C
+12.5600      553896       AY8910: reg 0x0A, val 0x09
+12.5600      553896       WAIT: 882 samples (1/50s)
+12.5800      554778       AY8910: reg 0x02, val 0xDF
+12.5800      554778       AY8910: reg 0x04, val 0x96
+12.5800      554778       AY8910: reg 0x06, val 0x07
+12.5800      554778       AY8910: reg 0x08, val 0x09
+12.5800      554778       AY8910: reg 0x09, val 0x0B
+12.5800      554778       WAIT: 882 samples (1/50s)
+12.6000      555660       AY8910: reg 0x03, val 0x01
+12.6000      555660       AY8910: reg 0x04, val 0x77
+12.6000      555660       AY8910: reg 0x06, val 0x06
+12.6000      555660       AY8910: reg 0x07, val 0x2A
+12.6000      555660       AY8910: reg 0x09, val 0x0A
+12.6000      555660       WAIT: 882 samples (1/50s)
+12.6200      556542       AY8910: reg 0x04, val 0xB2
+12.6200      556542       AY8910: reg 0x06, val 0x05
+12.6200      556542       AY8910: reg 0x09, val 0x08
+12.6200      556542       WAIT: 882 samples (1/50s)
+12.6400      557424       AY8910: reg 0x00, val 0x85
+12.6400      557424       AY8910: reg 0x02, val 0x65
+12.6400      557424       AY8910: reg 0x06, val 0x00
+12.6400      557424       AY8910: reg 0x08, val 0x0F
+12.6400      557424       AY8910: reg 0x09, val 0x0C
+12.6400      557424       AY8910: reg 0x0A, val 0x0E
+12.6400      557424       AY8910: reg 0x0D, val 0x0E
+12.6400      557424       WAIT: 882 samples (1/50s)
+12.6600      558306       AY8910: reg 0x04, val 0x96
+12.6600      558306       AY8910: reg 0x07, val 0x3A
+12.6600      558306       AY8910: reg 0x08, val 0x0E
+12.6600      558306       AY8910: reg 0x09, val 0x1F
+12.6600      558306       WAIT: 882 samples (1/50s)
+12.6800      559188       AY8910: reg 0x04, val 0x77
+12.6800      559188       WAIT: 882 samples (1/50s)
+12.7000      560070       AY8910: reg 0x04, val 0xB2
+12.7000      560070       AY8910: reg 0x08, val 0x0D
+12.7000      560070       WAIT: 882 samples (1/50s)
+12.7200      560952       AY8910: reg 0x00, val 0x96
+12.7200      560952       AY8910: reg 0x08, val 0x0A
+12.7200      560952       WAIT: 882 samples (1/50s)
+12.7400      561834       AY8910: reg 0x04, val 0x96
+12.7400      561834       AY8910: reg 0x08, val 0x09
+12.7400      561834       WAIT: 882 samples (1/50s)
+12.7600      562716       AY8910: reg 0x04, val 0x77
+12.7600      562716       WAIT: 882 samples (1/50s)
+12.7800      563598       AY8910: reg 0x04, val 0xB2
+12.7800      563598       WAIT: 882 samples (1/50s)
+12.8000      564480       AY8910: reg 0x00, val 0x77
+12.8000      564480       AY8910: reg 0x02, val 0xCA
+12.8000      564480       AY8910: reg 0x03, val 0x02
+12.8000      564480       AY8910: reg 0x04, val 0x96
+12.8000      564480       AY8910: reg 0x07, val 0x2A
+12.8000      564480       AY8910: reg 0x08, val 0x0F
+12.8000      564480       AY8910: reg 0x09, val 0x0C
+12.8000      564480       AY8910: reg 0x0D, val 0x0E
+12.8000      564480       WAIT: 882 samples (1/50s)
+12.8200      565362       AY8910: reg 0x04, val 0x77
+12.8200      565362       AY8910: reg 0x07, val 0x3A
+12.8200      565362       AY8910: reg 0x08, val 0x0E
+12.8200      565362       AY8910: reg 0x09, val 0x1F
+12.8200      565362       AY8910: reg 0x0B, val 0x59
+12.8200      565362       WAIT: 882 samples (1/50s)
+12.8400      566244       AY8910: reg 0x04, val 0x64
+12.8400      566244       WAIT: 882 samples (1/50s)
+12.8600      567126       AY8910: reg 0x04, val 0x96
+12.8600      567126       AY8910: reg 0x08, val 0x0D
+12.8600      567126       WAIT: 882 samples (1/50s)
+12.8800      568008       AY8910: reg 0x00, val 0x85
+12.8800      568008       AY8910: reg 0x08, val 0x0A
+12.8800      568008       AY8910: reg 0x0A, val 0x09
+12.8800      568008       WAIT: 882 samples (1/50s)
+12.9000      568890       AY8910: reg 0x04, val 0x77
+12.9000      568890       AY8910: reg 0x08, val 0x09
+12.9000      568890       WAIT: 882 samples (1/50s)
+12.9200      569772       AY8910: reg 0x04, val 0x64
+12.9200      569772       WAIT: 882 samples (1/50s)
+12.9400      570654       AY8910: reg 0x04, val 0x96
+12.9400      570654       WAIT: 882 samples (1/50s)
+12.9600      571536       AY8910: reg 0x00, val 0xEF
+12.9600      571536       AY8910: reg 0x02, val 0x58
+12.9600      571536       AY8910: reg 0x07, val 0x2A
+12.9600      571536       AY8910: reg 0x08, val 0x0F
+12.9600      571536       AY8910: reg 0x09, val 0x0C
+12.9600      571536       AY8910: reg 0x0A, val 0x0E
+12.9600      571536       AY8910: reg 0x0D, val 0x0C
+12.9600      571536       WAIT: 882 samples (1/50s)
+12.9800      572418       AY8910: reg 0x04, val 0x77
+12.9800      572418       AY8910: reg 0x07, val 0x3A
+12.9800      572418       AY8910: reg 0x08, val 0x0E
+12.9800      572418       AY8910: reg 0x09, val 0x1F
+12.9800      572418       AY8910: reg 0x0B, val 0x4B
+12.9800      572418       WAIT: 882 samples (1/50s)
+13.0000      573300       AY8910: reg 0x04, val 0x64
+13.0000      573300       WAIT: 882 samples (1/50s)
+13.0200      574182       AY8910: reg 0x04, val 0x96
+13.0200      574182       AY8910: reg 0x08, val 0x0D
+13.0200      574182       WAIT: 882 samples (1/50s)
+13.0400      575064       AY8910: reg 0x00, val 0x77
+13.0400      575064       AY8910: reg 0x08, val 0x0A
+13.0400      575064       AY8910: reg 0x0A, val 0x09
+13.0400      575064       WAIT: 882 samples (1/50s)
+13.0600      575946       AY8910: reg 0x04, val 0x77
+13.0600      575946       AY8910: reg 0x08, val 0x09
+13.0600      575946       WAIT: 882 samples (1/50s)
+13.0800      576828       AY8910: reg 0x04, val 0x64
+13.0800      576828       WAIT: 882 samples (1/50s)
+13.1000      577710       AY8910: reg 0x04, val 0x96
+13.1000      577710       WAIT: 882 samples (1/50s)
+13.1200      578592       AY8910: reg 0x00, val 0x85
+13.1200      578592       AY8910: reg 0x02, val 0x5F
+13.1200      578592       AY8910: reg 0x04, val 0xB2
+13.1200      578592       AY8910: reg 0x06, val 0x07
+13.1200      578592       AY8910: reg 0x07, val 0x28
+13.1200      578592       AY8910: reg 0x08, val 0x0F
+13.1200      578592       AY8910: reg 0x09, val 0x0F
+13.1200      578592       AY8910: reg 0x0A, val 0x0E
+13.1200      578592       WAIT: 882 samples (1/50s)
+13.1400      579474       AY8910: reg 0x02, val 0xDF
+13.1400      579474       AY8910: reg 0x04, val 0x96
+13.1400      579474       AY8910: reg 0x06, val 0x02
+13.1400      579474       AY8910: reg 0x08, val 0x0E
+13.1400      579474       WAIT: 882 samples (1/50s)
+13.1600      580356       AY8910: reg 0x02, val 0x5F
+13.1600      580356       AY8910: reg 0x03, val 0x03
+13.1600      580356       AY8910: reg 0x04, val 0x77
+13.1600      580356       AY8910: reg 0x06, val 0x0A
+13.1600      580356       AY8910: reg 0x09, val 0x0E
+13.1600      580356       WAIT: 882 samples (1/50s)
+13.1800      581238       AY8910: reg 0x02, val 0xDF
+13.1800      581238       AY8910: reg 0x04, val 0xB2
+13.1800      581238       AY8910: reg 0x06, val 0x09
+13.1800      581238       AY8910: reg 0x08, val 0x0D
+13.1800      581238       AY8910: reg 0x09, val 0x0D
+13.1800      581238       WAIT: 882 samples (1/50s)
+13.2000      582120       AY8910: reg 0x00, val 0xEF
+13.2000      582120       AY8910: reg 0x02, val 0x5F
+13.2000      582120       AY8910: reg 0x03, val 0x04
+13.2000      582120       AY8910: reg 0x06, val 0x08
+13.2000      582120       AY8910: reg 0x08, val 0x0A
+13.2000      582120       AY8910: reg 0x09, val 0x0C
+13.2000      582120       AY8910: reg 0x0A, val 0x09
+13.2000      582120       WAIT: 882 samples (1/50s)
+13.2200      583002       AY8910: reg 0x02, val 0xDF
+13.2200      583002       AY8910: reg 0x04, val 0x96
+13.2200      583002       AY8910: reg 0x06, val 0x07
+13.2200      583002       AY8910: reg 0x08, val 0x09
+13.2200      583002       AY8910: reg 0x09, val 0x0B
+13.2200      583002       WAIT: 882 samples (1/50s)
+13.2400      583884       AY8910: reg 0x03, val 0x01
+13.2400      583884       AY8910: reg 0x04, val 0x77
+13.2400      583884       AY8910: reg 0x06, val 0x06
+13.2400      583884       AY8910: reg 0x07, val 0x2A
+13.2400      583884       AY8910: reg 0x09, val 0x0A
+13.2400      583884       WAIT: 882 samples (1/50s)
+13.2600      584766       AY8910: reg 0x04, val 0xB2
+13.2600      584766       AY8910: reg 0x06, val 0x05
+13.2600      584766       AY8910: reg 0x09, val 0x08
+13.2600      584766       WAIT: 882 samples (1/50s)
+13.2800      585648       AY8910: reg 0x02, val 0x58
+13.2800      585648       AY8910: reg 0x03, val 0x02
+13.2800      585648       AY8910: reg 0x04, val 0x96
+13.2800      585648       AY8910: reg 0x06, val 0x00
+13.2800      585648       AY8910: reg 0x08, val 0x0F
+13.2800      585648       AY8910: reg 0x09, val 0x0C
+13.2800      585648       AY8910: reg 0x0A, val 0x0E
+13.2800      585648       AY8910: reg 0x0D, val 0x0C
+13.2800      585648       WAIT: 882 samples (1/50s)
+13.3000      586530       AY8910: reg 0x04, val 0x77
+13.3000      586530       AY8910: reg 0x07, val 0x3A
+13.3000      586530       AY8910: reg 0x08, val 0x0E
+13.3000      586530       AY8910: reg 0x09, val 0x1F
+13.3000      586530       WAIT: 882 samples (1/50s)
+13.3200      587412       AY8910: reg 0x04, val 0x64
+13.3200      587412       WAIT: 882 samples (1/50s)
+13.3400      588294       AY8910: reg 0x04, val 0x96
+13.3400      588294       AY8910: reg 0x08, val 0x0D
+13.3400      588294       WAIT: 882 samples (1/50s)
+13.3600      589176       AY8910: reg 0x00, val 0x85
+13.3600      589176       AY8910: reg 0x08, val 0x0A
+13.3600      589176       WAIT: 882 samples (1/50s)
+13.3800      590058       AY8910: reg 0x04, val 0x77
+13.3800      590058       AY8910: reg 0x08, val 0x09
+13.3800      590058       WAIT: 882 samples (1/50s)
+13.4000      590940       AY8910: reg 0x04, val 0x64
+13.4000      590940       WAIT: 882 samples (1/50s)
+13.4200      591822       AY8910: reg 0x04, val 0x96
+13.4200      591822       WAIT: 882 samples (1/50s)
+13.4400      592704       AY8910: reg 0x00, val 0x96
+13.4400      592704       AY8910: reg 0x02, val 0x2C
+13.4400      592704       AY8910: reg 0x03, val 0x01
+13.4400      592704       AY8910: reg 0x07, val 0x2A
+13.4400      592704       AY8910: reg 0x08, val 0x0F
+13.4400      592704       AY8910: reg 0x09, val 0x0C
+13.4400      592704       AY8910: reg 0x0A, val 0x09
+13.4400      592704       AY8910: reg 0x0D, val 0x0E
+13.4400      592704       WAIT: 882 samples (1/50s)
+13.4600      593586       AY8910: reg 0x04, val 0x77
+13.4600      593586       AY8910: reg 0x07, val 0x3A
+13.4600      593586       AY8910: reg 0x08, val 0x0E
+13.4600      593586       AY8910: reg 0x09, val 0x1F
+13.4600      593586       AY8910: reg 0x0B, val 0x26
+13.4600      593586       WAIT: 882 samples (1/50s)
+13.4800      594468       AY8910: reg 0x04, val 0x64
+13.4800      594468       WAIT: 882 samples (1/50s)
+13.5000      595350       AY8910: reg 0x04, val 0x96
+13.5000      595350       AY8910: reg 0x08, val 0x0D
+13.5000      595350       WAIT: 882 samples (1/50s)
+13.5200      596232       AY8910: reg 0x00, val 0xEF
+13.5200      596232       AY8910: reg 0x08, val 0x0A
+13.5200      596232       WAIT: 882 samples (1/50s)
+13.5400      597114       AY8910: reg 0x04, val 0x77
+13.5400      597114       AY8910: reg 0x08, val 0x09
+13.5400      597114       WAIT: 882 samples (1/50s)
+13.5600      597996       AY8910: reg 0x04, val 0x64
+13.5600      597996       WAIT: 882 samples (1/50s)
+13.5800      598878       AY8910: reg 0x04, val 0x96
+13.5800      598878       WAIT: 882 samples (1/50s)
+13.6000      599760       AY8910: reg 0x02, val 0x58
+13.6000      599760       AY8910: reg 0x03, val 0x02
+13.6000      599760       AY8910: reg 0x07, val 0x2A
+13.6000      599760       AY8910: reg 0x08, val 0x0F
+13.6000      599760       AY8910: reg 0x09, val 0x0C
+13.6000      599760       AY8910: reg 0x0A, val 0x0E
+13.6000      599760       AY8910: reg 0x0D, val 0x0C
+13.6000      599760       WAIT: 882 samples (1/50s)
+13.6200      600642       AY8910: reg 0x04, val 0x77
+13.6200      600642       AY8910: reg 0x07, val 0x3A
+13.6200      600642       AY8910: reg 0x08, val 0x0E
+13.6200      600642       AY8910: reg 0x09, val 0x1F
+13.6200      600642       AY8910: reg 0x0B, val 0x4B
+13.6200      600642       WAIT: 882 samples (1/50s)
+13.6400      601524       AY8910: reg 0x04, val 0x64
+13.6400      601524       WAIT: 882 samples (1/50s)
+13.6600      602406       AY8910: reg 0x04, val 0x96
+13.6600      602406       AY8910: reg 0x08, val 0x0D
+13.6600      602406       WAIT: 882 samples (1/50s)
+13.6800      603288       AY8910: reg 0x00, val 0x96
+13.6800      603288       AY8910: reg 0x08, val 0x0A
+13.6800      603288       WAIT: 882 samples (1/50s)
+13.7000      604170       AY8910: reg 0x04, val 0x77
+13.7000      604170       AY8910: reg 0x08, val 0x09
+13.7000      604170       WAIT: 882 samples (1/50s)
+13.7200      605052       AY8910: reg 0x04, val 0x64
+13.7200      605052       WAIT: 882 samples (1/50s)
+13.7400      605934       AY8910: reg 0x04, val 0x96
+13.7400      605934       WAIT: 882 samples (1/50s)
+13.7600      606816       AY8910: reg 0x00, val 0x9F
+13.7600      606816       AY8910: reg 0x02, val 0x5F
+13.7600      606816       AY8910: reg 0x06, val 0x07
+13.7600      606816       AY8910: reg 0x07, val 0x28
+13.7600      606816       AY8910: reg 0x08, val 0x0F
+13.7600      606816       AY8910: reg 0x09, val 0x0F
+13.7600      606816       AY8910: reg 0x0A, val 0x09
+13.7600      606816       WAIT: 882 samples (1/50s)
+13.7800      607698       AY8910: reg 0x02, val 0xDF
+13.7800      607698       AY8910: reg 0x04, val 0x77
+13.7800      607698       AY8910: reg 0x06, val 0x02
+13.7800      607698       AY8910: reg 0x08, val 0x0E
+13.7800      607698       WAIT: 882 samples (1/50s)
+13.8000      608580       AY8910: reg 0x02, val 0x5F
+13.8000      608580       AY8910: reg 0x03, val 0x03
+13.8000      608580       AY8910: reg 0x04, val 0x64
+13.8000      608580       AY8910: reg 0x06, val 0x0A
+13.8000      608580       AY8910: reg 0x09, val 0x0E
+13.8000      608580       WAIT: 882 samples (1/50s)
+13.8200      609462       AY8910: reg 0x02, val 0xDF
+13.8200      609462       AY8910: reg 0x04, val 0x96
+13.8200      609462       AY8910: reg 0x06, val 0x09
+13.8200      609462       AY8910: reg 0x08, val 0x0D
+13.8200      609462       AY8910: reg 0x09, val 0x0D
+13.8200      609462       WAIT: 882 samples (1/50s)
+13.8400      610344       AY8910: reg 0x00, val 0xEF
+13.8400      610344       AY8910: reg 0x02, val 0x5F
+13.8400      610344       AY8910: reg 0x03, val 0x04
+13.8400      610344       AY8910: reg 0x06, val 0x08
+13.8400      610344       AY8910: reg 0x08, val 0x0A
+13.8400      610344       AY8910: reg 0x09, val 0x0C
+13.8400      610344       WAIT: 882 samples (1/50s)
+13.8600      611226       AY8910: reg 0x02, val 0xDF
+13.8600      611226       AY8910: reg 0x04, val 0x77
+13.8600      611226       AY8910: reg 0x06, val 0x07
+13.8600      611226       AY8910: reg 0x08, val 0x09
+13.8600      611226       AY8910: reg 0x09, val 0x0B
+13.8600      611226       WAIT: 882 samples (1/50s)
+13.8800      612108       AY8910: reg 0x03, val 0x01
+13.8800      612108       AY8910: reg 0x04, val 0x64
+13.8800      612108       AY8910: reg 0x06, val 0x06
+13.8800      612108       AY8910: reg 0x07, val 0x2A
+13.8800      612108       AY8910: reg 0x09, val 0x0A
+13.8800      612108       WAIT: 882 samples (1/50s)
+13.9000      612990       AY8910: reg 0x04, val 0x96
+13.9000      612990       AY8910: reg 0x06, val 0x05
+13.9000      612990       AY8910: reg 0x09, val 0x08
+13.9000      612990       WAIT: 882 samples (1/50s)
+13.9200      613872       AY8910: reg 0x00, val 0x96
+13.9200      613872       AY8910: reg 0x02, val 0x2C
+13.9200      613872       AY8910: reg 0x06, val 0x00
+13.9200      613872       AY8910: reg 0x08, val 0x0F
+13.9200      613872       AY8910: reg 0x09, val 0x0C
+13.9200      613872       AY8910: reg 0x0A, val 0x0E
+13.9200      613872       AY8910: reg 0x0D, val 0x0E
+13.9200      613872       WAIT: 882 samples (1/50s)
+13.9400      614754       AY8910: reg 0x04, val 0x77
+13.9400      614754       AY8910: reg 0x07, val 0x3A
+13.9400      614754       AY8910: reg 0x08, val 0x0E
+13.9400      614754       AY8910: reg 0x09, val 0x1F
+13.9400      614754       AY8910: reg 0x0B, val 0x26
+13.9400      614754       WAIT: 882 samples (1/50s)
+13.9600      615636       AY8910: reg 0x04, val 0x64
+13.9600      615636       WAIT: 882 samples (1/50s)
+13.9800      616518       AY8910: reg 0x04, val 0x96
+13.9800      616518       AY8910: reg 0x08, val 0x0D
+13.9800      616518       WAIT: 882 samples (1/50s)
+14.0000      617400       AY8910: reg 0x00, val 0x9F
+14.0000      617400       AY8910: reg 0x08, val 0x0A
+14.0000      617400       AY8910: reg 0x0A, val 0x09
+14.0000      617400       WAIT: 882 samples (1/50s)
+14.0200      618282       AY8910: reg 0x04, val 0x77
+14.0200      618282       AY8910: reg 0x08, val 0x09
+14.0200      618282       WAIT: 882 samples (1/50s)
+14.0400      619164       AY8910: reg 0x04, val 0x64
+14.0400      619164       WAIT: 882 samples (1/50s)
+14.0600      620046       AY8910: reg 0x04, val 0x96
+14.0600      620046       WAIT: 882 samples (1/50s)
+14.0800      620928       AY8910: reg 0x02, val 0x0A
+14.0800      620928       AY8910: reg 0x04, val 0xC8
+14.0800      620928       AY8910: reg 0x07, val 0x2A
+14.0800      620928       AY8910: reg 0x08, val 0x0F
+14.0800      620928       AY8910: reg 0x09, val 0x0C
+14.0800      620928       AY8910: reg 0x0A, val 0x0E
+14.0800      620928       AY8910: reg 0x0D, val 0x0E
+14.0800      620928       WAIT: 882 samples (1/50s)
+14.1000      621810       AY8910: reg 0x04, val 0x9F
+14.1000      621810       AY8910: reg 0x07, val 0x3A
+14.1000      621810       AY8910: reg 0x08, val 0x0E
+14.1000      621810       AY8910: reg 0x09, val 0x1F
+14.1000      621810       AY8910: reg 0x0B, val 0x21
+14.1000      621810       WAIT: 882 samples (1/50s)
+14.1200      622692       AY8910: reg 0x04, val 0x85
+14.1200      622692       WAIT: 882 samples (1/50s)
+14.1400      623574       AY8910: reg 0x04, val 0xC8
+14.1400      623574       AY8910: reg 0x08, val 0x0D
+14.1400      623574       WAIT: 882 samples (1/50s)
+14.1600      624456       AY8910: reg 0x00, val 0xEF
+14.1600      624456       AY8910: reg 0x08, val 0x0A
+14.1600      624456       AY8910: reg 0x0A, val 0x09
+14.1600      624456       WAIT: 882 samples (1/50s)
+14.1800      625338       AY8910: reg 0x04, val 0x9F
+14.1800      625338       AY8910: reg 0x08, val 0x09
+14.1800      625338       WAIT: 882 samples (1/50s)
+14.2000      626220       AY8910: reg 0x04, val 0x85
+14.2000      626220       WAIT: 882 samples (1/50s)
+14.2200      627102       AY8910: reg 0x04, val 0xC8
+14.2200      627102       WAIT: 882 samples (1/50s)
+14.2400      627984       AY8910: reg 0x00, val 0xB2
+14.2400      627984       AY8910: reg 0x02, val 0x16
+14.2400      627984       AY8910: reg 0x03, val 0x02
+14.2400      627984       AY8910: reg 0x07, val 0x2A
+14.2400      627984       AY8910: reg 0x08, val 0x0F
+14.2400      627984       AY8910: reg 0x09, val 0x0C
+14.2400      627984       AY8910: reg 0x0A, val 0x0E
+14.2400      627984       AY8910: reg 0x0D, val 0x0C
+14.2400      627984       WAIT: 882 samples (1/50s)
+14.2600      628866       AY8910: reg 0x04, val 0x9F
+14.2600      628866       AY8910: reg 0x07, val 0x3A
+14.2600      628866       AY8910: reg 0x08, val 0x0E
+14.2600      628866       AY8910: reg 0x09, val 0x1F
+14.2600      628866       AY8910: reg 0x0B, val 0x43
+14.2600      628866       WAIT: 882 samples (1/50s)
+14.2800      629748       AY8910: reg 0x04, val 0x85
+14.2800      629748       WAIT: 882 samples (1/50s)
+14.3000      630630       AY8910: reg 0x04, val 0xC8
+14.3000      630630       AY8910: reg 0x08, val 0x0D
+14.3000      630630       WAIT: 882 samples (1/50s)
+14.3200      631512       AY8910: reg 0x00, val 0x96
+14.3200      631512       AY8910: reg 0x08, val 0x0A
+14.3200      631512       AY8910: reg 0x0A, val 0x09
+14.3200      631512       WAIT: 882 samples (1/50s)
+14.3400      632394       AY8910: reg 0x04, val 0x9F
+14.3400      632394       AY8910: reg 0x08, val 0x09
+14.3400      632394       WAIT: 882 samples (1/50s)
+14.3600      633276       AY8910: reg 0x04, val 0x85
+14.3600      633276       WAIT: 882 samples (1/50s)
+14.3800      634158       AY8910: reg 0x04, val 0xC8
+14.3800      634158       WAIT: 882 samples (1/50s)
+14.4000      635040       AY8910: reg 0x00, val 0x0A
+14.4000      635040       AY8910: reg 0x01, val 0x01
+14.4000      635040       AY8910: reg 0x02, val 0x5F
+14.4000      635040       AY8910: reg 0x06, val 0x07
+14.4000      635040       AY8910: reg 0x07, val 0x28
+14.4000      635040       AY8910: reg 0x08, val 0x0F
+14.4000      635040       AY8910: reg 0x09, val 0x0F
+14.4000      635040       AY8910: reg 0x0A, val 0x0E
+14.4000      635040       WAIT: 882 samples (1/50s)
+14.4200      635922       AY8910: reg 0x02, val 0xDF
+14.4200      635922       AY8910: reg 0x04, val 0x9F
+14.4200      635922       AY8910: reg 0x06, val 0x02
+14.4200      635922       AY8910: reg 0x08, val 0x0E
+14.4200      635922       WAIT: 882 samples (1/50s)
+14.4400      636804       AY8910: reg 0x02, val 0x5F
+14.4400      636804       AY8910: reg 0x03, val 0x03
+14.4400      636804       AY8910: reg 0x04, val 0x85
+14.4400      636804       AY8910: reg 0x06, val 0x0A
+14.4400      636804       AY8910: reg 0x09, val 0x0E
+14.4400      636804       WAIT: 882 samples (1/50s)
+14.4600      637686       AY8910: reg 0x02, val 0xDF
+14.4600      637686       AY8910: reg 0x04, val 0xC8
+14.4600      637686       AY8910: reg 0x06, val 0x09
+14.4600      637686       AY8910: reg 0x08, val 0x0D
+14.4600      637686       AY8910: reg 0x09, val 0x0D
+14.4600      637686       WAIT: 882 samples (1/50s)
+14.4800      638568       AY8910: reg 0x00, val 0xB2
+14.4800      638568       AY8910: reg 0x01, val 0x00
+14.4800      638568       AY8910: reg 0x02, val 0x5F
+14.4800      638568       AY8910: reg 0x03, val 0x04
+14.4800      638568       AY8910: reg 0x06, val 0x08
+14.4800      638568       AY8910: reg 0x08, val 0x0A
+14.4800      638568       AY8910: reg 0x09, val 0x0C
+14.4800      638568       AY8910: reg 0x0A, val 0x09
+14.4800      638568       WAIT: 882 samples (1/50s)
+14.5000      639450       AY8910: reg 0x02, val 0xDF
+14.5000      639450       AY8910: reg 0x04, val 0x9F
+14.5000      639450       AY8910: reg 0x06, val 0x07
+14.5000      639450       AY8910: reg 0x08, val 0x09
+14.5000      639450       AY8910: reg 0x09, val 0x0B
+14.5000      639450       WAIT: 882 samples (1/50s)
+14.5200      640332       AY8910: reg 0x03, val 0x01
+14.5200      640332       AY8910: reg 0x04, val 0x85
+14.5200      640332       AY8910: reg 0x06, val 0x06
+14.5200      640332       AY8910: reg 0x07, val 0x2A
+14.5200      640332       AY8910: reg 0x09, val 0x0A
+14.5200      640332       WAIT: 882 samples (1/50s)
+14.5400      641214       AY8910: reg 0x04, val 0xC8
+14.5400      641214       AY8910: reg 0x06, val 0x05
+14.5400      641214       AY8910: reg 0x09, val 0x08
+14.5400      641214       WAIT: 882 samples (1/50s)
+14.5600      642096       AY8910: reg 0x00, val 0xEF
+14.5600      642096       AY8910: reg 0x02, val 0x16
+14.5600      642096       AY8910: reg 0x03, val 0x02
+14.5600      642096       AY8910: reg 0x06, val 0x00
+14.5600      642096       AY8910: reg 0x08, val 0x0F
+14.5600      642096       AY8910: reg 0x09, val 0x0C
+14.5600      642096       AY8910: reg 0x0A, val 0x0E
+14.5600      642096       AY8910: reg 0x0D, val 0x0C
+14.5600      642096       WAIT: 882 samples (1/50s)
+14.5800      642978       AY8910: reg 0x04, val 0x9F
+14.5800      642978       AY8910: reg 0x07, val 0x3A
+14.5800      642978       AY8910: reg 0x08, val 0x0E
+14.5800      642978       AY8910: reg 0x09, val 0x1F
+14.5800      642978       WAIT: 882 samples (1/50s)
+14.6000      643860       AY8910: reg 0x04, val 0x85
+14.6000      643860       WAIT: 882 samples (1/50s)
+14.6200      644742       AY8910: reg 0x04, val 0xC8
+14.6200      644742       AY8910: reg 0x08, val 0x0D
+14.6200      644742       WAIT: 882 samples (1/50s)
+14.6400      645624       AY8910: reg 0x00, val 0x0A
+14.6400      645624       AY8910: reg 0x01, val 0x01
+14.6400      645624       AY8910: reg 0x08, val 0x0A
+14.6400      645624       WAIT: 882 samples (1/50s)
+14.6600      646506       AY8910: reg 0x04, val 0x9F
+14.6600      646506       AY8910: reg 0x08, val 0x09
+14.6600      646506       WAIT: 882 samples (1/50s)
+14.6800      647388       AY8910: reg 0x04, val 0x85
+14.6800      647388       WAIT: 882 samples (1/50s)
+14.7000      648270       AY8910: reg 0x04, val 0xC8
+14.7000      648270       WAIT: 882 samples (1/50s)
+14.7200      649152       AY8910: reg 0x00, val 0xC8
+14.7200      649152       AY8910: reg 0x01, val 0x00
+14.7200      649152       AY8910: reg 0x07, val 0x2A
+14.7200      649152       AY8910: reg 0x08, val 0x0F
+14.7200      649152       AY8910: reg 0x09, val 0x0C
+14.7200      649152       AY8910: reg 0x0A, val 0x09
+14.7200      649152       AY8910: reg 0x0D, val 0x0E
+14.7200      649152       WAIT: 882 samples (1/50s)
+14.7400      650034       AY8910: reg 0x04, val 0x9F
+14.7400      650034       AY8910: reg 0x07, val 0x3A
+14.7400      650034       AY8910: reg 0x08, val 0x0E
+14.7400      650034       AY8910: reg 0x09, val 0x1F
+14.7400      650034       WAIT: 882 samples (1/50s)
+14.7600      650916       AY8910: reg 0x04, val 0x77
+14.7600      650916       WAIT: 882 samples (1/50s)
+14.7800      651798       AY8910: reg 0x04, val 0xC8
+14.7800      651798       AY8910: reg 0x08, val 0x0D
+14.7800      651798       WAIT: 882 samples (1/50s)
+14.8000      652680       AY8910: reg 0x00, val 0xEF
+14.8000      652680       AY8910: reg 0x08, val 0x0A
+14.8000      652680       WAIT: 882 samples (1/50s)
+14.8200      653562       AY8910: reg 0x04, val 0x9F
+14.8200      653562       AY8910: reg 0x08, val 0x09
+14.8200      653562       WAIT: 882 samples (1/50s)
+14.8400      654444       AY8910: reg 0x04, val 0x77
+14.8400      654444       WAIT: 882 samples (1/50s)
+14.8600      655326       AY8910: reg 0x04, val 0xC8
+14.8600      655326       WAIT: 882 samples (1/50s)
+14.8800      656208       AY8910: reg 0x00, val 0xB2
+14.8800      656208       AY8910: reg 0x02, val 0x0A
+14.8800      656208       AY8910: reg 0x03, val 0x01
+14.8800      656208       AY8910: reg 0x07, val 0x2A
+14.8800      656208       AY8910: reg 0x08, val 0x0F
+14.8800      656208       AY8910: reg 0x09, val 0x0C
+14.8800      656208       AY8910: reg 0x0A, val 0x0E
+14.8800      656208       AY8910: reg 0x0D, val 0x0E
+14.8800      656208       WAIT: 882 samples (1/50s)
+14.9000      657090       AY8910: reg 0x04, val 0x9F
+14.9000      657090       AY8910: reg 0x07, val 0x3A
+14.9000      657090       AY8910: reg 0x08, val 0x0E
+14.9000      657090       AY8910: reg 0x09, val 0x1F
+14.9000      657090       AY8910: reg 0x0B, val 0x21
+14.9000      657090       WAIT: 882 samples (1/50s)
+14.9200      657972       AY8910: reg 0x04, val 0x77
+14.9200      657972       WAIT: 882 samples (1/50s)
+14.9400      658854       AY8910: reg 0x04, val 0xC8
+14.9400      658854       AY8910: reg 0x08, val 0x0D
+14.9400      658854       WAIT: 882 samples (1/50s)
+14.9600      659736       AY8910: reg 0x00, val 0xC8
+14.9600      659736       AY8910: reg 0x08, val 0x0A
+14.9600      659736       WAIT: 882 samples (1/50s)
+14.9800      660618       AY8910: reg 0x04, val 0x9F
+14.9800      660618       AY8910: reg 0x08, val 0x09
+14.9800      660618       WAIT: 882 samples (1/50s)
+15.0000      661500       AY8910: reg 0x04, val 0x77
+15.0000      661500       WAIT: 882 samples (1/50s)
+
+--- Reached end time. Stopping parse. ---
