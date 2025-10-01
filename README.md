@@ -1,4 +1,4 @@
-# YASP - Yet Another Sound Player (Technical Documentation) OPM v0.881 
+# YASP - Yet Another Sound Player (Technical Documentation) v0.888
 
 ## Abstract
 
@@ -35,6 +35,10 @@ YASP (Yet Another Sound Player) is a powerful command-line music player designed
     * [8.2.3. Corrected Total Time Calculation in UI](#8-2-3)
     * [8.2.4. Corrected VGM Chip Info Display in UI](#8-2-4)
     * [8.2.5. Added Detection for Invalid VGM Files](#8-2-5)
+  * [8.3. Feature Enhancements & Bug Fixes (v0.884)](#8-3)
+    * [8.3.1. Optimized Startup and Directory Management](#8-3-1)
+    * [8.3.2. Enhanced File Browser Functionality](#8-3-2)
+    * [8.3.3. Added Clear Cache Functionality](#8-3-3)
 
 ---
 
@@ -65,6 +69,10 @@ The development of YASP was heavily influenced by the following outstanding proj
 *   **`vgm-parser-js`**
     *   **Author**: Mitsutaka Okazaki (digital-sound-antiques)
     *   **Contribution**: When solving the GD3 tag caching issue, this project borrowed the robust "load entire file into memory" processing strategy from its `vgm-parser-main` module (`vgm.c`), which was key to the final successful implementation.
+
+*   **`Vortex Tracker II`**
+    *   **Author**: Sergey Bulba (salah)
+    *   **Contribution**: Provided significant inspiration and reference for implementing advanced AY-8910 programming techniques, such as the "Envelope as Waveform" feature.
 
 ## 2. Project Background and Architecture
 <a id="2"></a>
@@ -229,6 +237,174 @@ To play OPN music without an OPN chip, YASP implements a real-time, register-lev
     3.  Notably, to allow the user to control the intensity of the LFO effect in real-time, the code applies a global amplitude multiplier `g_opn_lfo_amplitude` to the PMS value. After extensive testing, it was found that setting this scaling factor to **0.9** produces a sound that most closely matches the original OPN audio.
     4.  The processed PMS and AMS are written to OPM's `0x38-0x3F` registers.
 *   **Key Code**: `uint8_t scaled_pms = (uint8_t)(pms * g_opn_lfo_amplitude); _write_func(0x38 + ch, (scaled_pms << 4) | ams);`
+
+#### 4.2.3. AY-8910 to OPM Detailed Conversion Rules
+<a id="4-2-3"></a>
+Converting sound from an AY-8910 (PSG) to a YM2151 (OPM) is a unique challenge because it requires using FM synthesis to **simulate** a completely different sound generation method (Programmable Sound Generator). YASP uses 3 channels of the OPM to simulate the PSG's 3 square wave channels and a 4th channel to simulate its noise.
+
+##### 4.2.3.1. Register Map Overview
+| AY-8910 (PSG) | YM2151 (OPM) | Brief Description |
+| :--- | :--- | :--- |
+| `R0, R1` (Tone Period A) | `0x28, 0x30` (KC/KF Ch 4) | Frequency for Channel A |
+| `R2, R3` (Tone Period B) | `0x29, 0x31` (KC/KF Ch 5) | Frequency for Channel B |
+| `R4, R5` (Tone Period C) | `0x2A, 0x32` (KC/KF Ch 6) | Frequency for Channel C |
+| `R6` (Noise Period) | `0x0F` (Noise Control) | Noise frequency |
+| `R7` (Mixer) | `0x70-0x77` (TL) / `0x08` (Key On/Off) | Controls tone/noise enable and volume |
+| `R8` (Amplitude A) | `0x74` (TL Ch 4) | Volume for Channel A |
+| `R9` (Amplitude B) | `0x75` (TL Ch 5) | Volume for Channel B |
+| `R10` (Amplitude C) | `0x76` (TL Ch 6) | Volume for Channel C |
+| `R11, R12` (Envelope Period) | (Internal State) | Frequency of the envelope generator |
+| `R13` (Envelope Shape) | (Internal State) / `0x28, 0x30` (KC/KF) | Envelope shape, or pitch when used as a waveform |
+
+##### 4.2.3.2. Detailed Conversion Rules
+###### 1. Square Wave Tone
+*   **AY `R0-R5` -> OPM `0x28-0x32`**
+*   The AY-8910 uses a 12-bit period value to define the frequency of its square wave. The converter first calculates the actual frequency in Hz based on this period.
+*   **Frequency Calculation**: `freq = source_clock / (16 * tone_period)`
+*   This frequency value is then fed into the same `freqToOPMNote` function used for OPN->OPM conversion, which calculates the OPM's `KC` (Key Code) and `KF` (Key Fraction) values. These are then written to the frequency registers of the corresponding OPM channel.
+*   To simulate the timbre of a square wave, the OPM channels are preset with a simple FM configuration that produces harmonics close to those of a square wave. The following is the instrument definition in MML2VGM format:
+
+    ```
+    '@ PSG Square Wave
+       AR  DR  SR  RR  SL  TL  KS  ML  DT1 DT2 AME
+    '@ 031,000,000,000,000,027,000,002,000,000,000 ; M1 (Modulator)
+    '@ 031,000,000,000,000,000,000,001,000,000,000 ; C1 (Carrier)
+    '@ 000,000,000,000,000,000,000,000,000,000,000 ; M2 (Unused)
+    '@ 000,000,000,000,000,000,000,000,000,000,000 ; C2 (Unused)
+       ALG FB
+    '@ 004,007
+    ```
+    **Explanation**:
+    *   **Algorithm 4** is used, where one modulator (M1) affects one carrier (C1).
+    *   **Feedback (FB) is set to 7**, adding harmonics to the modulator itself, making its timbre closer to a square wave.
+    *   The modulator's **Multiplier (ML) is 2** and the carrier's is **1**. This non-integer relationship helps generate rich odd harmonics.
+    *   The modulator's **Total Level (TL) is 27**, a fixed value optimized by ear to control the intensity of the harmonics. The carrier's TL is 0 in the definition (maximum volume), but is dynamically controlled by the PSG's volume registers during actual playback.
+
+###### 2. Noise
+*   **AY `R6` -> OPM `0x0F`**
+*   The AY-8910's 5-bit noise period is directly mapped to the OPM's noise control register. The OPM's noise frequency is inverted (lower value means higher frequency), so an inversion is necessary.
+*   **Key Code**: `_y(0x0f, 0x80 | (0x1f - nfreq));`
+*   The noise volume is taken from the loudest of the three PSG channels that have their noise switch enabled.
+
+###### 3. Volume & Mixer
+*   **AY `R7-R10` -> OPM `0x70-0x77`**
+*   This is a core part of the conversion logic. The AY-8910's `R7` mixer register determines whether each channel outputs a tone, noise, both, or is silent.
+*   The converter handles this logic in the `_updateTone` function. For each channel, it checks the corresponding tone and noise enable bits in `R7`.
+*   If the tone is enabled, the 4-bit volume from `R8-R10` is converted to a 7-bit OPM Total Level (TL) value using a look-up table `VOL_TO_TL`, and this is written to the OPM channel's volume register.
+*   If the tone is disabled, the OPM channel is muted (TL set to 127).
+
+###### 4. Exclusive Feature: Envelope as Waveform Conversion
+*   **AY `R11-R13` -> OPM `0x28-0x32` (Frequency) & `0x70-0x77` (Volume)**
+*   This is an exclusive feature of YASP that solves a common advanced technique in chiptune music. On the AY-8910, it's possible to set an extremely short envelope period, causing the hardware envelope itself to oscillate at high speed and thus be used **as a new sound source**.
+*   **Detection Mechanism**: The converter checks the value of the envelope period registers (`R11`, `R12`) to determine if this mode is active. If the period is very small (the threshold is set to `200` in the code), it assumes the envelope is being used as a waveform generator.
+    ```c
+    // ay_to_opm.c
+    const int envelope_as_waveform = (v & 0x10) && (_envelope_period < 200);
+    ```
+*   **Frequency Calculation**: When this mode is active, the channel's pitch is no longer determined by its tone period register, but by the **frequency of the envelope**. The converter calculates the actual pitch based on the envelope's shape (which determines the number of steps in the waveform, e.g., 32 for sawtooth, 64 for triangle) and the envelope period.
+    ```c
+    // ay_to_opm.c
+    int steps = 0;
+    switch (_envelope_shape) {
+        case 8: case 11: case 12: case 13: steps = 32; break; // Sawtooth
+        case 10: case 14: steps = 64; break; // Triangle
+        // ...
+    }
+    const double freq = (double)_source_clock / (16.0 * _envelope_period * steps);
+    _updateFreq(ch, freq); // Update the OPM channel with this new frequency
+    ```
+*   **Volume & Mixer Correction**: This is the most critical step that makes the feature work. When a channel uses its envelope as a waveform, the composer often **disables the channel's tone switch** (in `R7`). The old logic would have incorrectly interpreted this as "mute". The new `_updateTone` function corrects this:
+    ```c
+    // ay_to_opm.c
+    const int tone_enabled = ((1 << ch) & _regs[7]) == 0;
+    const int envelope_as_waveform = (v & 0x10) && (_envelope_period < 200);
+
+    if (tone_enabled || envelope_as_waveform) {
+        // Set volume as long as tone is on OR envelope is used as a waveform
+        tVol = 15; // Volume is max when used as a waveform
+        _y(0x70 + opmCh, fmin(127, VOL_TO_TL[tVol & 0xf]));
+    } else {
+        // Mute otherwise
+        _y(0x70 + opmCh, 0x7f);
+    }
+    ```
+    This `if (tone_enabled || envelope_as_waveform)` check ensures that even if the tone switch is off, the channel will still produce sound as long as it's using an envelope waveform, thus perfectly reproducing the original chiptune's effect.
+
+#### 4.2.3. AY-8910 to OPM Detailed Conversion Rules
+<a id="4-2-3"></a>
+Converting sound from an AY-8910 (PSG) to a YM2151 (OPM) is a unique challenge because it requires using FM synthesis to **simulate** a completely different sound generation method (Programmable Sound Generator). YASP uses 3 channels of the OPM to simulate the PSG's 3 square wave channels and a 4th channel to simulate its noise.
+
+##### 4.2.3.1. Register Map Overview
+| AY-8910 (PSG) | YM2151 (OPM) | Brief Description |
+| :--- | :--- | :--- |
+| `R0, R1` (Tone Period A) | `0x28, 0x30` (KC/KF Ch 4) | Frequency for Channel A |
+| `R2, R3` (Tone Period B) | `0x29, 0x31` (KC/KF Ch 5) | Frequency for Channel B |
+| `R4, R5` (Tone Period C) | `0x2A, 0x32` (KC/KF Ch 6) | Frequency for Channel C |
+| `R6` (Noise Period) | `0x0F` (Noise Control) | Noise frequency |
+| `R7` (Mixer) | `0x70-0x77` (TL) / `0x08` (Key On/Off) | Controls tone/noise enable and volume |
+| `R8` (Amplitude A) | `0x74` (TL Ch 4) | Volume for Channel A |
+| `R9` (Amplitude B) | `0x75` (TL Ch 5) | Volume for Channel B |
+| `R10` (Amplitude C) | `0x76` (TL Ch 6) | Volume for Channel C |
+| `R11, R12` (Envelope Period) | (Internal State) | Frequency of the envelope generator |
+| `R13` (Envelope Shape) | (Internal State) / `0x28, 0x30` (KC/KF) | Envelope shape, or pitch when used as a waveform |
+
+##### 4.2.3.2. Detailed Conversion Rules
+###### 1. Square Wave Tone
+*   **AY `R0-R5` -> OPM `0x28-0x32`**
+*   The AY-8910 uses a 12-bit period value to define the frequency of its square wave. The converter first calculates the actual frequency in Hz based on this period.
+*   **Frequency Calculation**: `freq = source_clock / (16 * tone_period)`
+*   This frequency value is then fed into the same `freqToOPMNote` function used for OPN->OPM conversion, which calculates the OPM's `KC` (Key Code) and `KF` (Key Fraction) values. These are then written to the frequency registers of the corresponding OPM channel.
+*   To simulate the timbre of a square wave, the OPM channels are preset with a simple FM configuration (algorithm 4, one carrier and one modulator) that produces harmonics close to those of a square wave.
+
+###### 2. Noise
+*   **AY `R6` -> OPM `0x0F`**
+*   The AY-8910's 5-bit noise period is directly mapped to the OPM's noise control register. The OPM's noise frequency is inverted (lower value means higher frequency), so an inversion is necessary.
+*   **Key Code**: `_y(0x0f, 0x80 | (0x1f - nfreq));`
+*   The noise volume is taken from the loudest of the three PSG channels that have their noise switch enabled.
+
+###### 3. Volume & Mixer
+*   **AY `R7-R10` -> OPM `0x70-0x77`**
+*   This is a core part of the conversion logic. The AY-8910's `R7` mixer register determines whether each channel outputs a tone, noise, both, or is silent.
+*   The converter handles this logic in the `_updateTone` function. For each channel, it checks the corresponding tone and noise enable bits in `R7`.
+*   If the tone is enabled, the 4-bit volume from `R8-R10` is converted to a 7-bit OPM Total Level (TL) value using a look-up table `VOL_TO_TL`, and this is written to the OPM channel's volume register.
+*   If the tone is disabled, the OPM channel is muted (TL set to 127).
+
+###### 4. Exclusive Feature: Envelope as Waveform Conversion
+*   **AY `R11-R13` -> OPM `0x28-0x32` (Frequency) & `0x70-0x77` (Volume)**
+*   This is an exclusive feature of YASP that solves a common advanced technique in chiptune music. On the AY-8910, it's possible to set an extremely short envelope period, causing the hardware envelope itself to oscillate at high speed and thus be used **as a new sound source**.
+*   **Detection Mechanism**: The converter checks the value of the envelope period registers (`R11`, `R12`) to determine if this mode is active. If the period is very small (the threshold is set to `200` in the code), it assumes the envelope is being used as a waveform generator.
+    ```c
+    // ay_to_opm.c
+    const int envelope_as_waveform = (v & 0x10) && (_envelope_period < 200);
+    ```
+*   **Frequency Calculation**: When this mode is active, the channel's pitch is no longer determined by its tone period register, but by the **frequency of the envelope**. The converter calculates the actual pitch based on the envelope's shape (which determines the number of steps in the waveform, e.g., 32 for sawtooth, 64 for triangle) and the envelope period.
+    ```c
+    // ay_to_opm.c
+    int steps = 0;
+    switch (_envelope_shape) {
+        case 8: case 11: case 12: case 13: steps = 32; break; // Sawtooth
+        case 10: case 14: steps = 64; break; // Triangle
+        // ...
+    }
+    const double freq = (double)_source_clock / (16.0 * _envelope_period * steps);
+    _updateFreq(ch, freq); // Update the OPM channel with this new frequency
+    ```
+*   **Volume & Mixer Correction**: This is the most critical step that makes the feature work. When a channel uses its envelope as a waveform, the composer often **disables the channel's tone switch** (in `R7`). The old logic would have incorrectly interpreted this as "mute". The new `_updateTone` function corrects this:
+    ```c
+    // ay_to_opm.c
+    const int tone_enabled = ((1 << ch) & _regs[7]) == 0;
+    const int envelope_as_waveform = (v & 0x10) && (_envelope_period < 200);
+
+    if (tone_enabled || envelope_as_waveform) {
+        // Set volume as long as tone is on OR envelope is used as a waveform
+        tVol = 15; // Volume is max when used as a waveform
+        _y(0x70 + opmCh, fmin(127, VOL_TO_TL[tVol & 0xf]));
+    } else {
+        // Mute otherwise
+        _y(0x70 + opmCh, 0x7f);
+    }
+    ```
+    This `if (tone_enabled || envelope_as_waveform)` check ensures that even if the tone switch is off, the channel will still produce sound as long as it's using an envelope waveform, thus perfectly reproducing the original chiptune's effect.
 
 ### 4.3. Advanced Timing and Flush System
 <a id="4-3"></a>
@@ -616,3 +792,54 @@ This update addresses several critical issues and improves core functionality:
 <a id="8-2-5"></a>
 *   **Problem**: For incomplete or corrupted VGM files (e.g., where all chip clocks are 0), the player would still attempt to guess a clock frequency and play, potentially leading to incorrect behavior.
 *   **Fix**: A check was added to `play.c`'s `update_ui` function. Before displaying chip info, it now verifies if all known chip clocks in the VGM header are zero. If so, it displays "VGM Chip: Invalid/Unsupported" to clearly indicate a potential file issue to the user.
+
+### 8.3. Feature Enhancements & Bug Fixes (v0.884)
+<a id="8-3"></a>
+This update focuses on improving user experience, startup logic, and the robustness of file management.
+
+#### 8.3.1. Optimized Startup and Directory Management
+<a id="8-3-1"></a>
+*   **Automatic Directory Creation**: The program now checks for the existence of the `music` and `cache` directories upon startup. If they don't exist, they are created automatically, preventing potential errors caused by missing directories.
+*   **Intelligent Music Scanning**:
+    *   The program first checks if the `last_file` entry in the configuration file (`config.ini`) is valid. If the file does not exist, the entry is considered invalid.
+    *   If `last_file` is invalid, the program prioritizes scanning the `music` directory.
+    *   If the `music` directory is empty, the program falls back to scanning its current working directory to ensure playable music can be found.
+*   **Direct to Browser on No Music**: If no supported music files are found in any of the default paths, the program no longer exits. Instead, it automatically enters the file browser mode, allowing the user to locate music files manually.
+
+#### 8.3.2. Enhanced File Browser Functionality
+<a id="8-3-2"></a>
+*   **Context-Aware Startup**: When entering the file browser from the main player interface by pressing `f`, the browser now automatically navigates to the directory of the currently playing song, rather than always starting from the program's main directory. This significantly improves ease of use.
+*   **Unified Path Separators**: All internal path handling in the browser now consistently uses forward slashes (`/`), resolving potential path parsing issues on the Windows platform caused by mixed use of backslashes (`\`) and forward slashes (`/`).
+*   **Fixed Parent Directory Navigation**: Fixed an issue where selecting `..` in the file system's root directory (e.g., `C:/`) would incorrectly jump to the drive list. Now, navigating up from the root directory is correctly ignored.
+
+#### 8.3.3. Added Clear Cache Functionality
+<a id="8-3-3"></a>
+*   After the chip selection process, the program now prompts the user whether to clear the conversion cache. The user can press `y` to delete all files in the `cache` directory, which is useful for resolving potential cache corruption issues or freeing up disk space.
+
+### 8.4. AY-8910 Envelope Waveform Conversion Fix (v0.888)
+<a id="8-4"></a>
+This update resolves a critical, long-standing bug in the AY-8910 (PSG) to YM2151 (OPM) conversion, enabling the correct playback of certain types of AY-8910 music, especially chiptunes that use the envelope as a waveform generator.
+
+*   **Problem**: In some AY-8910 music, composers utilize the high-speed repetition of the hardware envelope to generate a special "waveform" instead of using it to control volume. In this mode, the tone output switch for the channel is often disabled. The old conversion logic incorrectly interpreted "tone off" as "channel muted," causing these channels to be completely silent after conversion.
+*   **Fix Process**:
+    1.  **Pinpointing the Core Error**: Through iterative debugging and analysis with the project owner, **Denjhang**, the root cause was finally identified in the `_updateTone` function within `ay_to_opm.c`. The function only calculated volume if the tone switch was detected as on, completely ignoring the special case of "envelope-only output."
+    2.  **Refactoring the Muting Logic**: The `_updateTone` function was refactored. The new logic is: a channel is considered active and should have its volume calculated if **either the tone switch is on OR it is in the mode of generating a waveform with its envelope** (i.e., envelope mode is on and the envelope period is extremely short).
+    3.  **Code Implementation**:
+        ```c
+        // ay_to_opm.c
+        static void _updateTone(int ch) {
+            const int v = _regs[8 + ch];
+            const int tone_enabled = ((1 << ch) & _regs[7]) == 0;
+            const int envelope_as_waveform = (v & 0x10) && (_envelope_period < 200);
+
+            int opmCh = toOpmCh(ch);
+
+            if (tone_enabled || envelope_as_waveform) {
+                // ... calculate and set volume ...
+            } else {
+                // Mute only if neither condition is met
+                _y(0x70 + opmCh, 0x7f);
+            }
+        }
+        ```
+*   **Result**: With this fix, AY-8910 bass and other special effects that were previously silent after conversion are now played back correctly and audibly, significantly improving compatibility with special chiptune tracks.
