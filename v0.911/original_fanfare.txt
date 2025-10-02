@@ -1,0 +1,15 @@
+--- Parsing VGM from 0.00s to 99999.00s ---
+Sample range: 0 to 4409955900
+
+Time (s)     Samples      Command             
+--------------------------------------------------
+0.0000       0            WAIT: 1 samples
+0.0000       1            WAIT: 9 samples
+0.0002       10           WAIT: 3 samples
+0.0003       13           WAIT: 2 samples
+0.0003       15           WAIT: 1 samples
+0.0004       16           WAIT: 8 samples
+0.0005       24           AY8910: reg 0xFF, val 0xC6
+0.0005       24           WAIT: 1 samples
+0.0006       25           WAIT: 8 samples
+0.0007       33           END OF SOUND DATA
