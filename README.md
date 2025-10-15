@@ -1,4 +1,4 @@
-# YASP - Yet Another Sound Player (Technical Documentation) v0.888
+# YASP - Yet Another Sound Player (Technical Documentation) v0.91
 
 ## Abstract
 
@@ -15,6 +15,8 @@ YASP (Yet Another Sound Player) is a powerful command-line music player designed
   * [4.2. Intelligent Chip Conversion](#4-2)
     * [4.2.1. Conversion Path Overview](#4-2-1)
     * [4.2.2. OPN to OPM Detailed Conversion Rules](#4-2-2)
+    * [4.2.3. AY-8910 to OPM Detailed Conversion Rules](#4-2-3)
+    * [4.2.4. WonderSwan to OPM Detailed Conversion Rules](#4-2-4)
   * [4.3. Advanced Timing and Flush System](#4-3)
     * [4.3.1. Flush Mode](#4-3-1)
     * [4.3.2. Timer Mode](#4-3-2)
@@ -39,6 +41,9 @@ YASP (Yet Another Sound Player) is a powerful command-line music player designed
     * [8.3.1. Optimized Startup and Directory Management](#8-3-1)
     * [8.3.2. Enhanced File Browser Functionality](#8-3-2)
     * [8.3.3. Added Clear Cache Functionality](#8-3-3)
+  * [8.4. AY-8910 Envelope Waveform Conversion Fix (v0.888)](#8-4)
+  * [8.5. AY-8910 Fast Arpeggio Conversion Fix (v0.903)](#8-5)
+  * [8.6. WonderSwan (WS) to OPM Conversion Improvements (v0.911)](#8-6)
 
 ---
 
@@ -405,6 +410,91 @@ Converting sound from an AY-8910 (PSG) to a YM2151 (OPM) is a unique challenge b
     }
     ```
     This `if (tone_enabled || envelope_as_waveform)` check ensures that even if the tone switch is off, the channel will still produce sound as long as it's using an envelope waveform, thus perfectly reproducing the original chiptune's effect.
+
+###### 5. Exclusive Feature: ZX-Spectrum Style Stereo Panning
+*   **Background**: The original AY-8910 chip is monophonic. However, in the ZX-Spectrum community, developers created various "pseudo-stereo" configurations by using two AY-8910 chips (or their variants). The most classic of these is the **ABC** setup (Channel A on the left, B in the center, C on the right). YASP's AY-8910 to OPM conversion not only supports this classic configuration but also extends it with multiple modes that the user can switch between in real-time to experience different stereo effects.
+*   **Implementation**:
+    1.  **Defining Panning Constants**: In the OPM (YM2151), panning is controlled by the top two bits (`RL`) of registers `0x20-0x27`. The code defines three constants to represent left, right, and center channels:
+        ```c
+        #define OPM_PAN_LEFT   0x40 // C2 (binary 01xxxxxx)
+        #define OPM_PAN_RIGHT  0x80 // C1 (binary 10xxxxxx)
+        #define OPM_PAN_CENTER 0xC0 // C1 & C2 (binary 11xxxxxx)
+        ```
+    2.  **Providing Multiple Stereo Modes**: YASP defines an enum, `ay_stereo_mode_t`, which includes several popular ZX-Spectrum stereo configurations:
+        *   `AY_STEREO_ABC`: Left-Center-Right
+        *   `AY_STEREO_ACB`: Left-Right-Center
+        *   `AY_STEREO_BAC`: Center-Left-Right
+        *   `AY_STEREO_MONO`: All channels centered
+    3.  **Dynamic Switching Logic**: The `ay_to_opm_set_stereo_mode` function is the core of the dynamic switching. This function is called when the user switches modes via the keyboard (`Tab` key).
+        ```c
+        void ay_to_opm_set_stereo_mode(ay_stereo_mode_t mode) {
+            _current_stereo_mode = mode;
+            // ...
+            switch (mode) {
+                case AY_STEREO_ABC:
+                    ch_pan[0] = OPM_PAN_LEFT; ch_pan[1] = OPM_PAN_CENTER; ch_pan[2] = OPM_PAN_RIGHT;
+                    break;
+                // ... other modes ...
+            }
+            // Apply the calculated panning values to OPM channels 4, 5, 6
+            for (int i = 0; i < 3; i++) {
+                int opmCh = toOpmCh(i);
+                _y(0x20 + opmCh, (ch_pan[i] & 0xC0) | 0x3C);
+            }
+            // Also update the noise panning
+            _updateNoise();
+        }
+        ```
+    4.  **Intelligent Noise Panning**: The handling of the noise channel's panning is particularly clever. The `_updateNoise` function checks all three PSG channels. If any of them have noise enabled, it determines the final position of the noise based on that channel's panning setting. For example, if Channel A (left) and Channel C (right) both have noise enabled, the final noise output will be panned to the center to provide a balanced auditory experience.
+*   **Result**: This exclusive feature greatly enhances the expressiveness of AY-8910 music. Originally monotonous mono tracks can now exhibit rich spatial depth and layering through different stereo configurations, offering a completely new experience to the listener. Users can switch between modes in real-time to find the stereo effect that best suits the current track.
+
+#### 4.2.4. WonderSwan to OPM Detailed Conversion Rules
+<a id="4-2-4"></a>
+The WonderSwan (WS) audio system has its unique characteristics, featuring 4 waveform/noise channels. Converting it to the YM2151 (OPM) requires precise logical mapping, especially for noise and volume handling.
+
+##### 4.2.4.1. Register and Channel Mapping
+| WonderSwan (S-DSP) | YM2151 (OPM) | Brief Description |
+| :--- | :--- | :--- |
+| Ch 1-4 Freq (Reg `0x00-0x07`) | `0x28-0x2B` (KC/KF Ch 4-7) | Frequency for the 4 tone channels |
+| Ch 1-4 Volume (Reg `0x08-0x0B`) | `0x74-0x77` (TL Ch 4-7) | Volume for the 4 tone channels |
+| Noise Control (Reg `0x0E`) | (Internal State) | Determines noise type (unused) |
+| Channel Control (Reg `0x10`) | `0x08` (Key On/Off) / `0x0F` (Noise) | Controls channel enable and noise mode |
+
+##### 4.2.4.2. Detailed Conversion Rules
+###### 1. Channel Mapping
+*   The 4 channels of the WonderSwan are directly mapped to the last 4 channels of the OPM (4, 5, 6, and 7).
+
+###### 2. Pitch Conversion
+*   The WS uses an 11-bit period value to define frequency. The converter first calculates the actual frequency (in Hz) from this period.
+*   **Frequency Calculation**: `freq = (3072000.0 / (2048.0 - period)) / 32.0`
+*   This frequency value is then fed into the `freqToOPMNote` function to calculate the OPM's `KC` (Key Code) and `KF` (Key Fraction).
+*   **Pitch Correction**: After extensive listening tests, a global fine-tuning of **-9.5 semitones** was applied within the `freqToOPMNote` function to make the converted pitch most closely match the original sound.
+
+###### 3. Volume Mapping
+*   This was the most critical and most iterated part of the conversion. To balance the perceived loudness differences between the chips and meet the user's fine-grained requirements for dynamic range, **two completely separate volume look-up tables** are used for the tone and noise channels.
+*   **Tone Channels (Square Wave)**:
+    *   To achieve a smooth yet powerful volume curve, the tone channel's volume table, `VOL_TO_TL_FINAL`, was designed to **extremely compress** the WS's 15 volume levels into the OPM's Total Level (TL) range of **15 to 40**.
+    *   **Final Tone Volume Look-up Table**:
+        ```c
+        const int VOL_TO_TL_FINAL[] = {127, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 17, 16, 15};
+        ```
+    *   **Effect**: This design ensures that even low volumes on the WS sound clear enough on the OPM, while high-volume changes are very subtle, avoiding sudden jumps in volume.
+*   **Noise Channel**:
+    *   It was found that at the same TL value, the OPM's white noise sounds much louder than its FM synthesized tones. To balance this, the noise channel uses a separate, **heavily attenuated** volume table, `NOISE_VOL_TO_TL`.
+    *   **Final Noise Volume Look-up Table**:
+        ```c
+        const int NOISE_VOL_TO_TL[] = {127, 125, 122, 119, 116, 113, 110, 107, 104, 101, 98, 95, 92, 89, 86, 83};
+        ```
+    *   **Effect**: This table ensures that the volume of the noise, when used as a background or percussive element, does not overpower the main melody.
+
+###### 4. Special Handling for the Noise Channel
+*   **Activation Condition**: Analysis of `libvgm`'s core code revealed that only the **4th channel** of the WS (index 3) can be used as a noise channel, and this is controlled by the 7th bit (`0x80`) of register `0x10`.
+*   **OPM Channel Takeover**: When this mode is activated, the WS's 4th channel **completely takes over the OPM's 7th channel** to output noise.
+*   **Conversion Logic**:
+    1.  **Mute Tone**: A "Key Off" command is immediately sent to OPM channel 7 to silence its FM tone section.
+    2.  **Noise Frequency Mapping**: The WS uses its channel frequency to drive the noise generator. Since a direct mapping is not possible, the converter employs a **bucketing strategy**, mapping the 11-bit WS frequency period (0-2047) to the closest available slot in the OPM's 5-bit noise frequency range (0-31).
+    3.  **Noise Volume**: The dedicated `NOISE_VOL_TO_TL` table described above is used to set the noise volume.
+    4.  **The Critical Fix: Key On the Noise Slot**: This was the key to fixing the silent noise issue. After setting the frequency and volume, a "Key On" command must be sent specifically to the **noise slot (Slot C2)** of the OPM (`_y(0x08, (0x8 << 3) | opmNoiseCh)`) to explicitly activate the noise output.
 
 ### 4.3. Advanced Timing and Flush System
 <a id="4-3"></a>
@@ -843,3 +933,33 @@ This update resolves a critical, long-standing bug in the AY-8910 (PSG) to YM215
         }
         ```
 *   **Result**: With this fix, AY-8910 bass and other special effects that were previously silent after conversion are now played back correctly and audibly, significantly improving compatibility with special chiptune tracks.
+
+### 8.5. AY-8910 Fast Arpeggio Conversion Fix (v0.903)
+<a id="8-5"></a>
+This update addresses a severe bug in the AY-8910 (PSG) to YM2151 (OPM) conversion related to fast note sequences (arpeggios).
+
+*   **Problem**: When playing AY-8910 music containing fast arpeggios, the converted OPM channels would drop notes and go silent after about 10 seconds of playback. In-depth analysis with the `vgm_parser` tool revealed that the issue was in the pitch and Key On/Off recognition mechanism in `ay_to_opm.c`. The old logic failed to correctly re-trigger notes amidst rapid pitch changes and channel toggles, leading to sound interruption.
+*   **Fix Process**:
+    1.  **Refactored Mixer (R7) Logic**: The section in `ay_to_opm_write_reg` that handles AY-8910 register 7 (the mixer) was completely refactored. The code can now precisely detect the "tone enable" bit for each channel changing from 1 to 0, which is treated as an explicit **Key-On** event.
+    2.  **Precise Key-On/Key-Off Handling**:
+        *   Upon detecting a **Key-On** event, the code immediately recalculates the frequency (`_recalculate_freq`), updates the volume (`_updateTone`), and sends a forced "Key On all slots" command (`_y(0x08, (0xf << 3) | opmCh)`) to the OPM for that channel.
+        *   Simultaneously, if the channel uses a one-shot envelope, the envelope state is reset, ensuring it starts from the beginning with each note trigger.
+        *   Upon detecting a **Key-Off** event (tone enable bit changing from 0 to 1), a "Key Off all slots" command (`_y(0x08, opmCh)`) is sent to the OPM.
+    3.  **Simplified Amplitude (R8-R10) Logic**: The complex logic in the amplitude register handling, which previously tried to guess Key-On/Off events, was removed. Note on/off is now controlled precisely and reliably by the mixer (R7) logic, making the code cleaner and more robust.
+*   **Result**: With this fix, fast arpeggios in converted AY-8910 tracks are now played back completely and clearly without dropping notes, significantly improving compatibility with and fidelity of complex chiptune tracks.
+
+### 8.6. WonderSwan (WS) to OPM Conversion Improvements (v0.911)
+<a id="8-6"></a>
+This update involved a series of thorough refactors and fine-tuning adjustments to the WonderSwan (WS) to YM2151 (OPM) conversion module, resolving a range of issues from complete silence to imbalanced volume.
+
+*   **Problem**: The initial WS->OPM conversion implementation had multiple issues: the noise channel was completely silent; the volume curve for the tone channels was unreasonable, causing large, abrupt jumps in volume; and the volume balance between noise and tones was severely off.
+*   **Fix and Improvement Process**:
+    1.  **Noise Channel Fix**: By deeply analyzing `libvgm`'s `ws_audio.c` core code, the root cause of the silent noise was identified: when switching to noise mode, an explicit "Key On" command was not being sent to the OPM's **noise slot (Slot C2)**. After fixing this, the noise channel was finally able to produce sound.
+    2.  **Noise Frequency Mapping**: A **bucketing mapping** from the WS channel's frequency period to the OPM's 5-bit noise frequency was implemented. This allows the pitch of the noise to change dynamically according to the music data, rather than being a fixed frequency.
+    3.  **Iterative Refinement of Volume Curves**:
+        *   **V1 (Non-linear)**: Caused large jumps in volume.
+        *   **V2 (Linear)**: Solved the jumping issue but had poor dynamic range.
+        *   **V3 (Smoothed Non-linear)**: Based on user feedback, non-linear mapping was restored with a much smoother curve.
+        *   **V4 (Separate Noise Table)**: It was discovered that the perceived loudness of noise was much higher than that of tones, so a **separate and more attenuated** volume table was designed for the noise channel.
+        *   **Final Version (Extreme Compression)**: Based on the user's final requirements, the volume range for the tone channels was extremely compressed to the OPM TL range of **15-40**, while the noise volume was further attenuated, finally achieving the ideal auditory balance.
+*   **Result**: After multiple rounds of iteration, the WS->OPM converter can now correctly and balancedly reproduce WonderSwan music. The volumes of the noise and square-wave tones are harmonious, and both pitch and dynamics are faithfully restored.
