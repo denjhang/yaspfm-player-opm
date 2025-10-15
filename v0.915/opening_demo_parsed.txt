@@ -1,0 +1,62 @@
+--- Parsing VGM from 0.00s to 99999.00s ---
+Sample range: 0 to 4409955900
+
+Time (s)     Samples      Command             
+--------------------------------------------------
+0.0000       0            WAIT: 1 samples
+0.0000       1            WAIT: 6 samples
+0.0002       7            WAIT: 5 samples
+0.0003       12           WAIT: 1 samples
+0.0003       13           WAIT: 2 samples
+0.0003       15           WAIT: 3 samples
+0.0004       18           WAIT: 6 samples
+0.0005       24           WAIT: 6 samples
+0.0007       30           AY8910: reg 0xFD, val 0xC6
+0.0007       30           WAIT: 6 samples
+0.0008       36           WAIT: 5 samples
+0.0009       41           WSWAN: port 0x22, val 0xC6
+0.0009       41           WAIT: 1 samples
+0.0010       42           WAIT: 3 samples
+0.0010       45           WAIT: 4 samples
+0.0011       49           WAIT: 5 samples
+0.0012       54           WAIT: 4 samples
+0.0013       58           WAIT: 2 samples
+0.0014       60           WAIT: 4 samples
+0.0015       64           WAIT: 3 samples
+0.0015       67           WAIT: 4 samples
+0.0016       71           WAIT: 1 samples
+0.0016       72           WAIT: 3 samples
+0.0017       75           WAIT: 4 samples
+0.0018       79           WAIT: 4 samples
+0.0019       83           WAIT: 1 samples
+0.0019       84           WAIT: 3 samples
+0.0020       87           WAIT: 4 samples
+0.0021       91           WAIT: 4 samples
+0.0022       95           WAIT: 1 samples
+0.0022       96           WAIT: 4 samples
+0.0023       100          WAIT: 3 samples
+0.0023       103          WAIT: 4 samples
+0.0024       107          WAIT: 1 samples
+0.0024       108          WAIT: 5 samples
+0.0026       113          WAIT: 4 samples
+0.0027       117          WAIT: 4 samples
+0.0027       121          WAIT: 2 samples
+0.0028       123          WAIT: 3 samples
+0.0029       126          WAIT: 4 samples
+0.0029       130          WAIT: 4 samples
+0.0030       134          WAIT: 1 samples
+0.0031       135          WAIT: 3 samples
+0.0031       138          WAIT: 4 samples
+0.0032       142          WAIT: 1 samples
+0.0032       143          WAIT: 4 samples
+0.0033       147          WAIT: 3 samples
+0.0034       150          WAIT: 2 samples
+0.0034       152          YM2203: reg 0x72, val 0xBC
+0.0034       152          WAIT: 4 samples
+0.0035       156          WAIT: 4 samples
+0.0036       160          WAIT: 1 samples
+0.0037       161          YM2203: reg 0x73, val 0xBC
+0.0037       161          WAIT: 5 samples
+0.0038       166          WAIT: 4 samples
+0.0039       170          WAIT: 2 samples
+0.0039       172          END OF SOUND DATA

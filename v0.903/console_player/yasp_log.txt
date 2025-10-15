@@ -2547,3 +2547,155 @@
 [2025-09-28 23:04:53] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/27 - Dracula Orb.vgm
 [2025-09-28 23:04:53] >>INFO<< Cache not found. Converting YM2612 to OPM...
 [2025-09-28 23:04:53] >>ERROR<< Failed to open cache file for writing: console_player/cache/27 - Dracula Orb.vgm.opm.vgm
+[2025-10-16 00:06:31] >>WARN<< Bypassing SPFM identification. Assuming device is SPFM_Light.
+
+[2025-10-16 00:06:31] >>INFO<< SPFM device at index 0 initialized successfully. Type: SPFM_Light
+
+[2025-10-16 00:06:35] >>INFO<< Initializing chip type 2 in slot 1
+
+[2025-10-16 00:06:35] >>INFO<< Initializing chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/27 - Dracula Orb.vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/27 - Dracula Orb.vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/27 - Dracula Orb.vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/28 - All Clear.vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/28 - All Clear.vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/28 - All Clear.vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/29 - Together Forever (Ending Theme).vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/29 - Together Forever (Ending Theme).vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/29 - Together Forever (Ending Theme).vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/30 - Requiem for the Nameless Victims (Staff Roll).vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/30 - Requiem for the Nameless Victims (Staff Roll).vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/30 - Requiem for the Nameless Victims (Staff Roll).vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/31 - Death.vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/31 - Death.vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/31 - Death.vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/01 - Konami Logo.vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/01 - Konami Logo.vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/01 - Konami Logo.vgm.opm.vgm
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:36] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:36] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/02 - The Beating in Darkness (Title Theme).vgm
+[2025-10-16 00:06:36] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/02 - The Beating in Darkness (Title Theme).vgm
+[2025-10-16 00:06:36] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:36] >>ERROR<< Failed to open cache file for writing: console_player/cache/02 - The Beating in Darkness (Title Theme).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/03 - A Vision of Dark Secrets (Opening Theme).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/03 - A Vision of Dark Secrets (Opening Theme).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/03 - A Vision of Dark Secrets (Opening Theme).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/04 - Bonds of Brave Men (Character Selection).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/04 - Bonds of Brave Men (Character Selection).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/04 - Bonds of Brave Men (Character Selection).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/05 - Arduous Journey (Map Theme).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/05 - Arduous Journey (Map Theme).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/05 - Arduous Journey (Map Theme).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/06 - Reincarnated Soul, Part 1 (Introduction).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/06 - Reincarnated Soul, Part 1 (Introduction).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/06 - Reincarnated Soul, Part 1 (Introduction).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/07 - Reincarnated Soul, Part 2 (Stage 1).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/07 - Reincarnated Soul, Part 2 (Stage 1).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/07 - Reincarnated Soul, Part 2 (Stage 1).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/08 - The Sinking Old Sanctuary (Stage 2).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/08 - The Sinking Old Sanctuary (Stage 2).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/08 - The Sinking Old Sanctuary (Stage 2).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/09 - The Discolored Wall (Stage 3).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/09 - The Discolored Wall (Stage 3).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/09 - The Discolored Wall (Stage 3).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/10 - Beginning (Classic Tune 1).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/10 - Beginning (Classic Tune 1).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/10 - Beginning (Classic Tune 1).vgm.opm.vgm
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:37] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:37] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/11 - Bloody Tears (Classic Tune 2).vgm
+[2025-10-16 00:06:37] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/11 - Bloody Tears (Classic Tune 2).vgm
+[2025-10-16 00:06:37] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:37] >>ERROR<< Failed to open cache file for writing: console_player/cache/11 - Bloody Tears (Classic Tune 2).vgm.opm.vgm
+[2025-10-16 00:06:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:38] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/12 - Vampire Killer (Classic Tune 3).vgm
+[2025-10-16 00:06:38] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/12 - Vampire Killer (Classic Tune 3).vgm
+[2025-10-16 00:06:38] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:38] >>ERROR<< Failed to open cache file for writing: console_player/cache/12 - Vampire Killer (Classic Tune 3).vgm.opm.vgm
+[2025-10-16 00:06:38] >>INFO<< Resetting chip type 2 in slot 1
+
+[2025-10-16 00:06:38] >>INFO<< Resetting chip type 11 in slot 0
+
+[2025-10-16 00:06:38] >>DEBUG<< Attempting to play file: D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/13 - After the Good Fight (Game Over).vgm
+[2025-10-16 00:06:38] >>DEBUG<< Calling vgm_play for D:\working\vscode-projects\yasp11\yasp\console_player/music/Castlevania-opn2/13 - After the Good Fight (Game Over).vgm
+[2025-10-16 00:06:38] >>INFO<< Cache not found. Converting YM2612 to OPM...
+[2025-10-16 00:06:38] >>ERROR<< Failed to open cache file for writing: console_player/cache/13 - After the Good Fight (Game Over).vgm.opm.vgm
