@@ -1,0 +1,1 @@
+for %%f in (*.vg?) do vgm_ptch -CheckT -MinHeader -MinVer "%%f"

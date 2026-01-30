@@ -1,0 +1,1 @@
+for %%f in (*.vg?) do vgm_ptch -ResizeHead:0xE0 -Check "%%f"
